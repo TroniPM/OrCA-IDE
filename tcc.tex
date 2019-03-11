@@ -1,0 +1,457 @@
+\documentclass{bcc}
+
+\titulo{OrCA IDE: Uma IDE geradora de Ontologias}
+\palavrasChave{Ontologia}{Linguagem Natural}{OWL}
+\keywords{Ontology, Natural Language, OWL}
+
+\autor{Paulo Mateus da Silva}{paulomatew@gmail.com}
+
+\orientador{Ryan Azevedo}{UAG}{UFRPE}
+%\orientadorDois{John von Neumann}{UAG}{UFRPE}
+% \orientadorTres*{Ada Lovelace}{UAG}{UFRPE} % Se feminino use *, tanto para orientador ou examinador
+
+\examinador{John Hopcroft}{UAG}{UFRPE}
+\examinadorDois{Richard Karp}{UAG}{UFRPE}
+\examinadorTres{Stephen Cook}{UAG}{UFRPE}
+\examinadorQuatro{John Backus}{UAG}{UFRPE}
+
+\dataMesAno{7}{agosto}{2018}
+
+\begin{document}
+
+\selectlanguage{portuguese}
+
+\capa
+
+% \capaDois
+
+\begin{resumo}
+INSERIR RESUMO
+\end{resumo}
+
+\selectlanguage{english}
+\begin{abstract}
+INSERIR ABSTRACT
+\end{abstract}
+\selectlanguage{portuguese}
+
+% Centralizar titulos
+\renewcommand\contentsname{\centerline{Sumário}}
+\renewcommand\listfigurename{\centerline{Lista de Figuras}}
+\renewcommand\listtablename{\centerline{Lista de Tabelas}}
+
+\lhead{Sumário}
+\tableofcontents
+
+\listoffigures
+\addcontentsline{toc}{chapter}{Lista de Figuras}
+
+\listoftables
+\addcontentsline{toc}{chapter}{Lista de Tabelas}
+
+\inicio
+\chapter{Introdução}
+
+TEXTO
+
+
+\section {Contextualização}
+
+TEXTO
+
+\section{Motivação e Justificativa}
+
+TEXTO
+
+
+\section{Definição do Problema}
+
+TEXTO
+
+\section{Objetivo}
+
+TEXTO
+
+\section{Organização do Relatório}
+
+Além deste capítulo inicial que traz uma introdução sobre o tema, a motivação e justificativa para realização do trabalho, a definição do problema e o objetivo; este trabalho está organizado em mais X capítulos, como seguem:
+
+• O \autoref{chap:fundamentacao} apresenta a fundamentação teórica, contendo referências bibliográficas de estudos na área e apresenta as ferramentas e conceitos que foram utilizados no desenvolvimento;
+
+• O \autoref{chap:atividades}
+
+• O \autoref{chap:sistema} mostra a arquitetura do sistema e a maneira que ele foi construído, utilizando os conceitos e ferramentas que foram previamente apresentados no capítulo \autoref{chap:fundamentacao}.
+
+• O \autoref{chap:atividades} expõe os experimentos que foram realizados e seus respectivos resultados, exibindo assim, o funcionamento do sistema.
+
+
+\chapter{Fundamentação teórica}
+\label{chap:fundamentacao}
+
+Nesta seção são apresentados os conceitos e ferramentas que foram utilizados no desenvolvimento deste projeto e as respectivas justificativas que embasam o uso de cada um deles.
+
+\section{Ontologia}
+
+Existem diversas técnicas que podem ser utilizadas para organizar informações e conhecimento, a aplicação de ontologias tem recebido uma atenção cada vez maior \cite{almeida2014}. O termo pode ser encontrado não apenas na ciência da computação, mas também em diversas áreas do conhecimento, por isso, é importante entender seu significado e sua aplicação em cada área específica.
+
+\subsection{Histórico e Definições}
+
+A palavra ontologia está presente em diversas áreas do conhecimento e possui diferentes significados para cada uma delas. Devido ao seu
+uso diversificado, seu significado tende a ser muito vago. Dessa forma, existem muitas definições para o termo \cite{gava2003}.
+
+O termo ontologia teve origem no século XVII na área da filosofia, a palavra vem do grego e pode ser traduzida como estudo da existência \cite{guizzardi2005}. Segundo \cite{gruber1995} o termo é emprestado da filosofia onde uma Ontologia é uma explicação sistemática da existência. Para um sistema de Inteligência Artificial, o que existe é tudo aquilo que pode ser representado.
+
+Na computação, o termo foi usado pela primeira vez no fim dos anos 70 e desde então, ontologias têm sido aplicadas em uma infinidade de áreas da ciência da computação, uma das motivações foi a necessidade de criar representações de princípios de conhecimento de domínio na comunidade de compartilhamento e reutilização de conhecimento em IA \cite{guizzardi2005}.
+
+Em áreas relacionadas com Modelagem Conceitual, ontologias são usadas de acordo com dua definição em Filosofia. Na Inteligência Artificial, Engenharia de Software e \textit{Web} Semântica geralmente ontologia é usada como: (i)um artefato concreto de engenharia desenhado com um intuito específico sem focar muito em questões de fundamentação ou (ii) uma representação de um domínio particular que pode ser expressa em alguma linguagem de representação de conhecimento (RDF, OWL, F-Logic) ou de modelagem conceitual (UML, EER) \cite{guizzardi2008}. Neste trabalho, será considerada a definição ii, que é a mais utilizada na área de Inteligência Artificial.
+
+Segundo \cite{gruber1995} uma ontologia é uma especificação explícita de uma conceituação. \cite{lv2011} afirma que o principal papel das ontologias é melhorar a comunicação entre humanos ou entre computadores, especificando a semântica do aparato simbólico usado no processo de comunicação.
+
+\section{OWL}
+
+A \textit{Web Ontology Language} (OWL) é projetada para ser usada por aplicações que precisam processar o conteúdo da informação em vez de apenas apresentar informações aos seres humanos. OWL fornece uma maior facilidade para a máquina interpretar o conteúdo da Web do que linguagens suportadas por XML, RDF e RDF Schema (RDF-S), pois fornece vocabulário adicional junto com uma semântica formal. Ela possui três sub-linguagens cada vez mais expressivas: OWL Lite, OWL DL e OWL Full \cite{mcguinness}.
+
+\subsection{OWL Manchester Syntax}
+
+TEXTO
+
+\section{Pellet}
+
+Pellet é implementado em Java e é \textit{open source}, ele fornece uma gama de recursos como: suporte a regras, conexão de raciocínio, identificação de axiomas. Para tornar seus recursos de raciocínio acessível aos usuários, ele fornece diferentes interfaces \cite{sirin2007}.
+
+Os recursos do Pellet são expostos a partir de uma API Java, uma interface de linha de comando ou um formulário da Web. Ele fornece acesso programático às funções de raciocínio por meio de duas interfaces diferentes, uma para o kit de ferramentas do Jena e uma para a biblioteca da API do OWL \cite{parsia2004}. No desenvolvimento da ferramenta em questão o Pellet foi utilizado a partir de uma API Java e suas funções foram acessadas através da biblioteca do OWL.
+
+\section{Arquitetura MVC}
+
+MVC (\textit{Model View Controller}) é um padrão de arquitetura de \textit{software} que sugere uma divisão de componentes, permitindo assim, um código mais organizado e simples além de facilitar e tornar mais segura a manutenção do sistema \cite{da2012}. Essa arquitetura se tornou popular no desenvolvimento de sistemas complexos, pois, ela auxilia na separação dos principais componentes do sistema, além de apoiar a manipulação, gerenciamento e armazenamento dos dados \cite{de2013}.
+
+Nessa abordagem, em resumo, o sistema é dividido em três componentes interconectados: \textit{model}, que expressa o conhecimento do domínio, \textit{view}, que apresenta a interface do usuário e \textit{control} que gerencia as atualizações para as \textit{views} \cite{selfa2006}.
+ 
+ \textit{Model} é a camada responsável pela manipulação e gerenciamento dos dados, ou seja, faz a leitura, escrita e validação dos dados, e se houver necessidade, também permite a comunicação do banco de dados. Ela contém os dados do aplicativo, a definição lógica, a especificação da função e o envolvimento da regra de negócios. O \textit{model} pode ser um único objeto ou uma composição de objetos \cite{jailia2016}.
+ 
+ \textit{View} é a camada de interação com o usuário, é responsável por exibir todos os dados do contidos no \textit{model}. Mostra apenas os atributos necessários e oculta os atributos desnecessários, fornecendo assim uma apresentação encapsulada \cite{jailia2016}.
+ 
+ Por fim, \textit{controller} é a camada que recebe todas as requisições do usuário e faz a sua conexão com o sistema. Ele controla o \textit{model} a ser utilizado assim como seu fluxo de dados, e atualiza a exibição na \textit{view} que será mostrada ao usuário \cite{jailia2016}. 
+
+\section{Java}
+
+TEXTO
+
+\section{Maven}
+
+O Maven é uma ferramenta de integração de projetos Java utilizada no gerenciamento e automação de construção (build) de projetos, além disso, fornece diversas funcionalidades adicionais através do uso de \textit{plugins} e estimula o emprego de melhores práticas de programação \cite{maven}.
+
+A ferramenta surgiu da dificuldades que muitos grupos de desenvolvimento tinham ao gerenciar bibliotecas em grandes projetos, de maneira dinâmica o Maven baixa a biblioteca Java e os seus \textit{plugins} de diversos repositórios que ficam armazenados em cache local, que pode ser atualizado quando sempre que for preciso \cite{oliveira2016}. Sua configuração é feita através do arquivo pom.xml (Project Object Model) onde são declarados o tipo de empacotamento, suas dependências e os repositórios de onde as dependências serão buscadas, podendo ser tanto repositórios locais ou remotos. \cite{junior2014}
+
+
+\section{Compilador}
+TEXTO (Analisadores, lexema, lookahead, regra de produção, gramática)
+
+De maneira geral, um compilador é um programa que tem como entrada um código de programa numa certa linguagem e produz como saída um código de programa numa outra linguagem, preservando o significado do código durante esse processo \cite{grune2012}.
+
+Um compilador é dividido em fases, cada uma delas representam uma etapa do processo de compilação, elas podem ser desenvolvida de maneira separada, mesmo que na prática elas funcionem intercaladamente \cite{foleiss2009}.
+
+\subsection{Analisador Léxico}
+
+\subsection{Analisador Sintático}
+
+\subsection{Analisador Semântico}
+
+\chapter{Atividades Desenvolvidas}
+\label{chap:atividades}
+
+TEXTO
+
+\chapter{Arquitetura do Sistema}
+\label{chap:sistema}
+
+\section{Introdução}
+Com a finalidade de criar uma ontologia a partir de  Processamento de Linguagem Natural (PLN), o sistema OrCA IDE (\textit{Ontology vieweR and CreAtor Integrated Development Environment}) foi desenvolvido. Neste capítulo são detalhadas a arquitetura do sistema e suas funcionalidades, bem com a linguagem natural controlada utilizada. O intuito, ao definir esta linguagem, foi facilitar ao máximo o desenvolvimento das ontologias por parte dos usuários do sistema.
+
+\section{Arquitetura}
+
+O sistema foi implementado utilizando a arquitetura **********, visando otimizar o desenvolvimento e facilitar a manutenção do código fonte. Qualquer programador que visualizar a estrutura do projeto e desejar realizar ajustes, não terá dificuldade em achar seus componentes. Na Figura \ref{fig:pacotesJava} é possível visualizar todos os pacotes do projeto.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.6\textwidth]{Figuras/estrutura.png}
+\caption{Pacotes de classes no projeto}
+\label{fig:pacotesJava}
+\end{figure}
+
+\section{Componentes}
+O sistema possui 4 componentes (telas): \textit{compiler}, \textit{ontology}, \textit{reasoner} e \textit{graph viewer}. Detalhes de cada componente do sistema serão vistos nas subseções abaixo.
+
+\subsection{Compiler}
+
+O \textit{compiler} será responsável por receber a linguagem natural do usuário e retornar se essa linguagem natural pode ou não ser compilada, assim como mostrar eventuais erros que impossibilitam a compilação. A Tela completa pode ser vista na Figura \ref{fig:telaCompiler}.
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.7\textwidth]{Figuras/tela_compiler.png}
+\caption{Tela \textit{Compiler} completa}
+\label{fig:telaCompiler}
+\end{figure}
+
+Como podemos ver na Figura \ref{fig:telaCompiler1}, o campo de texto chamado \textit{Source Ontology} é onde o usuário irá inserir a linguagem natural. O botão \textit{Clear} irá apagar todo o conteúdo desse campo de texto, e o botão \textit{COMPILE} irá compilar a linguagem utilizada pelo usuário. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.7\textwidth]{Figuras/tela_compiler1.png}
+\caption{Tela \textit{Compiler}: parte da edição da Linguagem Natural}
+\label{fig:telaCompiler1}
+\end{figure}
+
+Na mesma tela, porém no campo Console, podemos ver a saída do compilador com uma mensagem amigável para o usuário, como visto na Figura \ref{fig:telaCompiler2}. Há 5 tipos de saídas no console: 
+
+\begin{enumerate}
+  \item Lexical OK: passou sem erros pelo analisador léxico;
+  \item Sintatic OK: passou sem erros pelo analisador sintático;
+  \item Semantic OK: passou sem erros pelo analisador semântico;
+  \item Conversor OK: a linguagem utilizada pelo usuário foi convertida com sucesso para uma ontologia.
+  \item Erros: ao passo que algum erro seja encontrado, o console (Figura \ref{fig:telaCompiler2}) irá mostrar em qual linha, coluna e palavra aconteceu o erro.
+\end{enumerate}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.7\textwidth]{Figuras/tela_compiler2.png}
+\caption{Tela \textit{Compiler}: retorno da compilação da linguagem natural}
+\label{fig:telaCompiler2}
+\end{figure}
+
+\subsubsection{Ontology}
+
+A \textit{Ontology} mostra a saída da ontologia (em OWL) após a compilação da linguagem natural do usuário. Este campo não é editável. Embora o usuário não possa inserir ou remover texto, o modelo de visualização pode ser alterado através do menu suspenso chamado \textit{Output Model} para as seguintes sintaxes: \textit{RDF/XML} (padrão), \textit{KRSS2, Latex, Manchester OWL Syntax, OWL/XML, OWL Functional Syntax} e \textit{Turtle}. Todas essas sintaxes são fornecidas pela \textit{Manchester OWL API}. O botão \textit{Graph} irá abrir o componente \textit{Graph}, e o botão \textit{Copy} irá enviar o texto que está aparecendo no campo de texto para a área de transferência. Na Figura \ref{fig:telaOntology} é possível observar a Tela \textit{Ontology} completa.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.7\textwidth]{Figuras/tela_ontology.png}
+\caption{Tela Ontology}
+\label{fig:telaOntology}
+\end{figure}
+
+\subsubsection{Reasoner}
+
+Se tratando de ontologias, um \textit{reasoner} é um software capaz de inferir consequências lógicas sobre a ontologia, muitas vezes não explícitos na sua base de conhecimento. O componente \textit{Reasoner} é onde mostra a saída que o \textit{reasoner} integrado ao sistema (Pellet) conseguiu deduzir através da ontologia inserida. Existem dois campos de texto: o primeiro mostra os axiomas inferidos, o outro mostra a ontologia inferida em owl. O botão \textit{Reason} refaz o processamento de inferir sobre a ontologia inserida pelo usuário. A Figura \ref{fig:telaReasoner} mostra essa tela.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.7\textwidth]{Figuras/tela_reasoner.png}
+\caption{Tela Reasoner}
+\label{fig:telaReasoner}
+\end{figure}
+
+\subsubsection{Graph Viewer}
+
+\textit{Graph Viewer} é apenas um facilitador gráfico, afim de mostrar a ontologia compilada em forma de grafo. A Figura \ref{fig:telGraph}
+mostra a tela Graph Viewer, que é responsável por mostrar ao usuário uma perspectiva de grafo da ontologia criada. Nela é possível aumentar zoom, bem como diminuir o zoom, assim como exportar em arquivo de imagem em formato SVG e em texto em formato JSON. É possível também movimentar os nós, aumentar ou diminuir de tamanho, para facilitar na visualização.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.7\textwidth]{Figuras/tela_graph.png}
+\caption{Tela Graph Viewer}
+\label{fig:telGraph}
+\end{figure}
+
+\section{View}
+Essa camada é responsável por interagir com o usuário. Ela é única e exclusivamente utilizada para exibição de dados e gatilhos de ação. Como visto na Figura \ref{fig:pacotesJava}, existem 4 pacotes possuindo classes no que diz respeito a view: view, view/util, view/util/popupmenu e view/util/xmlpack.
+
+A entrada dessa camada é o código fonte inserido pelo usuário, como visto na Figura \ref{fig:telaCompiler} (parte superior). Após a ação de compilação ser disparada, ou seja, um clique no botão de compilar, o código  fonte é enviado para o analisador léxico. A saída dessa camada é o sucesso ou erro da compilação com base no código fonte inserido, também mostra a Figura \ref{fig:telaCompiler} (parte inferior) e na Figura \ref{fig:telaCompilerSaida}.
+\begin{figure}[H]
+\centering
+\includegraphics[width=.7\textwidth]{Figuras/tela_compiler_saida.png}
+\caption{Saída de dados para na camada view. Lado A mostrando uma compilação com sucesso. Lado B mostrando um erro no Analisador Sintático}
+\label{fig:telaCompilerSaida}
+\end{figure}
+
+\subsection{Pacote view/util/xmlpack}
+Esse pacote contem classes que irão fazer com que a tela "Ontology" e parte da tela "Reasoner" seja um ambiente comum a usuários de arquivos XML, colocando cores e identando de maneira a facilitar a leitura e entendimento do código em XML, como podemos ver nas Figura \ref{fig:telaOntology} e \ref{fig:telaReasoner}. É possível ver o conteúdo do pacote na Figura \ref{fig:pacoteXmlpack}.
+\begin{figure}[H]
+\centering
+\includegraphics[width=.6\textwidth]{Figuras/pacote_xmlpack.png}
+\caption{Classes do pacote .../view/util/xmlpack}
+\label{fig:pacoteXmlpack}
+\end{figure}
+
+\subsection{Pacote view/util/popupmenu}
+As classes desse pacote farão com que, ao usuário pressionar o botão direito, em alguma tela, algumas opções irão aparecer como por exemplo: copiar, colar, recortar, etc. Isso faz com que o usuário se sinta mais confortável e ambientado com o programa, visto que essa é uma prática comum em softwares. Os arquivos desse pacote podem ser visualizados na Figura \ref{fig:pacotePopupmenu}.
+\begin{figure}[H]
+\centering
+\includegraphics[width=.6\textwidth]{Figuras/pacote_popupmenu.png}
+\caption{Classes do pacote .../view/util/popupmenu}
+\label{fig:pacotePopupmenu}
+\end{figure}
+
+\subsection{Pacote view/util}
+Essas classes são as responsáveis por fazer a tela inicial do programa, Compiler, aparentar ser um campo de texto de uma IDE convencional. Colocando número de linhas, mudando cor da linha onde o cursor se encontra, bem como mudando a cor do número na linha onde o cursor se encontra. Também é uma prática muito comum no desenvolvimento de softwares. A Figura \ref{fig:pacoteViewUtil} mostra os arquivos desse pacote.
+\begin{figure}[H]
+\centering
+\includegraphics[width=.6\textwidth]{Figuras/pacote_view_util.png}
+\caption{Classes do pacote .../view/util}
+\label{fig:pacoteViewUtil}
+\end{figure}.
+
+\subsection{Pacote view}
+Esse pacote é o responsável por armazenar as classes contendo todas as telas propriamente ditas (Figuras \ref{fig:telaCompiler}, \ref{fig:telaOntology}, \ref{fig:telaReasoner} e \ref{fig:telGraph}). Os arquivos que estão dentro do pacote podem ser visto na Figura \ref{fig:pacotesView}.
+\begin{figure}[H]
+\centering
+\includegraphics[width=.6\textwidth]{Figuras/pacote_view.png}
+\caption{Classes do pacote .../view}
+\label{fig:pacotesView}
+\end{figure}
+
+\section{Model}
+
+Essa camada é responsável por conter classes que denotam o comportamento do sistema, ou seja, a regra de negócio.
+\begin{figure}[H]
+\centering
+\includegraphics[width=.6\textwidth]{Figuras/pacote_model.png}
+\caption{Classes do pacote .../model}
+\label{fig:pacotesModel}
+\end{figure}
+
+A classe "Regra" é utilizada no processo de análise sintática do compilador. É o equivalente a uma regra de produção no universo de compiladores. A classe "RegraEnum" é apenas definições utilizadas na classe "Regra". A classe "TokenPreProcessamento" é utilizada pelo analisador léxico e sintático, já a classe "TokenProcessamento" é utilizado pelo analisador sintático e semântico, bem como o conversor. As classes de tokens possuem informações como o lexema, coluna, linha, tipo, etc. A classe "TokenEnum" está para "TokenPreProcessamento" assim como a classe "RegraEnum" está para a classe "Regra".
+
+\section{Controller}
+
+Uma vez definido o comportamento dos dados e a interface do usuário, é preciso fazer uma interface entre essas duas camadas. Essa interface em questão é chamada de controller. Ela é responsável por coletar a ação e eventos do usuário, processar e trocar informações com o model. Os controllers podem ser vistos na Figura \ref{fig:pacotesController}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.7\textwidth]{Figuras/pacote_controller.png}
+\caption{Classes do pacote .../controller}
+\label{fig:pacotesController}
+\end{figure}
+
+\subsection{Controller Lexical}
+
+Este controller é responsável por fazer o primeiro e menos complexo processamento em cima do código fonte inserido pelo usuário. Esse processamento nada mais é do que receber o código fonte da View e verificar se as palavras inseridas pelo usuário são válidas, ou seja, se pertencem a algum "TokenEnum", como pode ser visto na Figura \ref{fig:codigoTokenenum} em que estão exibidos os tipos de tokens permitidos na aplicação. Caso o \textit{token} não seja convertido para algum desses, um erro irá aparecer para o usuário.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.7\textwidth]{Figuras/codigo_tokenenum.png}
+\caption{Tipos de tokens permitidos na aplicação}
+\label{fig:codigoTokenenum}
+\end{figure}
+
+Caso não pertença a nenhum tipo, irá apresentar uma exceção do tipo LexicalAnalyzerException e o processo de compilação será forçadamente parado (ver Figura \ref{fig:codigoErroLexico} B). Caso pertença a algum tipo, esse token é adicionado em uma lista de tokens, que ao final da análise léxica de todas as palavras do código fonte, é passado para o analisador sintático (ver Figura \ref{fig:codigoErroLexico} A).
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.7\textwidth]{Figuras/codigo_erro_lexico.png}
+\caption{Código erro léxico}
+\label{fig:codigoErroLexico}
+\end{figure}
+
+Na Figura \ref{fig:codigoErroLexico} apresenta na parte A quando o código passa com sucesso pelo analisador léxico e na parte B mostra quando o código fonte possui alguma palavra que não pode ser convertida para nenhum tipo reconhecido pela gramática.
+
+\subsection{Controller Sintatic}
+
+Após a análise léxica, esse \textit{controller} é acionado. Ele é responsável por identificar se o código fonte inserido pelo usuário faz parte da gramática que o sistema aceita. Em alguns casos é utilizado lookAhead de 1 ou 2 tokens para garantir que a leitura na pilha de execução é a esperada pelo sistema, como pode ser visto na Figura \ref{fig:codigoLookAhead} que traz um trecho de código de ControllerSintatic.java mostrando utilização de look ahead. Esse código verifica se o item atual da pilha é um NOT e lookAhead(1) for um identificador e lookAhead(2) for "OR, ISA, AND...", então entra no if e adiciona itens a pilha.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.8\textwidth]{Figuras/codigo_lookahead.png}
+\caption{Código Look Ahead}
+\label{fig:codigoLookAhead}
+\end{figure}
+
+Caso algum o código fonte inserido pelo usuário não pertença a gramática aceita pelo sistema, uma exceção do tipo SintaticAnalyzerException será lançada na View (ver Figura \ref{fig:codigoErroSintatico}). Caso o código fonte faça parte da gramática do sistema, irá passar para o analisador semântico.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.7\textwidth]{Figuras/codigo_erro_sintatico.png}
+\caption{Código erro sintático}
+\label{fig:codigoErroSintatico}
+\end{figure}
+
+A Figura \ref{fig:codigoErroSintatico} está divida em parte A que mostra quando o código passa com sucesso pelo analisador sintático e parte B que mostra quando o código fonte não faz parte da gramática aceita pelo sistema
+
+\subsection{Controller Semantic}
+
+Posterior a análise sintática esse controller entra em ação. Ele tem um comportamento diferente dos analisadores semânticos de outros compiladores. A função dele é atomizar o código fonte inserido pelo usuário a fim de criar subexpressões de tamanho mínimo, por exemplo "Homem and Mulher", embora essa expressão faça parte de uma expressão maior denominada "(Homem and Mulher) isa Humano". Essa substituição pode ser vista na Figura \ref{fig:codigoAtomizacao} onde se encontra o código do arquivo ControllerSemantic.java e exibe o momento em que a atomização envolvendo essas palavras reservadas é feita. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.7\textwidth]{Figuras/codigo_atomizacao.png}.
+\caption{Código atomização}
+\label{fig:codigoAtomizacao}
+\end{figure}
+
+Cada expressão atomizada é inserida em uma lista que será enviada para o ControllerConversor. Caso aconteça algum erro na atomização, uma exceção do tipo SemanticAnalyzerException será lançada (ver Figura \ref{fig:codigoErroSemantico}) na view. Caso o código fonte seja atomizado com sucesso, irá passar para o Controller Conversor.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.7\textwidth]{Figuras/codigo_erro_semantico.png}
+\caption{Erro Semântico}
+\label{fig:codigoErroSemantico}
+\end{figure}
+
+A Figura \ref{fig:codigoErroSemantico} está dividida em duas partes, a parte A mostra quando o código passa com sucesso pelo analisador semântico e a parte B mostra quando houve um erro ao tentar atomizar o código fonte
+
+
+\subsection{Controller Conversor}
+
+Esse \textit{controller} é o responsável por converter o código fonte inserido pelo usuário em uma ontologia. Ao chegar nesse ponto todas as verificações já foram feitas, garantindo que na conversão do código fonte não haja nenhum problema no que diz respeito a parte léxica, semântica e sintática.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.8\textwidth]{Figuras/codigo_conversor_andthat.png}
+\caption{Trecho de código} 
+\label{fig:codigoConversor}
+\end{figure}
+
+A Figura \ref{fig:codigoConversor} exibe o trecho de código em que ocorre o processo inicial de conversão de expressões AND e THAT, é nessa parte onde é feita a separação quando a expressão é CLASSE vs CLASSE, ou CLASSE vs EXPRESSÃO ou ainda, EXPRESSÃO vs EXPRESSÃO.
+
+\section{Linguagem Natural Controlada}
+
+Para que o usuário consiga utilizar o sistema, será necessário o conhecimento dessa linguagem natural que será definida a seguir, na Tabela \ref{tab:tabelaPalavrasReservadas} se encontra as palavras reservadas, suas respectivas descrições e um exemplo de sua aplicação.
+
+\begin{table}[H]
+\centering
+\caption{Palavras Reservadas}
+\label{tab:tabelaPalavrasReservadas}
+\begin{tabular}{|l|l|l|}
+\hline Reservado  & Descrição & Exemplo  \\ 
+\hline isa & \begin{tabular}[l]{@{}l@{}} Uma classe X é um \\tipo de classe Y.\end{tabular} & Gato isa Felino \\ \hline
+equivalent & \begin{tabular}[l]{@{}l@{}} Uma classe X é um tipo \\ de classe irmã de Y.\end{tabular} & JanelaBanheiro equivalent JanelaCasa \\ \hline and / that & \begin{tabular}[l]{@{}l@{}} Uma classe X interseção\\ com uma classe Y.\end{tabular} & (Correr and Pular) isa ExercicioFisico  \\ \hline or & \begin{tabular}[l]{@{}l@{}}Uma classe X disjunção\\ de uma classe Y. \end{tabular} & Trabalhar isa nor(Dormir or Comer) \\ \hline only & \begin{tabular}[l]{@{}l@{}}Uma propriedade X\\ only classe Y. \end{tabular} & podeLatir only Cachorro \\ \hline some & \begin{tabular}[l]{@{}l@{}}Uma propriedade X\\ some classe Y. \end{tabular} & andarNoMuro some Gato \\ \hline all & \begin{tabular}[l]{@{}l@{}}Uma propriedade X \\ all classe Y. \end{tabular} & comerGrama all Vaca \\ \hline not & Negação de uma Classe & not Gato \\ \hline nor & Negação de uma expressão & nor(Gato isa Felino) \\ \hline 
+\end{tabular}
+\end{table}
+
+Como visto de maneira resumida na Tabela \ref{tab:tabelaPalavrasReservadas}, na Figura \ref{fig:codigoFonteInicial} está o código fonte que o sistema mostra ao ser aberto, para que o usuário entenda o funcionamento da sintaxe.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.8\textwidth]{Figuras/codigo_codigofonte_inicial.png}
+\caption{Código inicial}
+\label{fig:codigoFonteInicial}
+\end{figure}
+
+\subsection{Funcionalidades}
+NÃO SEI O QUE PODERIA COLOCAR AQUI
+
+Aqui vc vai mostrar as funcionalidades do sistema, inclusive colocar diagramas de casos de uso em UML mostrando quais as funcionalidades os usuários realizam.operando a ferramenta.
+
+\subsection{Conclusões}
+Conclusões
+
+Concluir o capítulo, pode deixar sem fazer que eu ajudo. No final da revisão q eu fizer eh melhor pra concluir.
+
+
+\chapter{Experimentos e Resultados}
+\label{chap:conclusao}
+
+TEXTO
+
+\bibliographystyle{estilo_ABNT}
+\bibliography{refs}
+\addcontentsline{toc}{chapter}{Bibliografia}
+
+\end{document}
+
+ %camadas? Apresentar os módulos existentes. Colocar uma imagem do diagrama de componentes em UML com os módulos existententes.
+
+%(Cada subseção corresponde individualmente a cada módulo da arquitetura do sistema, vc vai falar de cada módulo e de cada componente e sub componente que tem no módulo. Colocar imagens dos submódulos pra n precisar ir na Figura da Seção Arquitetura.
+
+%Vai exemplificar o que ocorre em cada módulo, qual a entrada e o que gera de saída para o próximo módulo.
