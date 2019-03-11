@@ -180,7 +180,14 @@ O sistema foi implementado utilizando a arquitetura **********, visando otimizar
 \end{figure}
 
 \section{Componentes}
-O sistema possui 4 componentes (telas): \textit{compiler}, \textit{ontology}, \textit{reasoner} e \textit{graph viewer}. Detalhes de cada componente do sistema serão vistos nas subseções abaixo.
+O sistema possui 4 componentes (telas): \textit{Compiler}, \textit{Ontology}, \textit{Reasoner} e \textit{Graph Viewer}. Detalhes de cada componente do sistema serão vistos nas subseções abaixo. Todos os componentes que serão descritos abaixo podem ser localizados no pacote da Figura \ref{fig:pacotesView}. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.6\textwidth]{Figuras/pacote_view.png}
+\caption{Pacote contendo os principais componentes.}
+\label{fig:pacotesView}
+\end{figure}
 
 \subsection{Compiler}
 
@@ -220,7 +227,7 @@ Na mesma tela, porém no campo Console, podemos ver a saída do compilador com u
 \label{fig:telaCompiler2}
 \end{figure}
 
-\subsubsection{Ontology}
+\subsection{Ontology}
 
 A \textit{Ontology} mostra a saída da ontologia (em OWL) após a compilação da linguagem natural do usuário. Este campo não é editável. Embora o usuário não possa inserir ou remover texto, o modelo de visualização pode ser alterado através do menu suspenso chamado \textit{Output Model} para as seguintes sintaxes: \textit{RDF/XML} (padrão), \textit{KRSS2, Latex, Manchester OWL Syntax, OWL/XML, OWL Functional Syntax} e \textit{Turtle}. Todas essas sintaxes são fornecidas pela \textit{Manchester OWL API}. O botão \textit{Graph} irá abrir o componente \textit{Graph}, e o botão \textit{Copy} irá enviar o texto que está aparecendo no campo de texto para a área de transferência. Na Figura \ref{fig:telaOntology} é possível observar a Tela \textit{Ontology} completa.
 
@@ -231,9 +238,12 @@ A \textit{Ontology} mostra a saída da ontologia (em OWL) após a compilação d
 \label{fig:telaOntology}
 \end{figure}
 
-\subsubsection{Reasoner}
+\subsection{Reasoner}
 
-Se tratando de ontologias, um \textit{reasoner} é um software capaz de inferir consequências lógicas sobre a ontologia, muitas vezes não explícitos na sua base de conhecimento. O componente \textit{Reasoner} é onde mostra a saída que o \textit{reasoner} integrado ao sistema (Pellet) conseguiu deduzir através da ontologia inserida. Existem dois campos de texto: o primeiro mostra os axiomas inferidos, o outro mostra a ontologia inferida em owl. O botão \textit{Reason} refaz o processamento de inferir sobre a ontologia inserida pelo usuário. A Figura \ref{fig:telaReasoner} mostra essa tela.
+Se tratando de ontologias, um \textit{reasoner} é um software capaz de inferir consequências lógicas sobre a ontologia, muitas vezes não explícitos na sua base de conhecimento. O campo de texto superior do componente \textit{Reasoner} é onde mostra a saída que o \textit{reasoner} integrado ao sistema (o \textit{Pellet}) conseguiu deduzir através da ontologia inserida (linguagem natural). No início da saída, informará se na ontologia base (a linguagem natural inserida pelo usuário) existe algum tipo de inconsistência, por exemplo: "Gato não é vaca (Gato is not Vaca)", e mais a frente existir o axioma "Gato é vaca (Gato is Vaca)", isso irá gerar um aviso de inconsistência, porém a dedução de novos axiomas ainda será realizado.
+
+
+O botão \textit{Reason} refaz o processamento de deduzir sobre a ontologia base. O campo de texto \textit{Ontology Inferred} é o código \textit{OWL} da nova ontologia criada a partir dos axiomas deduzidos. O botão \textit{Save on Text File} irá abrir uma caixa de diálogo permitindo ao usuário salvar em seu computador essa nova ontologia. A Figura \ref{fig:telaReasoner} mostra essa tela completa.
 
 \begin{figure}[H]
 \centering
@@ -242,10 +252,10 @@ Se tratando de ontologias, um \textit{reasoner} é um software capaz de inferir 
 \label{fig:telaReasoner}
 \end{figure}
 
-\subsubsection{Graph Viewer}
+\subsection{Graph Viewer}
 
 \textit{Graph Viewer} é apenas um facilitador gráfico, afim de mostrar a ontologia compilada em forma de grafo. A Figura \ref{fig:telGraph}
-mostra a tela Graph Viewer, que é responsável por mostrar ao usuário uma perspectiva de grafo da ontologia criada. Nela é possível aumentar zoom, bem como diminuir o zoom, assim como exportar em arquivo de imagem em formato SVG e em texto em formato JSON. É possível também movimentar os nós, aumentar ou diminuir de tamanho, para facilitar na visualização.
+mostra a tela Graph Viewer, que é responsável por mostrar ao usuário uma perspectiva de grafo da ontologia criada. Nela é possível aumentar/diminuir zoom,assim como exportar em arquivo de imagem em formato SVG e em texto em formato JSON. É possível também movimentar os nós, bem como aumentar/diminuir o tamanho desses, para facilitar na visualização.
 
 \begin{figure}[H]
 \centering
@@ -254,9 +264,12 @@ mostra a tela Graph Viewer, que é responsável por mostrar ao usuário uma pers
 \label{fig:telGraph}
 \end{figure}
 
-\section{View}
+\section{Compilador}
 Essa camada é responsável por interagir com o usuário. Ela é única e exclusivamente utilizada para exibição de dados e gatilhos de ação. Como visto na Figura \ref{fig:pacotesJava}, existem 4 pacotes possuindo classes no que diz respeito a view: view, view/util, view/util/popupmenu e view/util/xmlpack.
 
+
+\iffalse
+% -------------------------------------- COMENTADO -----------------------------------
 A entrada dessa camada é o código fonte inserido pelo usuário, como visto na Figura \ref{fig:telaCompiler} (parte superior). Após a ação de compilação ser disparada, ou seja, um clique no botão de compilar, o código  fonte é enviado para o analisador léxico. A saída dessa camada é o sucesso ou erro da compilação com base no código fonte inserido, também mostra a Figura \ref{fig:telaCompiler} (parte inferior) e na Figura \ref{fig:telaCompilerSaida}.
 \begin{figure}[H]
 \centering
@@ -294,12 +307,7 @@ Essas classes são as responsáveis por fazer a tela inicial do programa, Compil
 
 \subsection{Pacote view}
 Esse pacote é o responsável por armazenar as classes contendo todas as telas propriamente ditas (Figuras \ref{fig:telaCompiler}, \ref{fig:telaOntology}, \ref{fig:telaReasoner} e \ref{fig:telGraph}). Os arquivos que estão dentro do pacote podem ser visto na Figura \ref{fig:pacotesView}.
-\begin{figure}[H]
-\centering
-\includegraphics[width=.6\textwidth]{Figuras/pacote_view.png}
-\caption{Classes do pacote .../view}
-\label{fig:pacotesView}
-\end{figure}
+
 
 \section{Model}
 
@@ -323,6 +331,9 @@ Uma vez definido o comportamento dos dados e a interface do usuário, é preciso
 \caption{Classes do pacote .../controller}
 \label{fig:pacotesController}
 \end{figure}
+
+% -------------------------------------- COMENTADO -----------------------------------
+\fi
 
 \subsection{Controller Lexical}
 
