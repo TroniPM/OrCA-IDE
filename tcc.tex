@@ -180,7 +180,7 @@ O sistema foi implementado utilizando a arquitetura **********, visando otimizar
 \end{figure}
 
 \section{Componentes}
-O sistema possui 4 componentes (telas): \textit{Compiler}, \textit{Ontology}, \textit{Reasoner} e \textit{Graph Viewer}. Detalhes de cada componente do sistema serão vistos nas subseções abaixo. Todos os componentes que serão descritos abaixo podem ser localizados no pacote da Figura \ref{fig:pacotesView}. 
+O sistema possui 4 componentes (telas): \textit{Compiler}, \textit{Ontology}, \textit{Reasoner} e \textit{Graph Viewer}. Detalhes de cada componente do sistema serão vistos nas subseções seguintes. Todos os componentes que serão descritos a seguir podem ser localizados no pacote exibido na Figura \ref{fig:pacotesView}. 
 
 \begin{figure}[H]
 \centering
@@ -191,7 +191,7 @@ O sistema possui 4 componentes (telas): \textit{Compiler}, \textit{Ontology}, \t
 
 \subsection{Compiler}
 
-O \textit{compiler} será responsável por receber a linguagem natural do usuário e retornar se essa linguagem natural pode ou não ser compilada, assim como mostrar eventuais erros que impossibilitam a compilação. A Tela completa pode ser vista na Figura \ref{fig:telaCompiler}.
+O \textit{compiler} é responsável por receber a linguagem natural do usuário e retornar se essa linguagem natural pode ou não ser compilada, assim como mostrar eventuais erros que impossibilitam a compilação. A Tela completa pode ser vista na Figura \ref{fig:telaCompiler}.
 
 
 \begin{figure}[H]
@@ -201,7 +201,7 @@ O \textit{compiler} será responsável por receber a linguagem natural do usuár
 \label{fig:telaCompiler}
 \end{figure}
 
-Como podemos ver na Figura \ref{fig:telaCompiler1}, o campo de texto chamado \textit{Source Ontology} é onde o usuário irá inserir a linguagem natural. O botão \textit{Clear} irá apagar todo o conteúdo desse campo de texto, e o botão \textit{COMPILE} irá compilar a linguagem utilizada pelo usuário. 
+Como podemos ver na Figura \ref{fig:telaCompiler1}, o campo de texto chamado \textit{Source Ontology} é onde o usuário irá inserir a linguagem natural. O botão \textit{Clear} tem a função de apagar todo o conteúdo desse campo de texto, e o botão \textit{COMPILE} faz a compilação da linguagem utilizada pelo usuário. 
 
 \begin{figure}[H]
 \centering
@@ -210,14 +210,14 @@ Como podemos ver na Figura \ref{fig:telaCompiler1}, o campo de texto chamado \te
 \label{fig:telaCompiler1}
 \end{figure}
 
-Na mesma tela, porém no campo Console, podemos ver a saída do compilador com uma mensagem amigável para o usuário, como visto na Figura \ref{fig:telaCompiler2}. Há 5 tipos de saídas no console: 
+Na mesma tela, porém no campo Console, é possível ver a saída do compilador com uma mensagem amigável para o usuário, como visto na Figura \ref{fig:telaCompiler2}. Há 5 tipos de saídas no console: 
 
 \begin{enumerate}
-  \item Lexical OK: passou sem erros pelo analisador léxico;
-  \item Sintatic OK: passou sem erros pelo analisador sintático;
-  \item Semantic OK: passou sem erros pelo analisador semântico;
-  \item Conversor OK: a linguagem utilizada pelo usuário foi convertida com sucesso para uma ontologia.
-  \item Erros: ao passo que algum erro seja encontrado, o console (Figura \ref{fig:telaCompiler2}) irá mostrar em qual linha, coluna e palavra aconteceu o erro.
+  \item \textbf{Lexical OK}: passou sem erros pelo analisador léxico;
+  \item \textbf{Sintatic OK}: passou sem erros pelo analisador sintático;
+  \item \textbf{Semantic OK}: passou sem erros pelo analisador semântico;
+  \item \textbf{Conversor OK}: a linguagem utilizada pelo usuário foi convertida com sucesso para uma ontologia.
+  \item \textbf{Erros}: ao passo que algum erro seja encontrado, o console (Figura \ref{fig:telaCompiler2}) irá mostrar em qual linha, coluna e palavra aconteceu o erro.
 \end{enumerate}
 
 \begin{figure}[H]
@@ -229,7 +229,9 @@ Na mesma tela, porém no campo Console, podemos ver a saída do compilador com u
 
 \subsection{Ontology}
 
-A \textit{Ontology} mostra a saída da ontologia (em OWL) após a compilação da linguagem natural do usuário. Este campo não é editável. Embora o usuário não possa inserir ou remover texto, o modelo de visualização pode ser alterado através do menu suspenso chamado \textit{Output Model} para as seguintes sintaxes: \textit{RDF/XML} (padrão), \textit{KRSS2, Latex, Manchester OWL Syntax, OWL/XML, OWL Functional Syntax} e \textit{Turtle}. Todas essas sintaxes são fornecidas pela \textit{Manchester OWL API}. O botão \textit{Graph} irá abrir o componente \textit{Graph}, e o botão \textit{Copy} irá enviar o texto que está aparecendo no campo de texto para a área de transferência. Na Figura \ref{fig:telaOntology} é possível observar a Tela \textit{Ontology} completa.
+A \textit{Ontology} mostra a saída da ontologia (em OWL) após a compilação da linguagem natural do usuário. Este campo não é editável, porém, embora o usuário não possa inserir ou remover texto, o modelo de visualização pode ser alterado através do menu suspenso chamado \textit{Output Model} para as seguintes sintaxes: \textit{RDF/XML} (padrão), \textit{KRSS2, Latex, Manchester OWL Syntax, OWL/XML, OWL Functional Syntax} e \textit{Turtle}. Todas essas sintaxes são fornecidas pela \textit{Manchester OWL API}. 
+
+O botão \textit{Graph} tem a função de abrir o componente \textit{Graph}, e o botão \textit{Copy} a de enviar o texto que está aparecendo no campo de texto para a área de transferência. Na Figura \ref{fig:telaOntology} é possível observar a Tela \textit{Ontology} completa.
 
 \begin{figure}[H]
 \centering
@@ -240,10 +242,9 @@ A \textit{Ontology} mostra a saída da ontologia (em OWL) após a compilação d
 
 \subsection{Reasoner}
 
-Se tratando de ontologias, um \textit{reasoner} é um software capaz de inferir consequências lógicas sobre a ontologia, muitas vezes não explícitos na sua base de conhecimento. O campo de texto superior do componente \textit{Reasoner} é onde mostra a saída que o \textit{reasoner} integrado ao sistema (o \textit{Pellet}) conseguiu deduzir através da ontologia inserida (linguagem natural). No início da saída, informará se na ontologia base (a linguagem natural inserida pelo usuário) existe algum tipo de inconsistência, por exemplo: "Gato não é vaca (Gato is not Vaca)", e mais a frente existir o axioma "Gato é vaca (Gato is Vaca)", isso irá gerar um aviso de inconsistência, porém a dedução de novos axiomas ainda será realizado.
+Se tratando de ontologias, um \textit{reasoner} é um software capaz de inferir consequências lógicas sobre a ontologia, muitas vezes não explícitas na sua base de conhecimento. O campo de texto superior do componente \textit{Reasoner} é onde é mostrada a saída que o \textit{reasoner} integrado ao sistema (\textit{Pellet}) conseguiu deduzir através da ontologia inserida (linguagem natural). No início da saída, ele informa se na ontologia base (a linguagem natural inserida pelo usuário) existe algum tipo de inconsistência, por exemplo: "Gato não é vaca (Gato is not Vaca)" e mais a frente existir o axioma "Gato é vaca (Gato is Vaca)", isso vai gerar um aviso de inconsistência, porém, a dedução de novos axiomas ainda será realizada.
 
-
-O botão \textit{Reason} refaz o processamento de deduzir sobre a ontologia base. O campo de texto \textit{Ontology Inferred} é o código \textit{OWL} da nova ontologia criada a partir dos axiomas deduzidos. O botão \textit{Save on Text File} irá abrir uma caixa de diálogo permitindo ao usuário salvar em seu computador essa nova ontologia. A Figura \ref{fig:telaReasoner} mostra essa tela completa.
+O botão \textit{Reason} refaz o processamento de deduzir sobre a ontologia base. O campo de texto \textit{Ontology Inferred} é o código \textit{OWL} da nova ontologia criada a partir dos axiomas deduzidos. O botão \textit{Save on Text File} tem a função de abrir uma caixa de diálogo permitindo que o usuário salve essa nova ontologia em seu computador. A Figura \ref{fig:telaReasoner} mostra essa tela completa.
 
 \begin{figure}[H]
 \centering
@@ -254,8 +255,7 @@ O botão \textit{Reason} refaz o processamento de deduzir sobre a ontologia base
 
 \subsection{Graph Viewer}
 
-\textit{Graph Viewer} é apenas um facilitador gráfico, afim de mostrar a ontologia compilada em forma de grafo. A Figura \ref{fig:telGraph}
-mostra a tela Graph Viewer, que é responsável por mostrar ao usuário uma perspectiva de grafo da ontologia criada. Nela é possível aumentar e diminuir zoom,assim como exportar em arquivo de imagem em formato SVG e em texto em formato JSON. É possível também movimentar os nós, bem como aumentar ou diminuir o tamanho desses, para facilitar na visualização.
+\textit{Graph Viewer} é apenas um facilitador gráfico, afim de mostrar a ontologia compilada em forma de grafo. A Figura \ref{fig:telGraph} mostra a tela \textit{Graph Viewer}, que é responsável por mostrar ao usuário uma perspectiva de grafo da ontologia criada. Nela é possível aumentar e diminuir zoom, assim como exportar tanto em arquivo de imagem no formato SVG como em texto no formato JSON. É possível também movimentar os nós, bem como aumentar ou diminuir o tamanho desses, para facilitar a visualização.
 
 \begin{figure}[H]
 \centering
@@ -265,18 +265,19 @@ mostra a tela Graph Viewer, que é responsável por mostrar ao usuário uma pers
 \end{figure}
 
 \section{Compilador}
-Um compilador é um tipo de programa que traduz um código descrito em alto nível, ou seja, mais legível e fácil de entender pelo ser humano, em um código semanticamente equivalente em baixo nível, não legível pelo ser humano e não necessariamente executável pela máquina. Geralmente um compilador não traduz imediatamente um código de máquina, mas sim um código intermediário, em linguagem simbólica, só a partir deste momento o código é traduzido para uma linguagem de máquina. De forma semelhante o compilador desenvolvido para a OrCA IDE não irá traduzir o código descrito pelo usuário para um código de máquina, mas sim para um código "intermediário", o \textit{OWL 2 DL}, que para os fins desse projeto já é o código final.
+
+Um compilador é um tipo de programa que traduz um código descrito em alto nível, ou seja, mais legível e fácil de entender pelo ser humano, em um código semanticamente equivalente em baixo nível, não legível pelo ser humano e não necessariamente executável pela máquina. Geralmente um compilador não traduz imediatamente um código de máquina, mas sim um código intermediário, em linguagem simbólica, só a partir deste momento o código é traduzido para uma linguagem de máquina. De forma semelhante, o compilador desenvolvido para a OrCA IDE não irá traduzir o código descrito pelo usuário para um código de máquina, mas sim para um código "intermediário", o \textit{OWL 2 DL}, que para os fins desse projeto já é o código final.
 
 Para um programa ser definido como um compilador, ele precisa ter alguns processos, são eles: análise léxica, análise sintática, análise semântica e conversor. Juntos, esses quatro processos formam  o ciclo necessário para um compilador verificar se o código descrito pelo usuário não possui erros e pode ser compilado. O fluxo de um compilador padrão pode ser observado na Figura \ref{fig:compilerscheme}.
 
-O fluxo do compilador OrCA IDE segue o fluxo de um compilador padrão. Inicialmente o código é examinado pelo Analisador Léxico, caso haja algum erro que esse analisador possa detectar, o processo de compilação é suspenso, e é informado para o usuário a linha e a posição onde o erro ocorreu, na tela \textit{Compiler} > \textit{Console}. Caso as verificações desse analisador não detecte erro, o próximo passo é iniciado, o Analisador Sintático. Neste passo, acontece de igual forma ao Analisador Léxico, porém ele faz suas próprias verificações. Caso não seja detectados erros, o passo seguinte é inicializado, o Analisador Semântico. De maneira semelhante aos passos anteriores, o Analisador Semântico faz suas próprias verificações e análises. Se nenhum erro for encontrado, a próxima etapa é iniciada, a conversão. Nesta fase, o código inserido pelo usuário é transformado em \textit{OWL 2 DL}, finalizando o fluxo do compilador. 
- 
 \begin{figure}[H]
 \centering
 \includegraphics[width=.7\textwidth]{Figuras/compiladorscheme.png}
 \caption{Fluxo de um compilador}
 \label{fig:compilerscheme}
 \end{figure}
+
+O fluxo que o compilador OrCA IDE segue é o mesmo de um compilador padrão. Inicialmente o código é examinado pelo Analisador Léxico, caso haja algum erro que esse analisador possa detectar, o processo de compilação é suspenso, e é informado ao usuário, na tela \textit{Compiler} > \textit{Console}, a linha e a posição onde o erro ocorreu. Caso as verificações desse analisador não detectem erro o próximo passo é iniciado, o Analisador Sintático. Neste passo, acontece de igual forma ao Analisador Léxico, porém, ele faz suas próprias verificações. Caso não sejam detectados erros, o passo seguinte é inicializado, o Analisador Semântico. De maneira semelhante aos passos anteriores, o Analisador Semântico faz suas próprias verificações e análises. Se nenhum erro for encontrado, a próxima etapa é iniciada, a conversão. Nesta fase, o código inserido pelo usuário é transformado em \textit{OWL 2 DL}, finalizando o fluxo do compilador. 
 
 
 \iffalse
@@ -348,6 +349,21 @@ Uma vez definido o comportamento dos dados e a interface do usuário, é preciso
 
 \subsection{Gramática}
 
+Idiomas como o português, inglês e espanhol possuem um conjunto de regras e normas bem definidas. Isto permite que pessoas com conhecimento destas regras comuniquem-se entre si, tanto no ato de escrever como no de ler. O conjunto dessas regras é chamado gramática. Assim como em um idioma normal, um compilador precisa de regras e normas gramaticais. Isso garante que, ao usuário escrever seu código, ele será entendido por outras pessoas, assim como pelo compilador. Na Tabela \ref{tab:tabelaGramatica} é possível ver a gramática definida para o compilador OrCA IDE. Cada linha é chamada de Regra de Produção. A coluna da esquerda é o título da regra, enquanto a coluna da direita é a regra em si. 
+
+\begin{table}[H]
+\centering
+\caption{Gramática da OrCA IDE}
+\label{tab:tabelaGramatica}
+\begin{tabular}{|l|l|}
+\hline Regra  & Definição  \\ 
+\hline REGRA1 & \begin{tabular}[l]{@{}l@{}} dskdjfghslkdfjgh sdkfjghs dlkf gjsdlkfgjhsdlfkjgsdfg.\end{tabular} \\
+\hline REGRA2 & \begin{tabular}[l]{@{}l@{}} dskdjfghslkdfjgh sdkfjghs dlkf gjsdlkfgjhsdlfkjgsdfg.\end{tabular} \\
+\hline REGRA3 & \begin{tabular}[l]{@{}l@{}} dskdjfghslkdfjgh sdkfjghs dlkf gjsdlkfgjhsdlfkjgsdfg.\end{tabular} \\
+\hline
+\end{tabular}
+\end{table} 
+
 \subsection{Analisador Léxico}
 
 Este analisador é responsável por fazer o primeiro e menos complexo processamento sobre o código, em linguagem natural, inserido pelo usuário. Esse processamento nada mais é do que receber o texto da interface gráfica e verificar se as palavras e símbolos inseridos pelo usuário são válidos, ou seja, se são aceitos pela gramática do compilador. Essas palavras e símbolos podem ser vistos na Figura \ref{fig:codigoTokenenum}. Com exceção de \textit{END}, \textit{NUMBER} e \textit{IDENTIFIER}, cada palavra e símbolo desta imagem é chamado de "palavra reservada", e não podem ser utilizados para outro fim se não o que foi definido pela gramática deste compilador. O tipo \textit{NUMBER} diz respeito a uma numeração, que pode variar de 1 a ±\textit{n}, ou seja, um número qualquer, já o \textit{IDENTIFIER} diz respeito a uma palavra, que não é reservada pelo compilador, mas foi criada pelo usuário, por exemplo "Cachorro" ou "Vaca". \textit{END} siginifica que é o final do código inserido pelo usuário. Cada palavra e/ou símbolo inserido pelo usuário é chamado de \textit{token}.
@@ -376,6 +392,8 @@ A análise léxica consiste em verificar todos os \textit{tokens}. Caso o \texti
 \end{figure}
 
 \subsection{Analisador Sintático}
+
+%A arvore de tokens é \textit{top-down}, ou seja, de cima para baixo. Como na gramática não há recursão a esquerda, apenas a direita, a leitura dos \textit{tokens} são feitas da esquerda para direita.
 
 Após a análise léxica, esse \textit{controller} é acionado. Ele é responsável por identificar se o código fonte inserido pelo usuário faz parte da gramática que o sistema aceita. Em alguns casos é utilizado lookAhead de 1 ou 2 tokens para garantir que a leitura na pilha de execução é a esperada pelo sistema, como pode ser visto na Figura \ref{fig:codigoLookAhead} que traz um trecho de código de ControllerSintatic.java mostrando utilização de look ahead. Esse código verifica se o item atual da pilha é um NOT e lookAhead(1) for um identificador e lookAhead(2) for "OR, ISA, AND...", então entra no if e adiciona itens a pilha.
 
