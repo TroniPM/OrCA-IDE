@@ -335,7 +335,7 @@ Uma vez definido o comportamento dos dados e a interface do usuário, é preciso
 % -------------------------------------- COMENTADO -----------------------------------
 \fi
 
-\subsection{Controller Lexical}
+\subsection{Analisador Léxico}
 
 Este controller é responsável por fazer o primeiro e menos complexo processamento em cima do código fonte inserido pelo usuário. Esse processamento nada mais é do que receber o código fonte da View e verificar se as palavras inseridas pelo usuário são válidas, ou seja, se pertencem a algum "TokenEnum", como pode ser visto na Figura \ref{fig:codigoTokenenum} em que estão exibidos os tipos de tokens permitidos na aplicação. Caso o \textit{token} não seja convertido para algum desses, um erro irá aparecer para o usuário.
 
@@ -357,7 +357,7 @@ Caso não pertença a nenhum tipo, irá apresentar uma exceção do tipo Lexical
 
 Na Figura \ref{fig:codigoErroLexico} apresenta na parte A quando o código passa com sucesso pelo analisador léxico e na parte B mostra quando o código fonte possui alguma palavra que não pode ser convertida para nenhum tipo reconhecido pela gramática.
 
-\subsection{Controller Sintatic}
+\subsection{Analisador Sintático}
 
 Após a análise léxica, esse \textit{controller} é acionado. Ele é responsável por identificar se o código fonte inserido pelo usuário faz parte da gramática que o sistema aceita. Em alguns casos é utilizado lookAhead de 1 ou 2 tokens para garantir que a leitura na pilha de execução é a esperada pelo sistema, como pode ser visto na Figura \ref{fig:codigoLookAhead} que traz um trecho de código de ControllerSintatic.java mostrando utilização de look ahead. Esse código verifica se o item atual da pilha é um NOT e lookAhead(1) for um identificador e lookAhead(2) for "OR, ISA, AND...", então entra no if e adiciona itens a pilha.
 
@@ -379,7 +379,7 @@ Caso algum o código fonte inserido pelo usuário não pertença a gramática ac
 
 A Figura \ref{fig:codigoErroSintatico} está divida em parte A que mostra quando o código passa com sucesso pelo analisador sintático e parte B que mostra quando o código fonte não faz parte da gramática aceita pelo sistema
 
-\subsection{Controller Semantic}
+\subsection{Analisador Semântico}
 
 Posterior a análise sintática esse controller entra em ação. Ele tem um comportamento diferente dos analisadores semânticos de outros compiladores. A função dele é atomizar o código fonte inserido pelo usuário a fim de criar subexpressões de tamanho mínimo, por exemplo "Homem and Mulher", embora essa expressão faça parte de uma expressão maior denominada "(Homem and Mulher) isa Humano". Essa substituição pode ser vista na Figura \ref{fig:codigoAtomizacao} onde se encontra o código do arquivo ControllerSemantic.java e exibe o momento em que a atomização envolvendo essas palavras reservadas é feita. 
 
