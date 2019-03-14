@@ -255,7 +255,7 @@ O botão \textit{Reason} refaz o processamento de deduzir sobre a ontologia base
 \subsection{Graph Viewer}
 
 \textit{Graph Viewer} é apenas um facilitador gráfico, afim de mostrar a ontologia compilada em forma de grafo. A Figura \ref{fig:telGraph}
-mostra a tela Graph Viewer, que é responsável por mostrar ao usuário uma perspectiva de grafo da ontologia criada. Nela é possível aumentar/diminuir zoom,assim como exportar em arquivo de imagem em formato SVG e em texto em formato JSON. É possível também movimentar os nós, bem como aumentar/diminuir o tamanho desses, para facilitar na visualização.
+mostra a tela Graph Viewer, que é responsável por mostrar ao usuário uma perspectiva de grafo da ontologia criada. Nela é possível aumentar e diminuir zoom,assim como exportar em arquivo de imagem em formato SVG e em texto em formato JSON. É possível também movimentar os nós, bem como aumentar ou diminuir o tamanho desses, para facilitar na visualização.
 
 \begin{figure}[H]
 \centering
@@ -265,7 +265,18 @@ mostra a tela Graph Viewer, que é responsável por mostrar ao usuário uma pers
 \end{figure}
 
 \section{Compilador}
-Essa camada é responsável por interagir com o usuário. Ela é única e exclusivamente utilizada para exibição de dados e gatilhos de ação. Como visto na Figura \ref{fig:pacotesJava}, existem 4 pacotes possuindo classes no que diz respeito a view: view, view/util, view/util/popupmenu e view/util/xmlpack.
+Um compilador é um tipo de programa que traduz um código descrito em alto nível, ou seja, mais legível e fácil de entender pelo ser humano, em um código semanticamente equivalente em baixo nível, não legível pelo ser humano e não necessariamente executável pela máquina. Geralmente um compilador não traduz imediatamente um código de máquina, mas sim um código intermediário, em linguagem simbólica, só a partir deste momento o código é traduzido para uma linguagem de máquina. De forma semelhante o compilador desenvolvido para a OrCA IDE não irá traduzir o código descrito pelo usuário para um código de máquina, mas sim para um código "intermediário", o \textit{OWL 2 DL}, que para os fins desse projeto já é o código final.
+
+Para um programa ser definido como um compilador, ele precisa ter alguns processos, são eles: análise léxica, análise sintática, análise semântica e conversor. Juntos, esses quatro processos formam  o ciclo necessário para um compilador verificar se o código descrito pelo usuário não possui erros e pode ser compilado. O fluxo de um compilador padrão pode ser observado na Figura \ref{fig:compilerscheme}.
+
+O fluxo do compilador OrCA IDE segue o fluxo de um compilador padrão. Inicialmente o código é examinado pelo Analisador Léxico, caso haja algum erro que esse analisador possa detectar, o processo de compilação é suspenso, e é informado para o usuário a linha e a posição onde o erro ocorreu, na tela \textit{Compiler} > \textit{Console}. Caso as verificações desse analisador não detecte erro, o próximo passo é iniciado, o Analisador Sintático. Neste passo, acontece de igual forma ao Analisador Léxico, porém ele faz suas próprias verificações. Caso não seja detectados erros, o passo seguinte é inicializado, o Analisador Semântico. De maneira semelhante aos passos anteriores, o Analisador Semântico faz suas próprias verificações e análises. Se nenhum erro for encontrado, a próxima etapa é iniciada, a conversão. Nesta fase, o código inserido pelo usuário é transformado em \textit{OWL 2 DL}, finalizando o fluxo do compilador. 
+ 
+\begin{figure}[H]
+\centering
+\includegraphics[width=.7\textwidth]{Figuras/compiladorscheme.png}
+\caption{Fluxo de um compilador}
+\label{fig:compilerscheme}
+\end{figure}
 
 
 \iffalse
@@ -335,27 +346,34 @@ Uma vez definido o comportamento dos dados e a interface do usuário, é preciso
 % -------------------------------------- COMENTADO -----------------------------------
 \fi
 
+\subsection{Gramática}
+
 \subsection{Analisador Léxico}
 
-Este controller é responsável por fazer o primeiro e menos complexo processamento em cima do código fonte inserido pelo usuário. Esse processamento nada mais é do que receber o código fonte da View e verificar se as palavras inseridas pelo usuário são válidas, ou seja, se pertencem a algum "TokenEnum", como pode ser visto na Figura \ref{fig:codigoTokenenum} em que estão exibidos os tipos de tokens permitidos na aplicação. Caso o \textit{token} não seja convertido para algum desses, um erro irá aparecer para o usuário.
+Este analisador é responsável por fazer o primeiro e menos complexo processamento sobre o código, em linguagem natural, inserido pelo usuário. Esse processamento nada mais é do que receber o texto da interface gráfica e verificar se as palavras e símbolos inseridos pelo usuário são válidos, ou seja, se são aceitos pela gramática do compilador. Essas palavras e símbolos podem ser vistos na Figura \ref{fig:codigoTokenenum}. Com exceção de \textit{END}, \textit{NUMBER} e \textit{IDENTIFIER}, cada palavra e símbolo desta imagem é chamado de "palavra reservada", e não podem ser utilizados para outro fim se não o que foi definido pela gramática deste compilador. O tipo \textit{NUMBER} diz respeito a uma numeração, que pode variar de 1 a ±\textit{n}, ou seja, um número qualquer, já o \textit{IDENTIFIER} diz respeito a uma palavra, que não é reservada pelo compilador, mas foi criada pelo usuário, por exemplo "Cachorro" ou "Vaca". \textit{END} siginifica que é o final do código inserido pelo usuário. Cada palavra e/ou símbolo inserido pelo usuário é chamado de \textit{token}.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=.7\textwidth]{Figuras/codigo_tokenenum.png}
-\caption{Tipos de tokens permitidos na aplicação}
+\caption{Palavras reservadas e símbolos permitidos pela gramática}
 \label{fig:codigoTokenenum}
 \end{figure}
 
-Caso não pertença a nenhum tipo, irá apresentar uma exceção do tipo LexicalAnalyzerException e o processo de compilação será forçadamente parado (ver Figura \ref{fig:codigoErroLexico} B). Caso pertença a algum tipo, esse token é adicionado em uma lista de tokens, que ao final da análise léxica de todas as palavras do código fonte, é passado para o analisador sintático (ver Figura \ref{fig:codigoErroLexico} A).
+A análise léxica consiste em verificar todos os \textit{tokens}. Caso o \textit{token} não pertença a nenhum dos tipos mostrados na Figura \ref{fig:codigoTokenenum}, irá apresentar uma exceção do tipo \textit{LexicalAnalyzerException}, e o processo de compilação será forçadamente parado (ver Figura \ref{fig:codigoErroLexico}). Caso este \textit{token} pertença a algum dos tipos, ele é adicionado em uma lista de \textit{tokens}. Ao final da análise, essa lista é passada para o Analisador Sintático, encerrando esta análise e mostrando ao usuário que esta etapa foi finalizada com sucesso (ver Figura \ref{fig:codigoSucessoLexico}).
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=.7\textwidth]{Figuras/codigo_erro_lexico.png}
-\caption{Código erro léxico}
+\caption{Erro do Analisador Léxico sendo mostrado ao usuário na Tela \textit{Compiler}}
 \label{fig:codigoErroLexico}
 \end{figure}
 
-Na Figura \ref{fig:codigoErroLexico} apresenta na parte A quando o código passa com sucesso pelo analisador léxico e na parte B mostra quando o código fonte possui alguma palavra que não pode ser convertida para nenhum tipo reconhecido pela gramática.
+\begin{figure}[H]
+\centering
+\includegraphics[width=.3\textwidth]{Figuras/codigo_sucesso_lexico.png}
+\caption{Analisador Léxico foi executado com sucesso}
+\label{fig:codigoSucessoLexico}
+\end{figure}
 
 \subsection{Analisador Sintático}
 
