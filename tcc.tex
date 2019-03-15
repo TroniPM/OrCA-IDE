@@ -349,24 +349,32 @@ Uma vez definido o comportamento dos dados e a interface do usuário, é preciso
 
 \subsection{Gramática}
 
-Idiomas como o português, inglês e espanhol possuem um conjunto de regras e normas bem definidas. Isto permite que pessoas com conhecimento destas regras comuniquem-se entre si, tanto no ato de escrever como no de ler. O conjunto dessas regras é chamado gramática. Assim como em um idioma normal, um compilador precisa de regras e normas gramaticais. Isso garante que, ao usuário escrever seu código, ele será entendido por outras pessoas, assim como pelo compilador. Na Tabela \ref{tab:tabelaGramatica} é possível ver a gramática definida para o compilador OrCA IDE. Cada linha é chamada de Regra de Produção. A coluna da esquerda é o título da regra, enquanto a coluna da direita é a regra em si. 
+Idiomas como o português, inglês e espanhol possuem um conjunto de regras e normas bem definidas. Isto permite que pessoas com conhecimento destas regras comuniquem-se entre si, tanto no ato de escrever como no de ler. O conjunto dessas regras é chamado gramática. Assim como em um idioma normal, um compilador precisa de regras e normas gramaticais. Isso garante que, ao usuário escrever seu código, ele será entendido por outras pessoas, assim como pelo compilador. Na Tabela \ref{tab:tabelaGramatica} é possível ver a gramática definida para o compilador OrCA IDE. Cada linha é chamada de Regra de Produção. A coluna da esquerda é o título da regra, enquanto a coluna da direita é a regra em si. Para fins de leitura, chamada de regra é feita com <...>, por exemplo <OP>. Chamada de terminal é feita sem <...>, por exemplo \textit{some} ou (. O Símbolo "||" é apenas um separador entre as regras.
 
 \begin{table}[H]
 \centering
-\caption{Gramática da OrCA IDE}
+\caption{Gramática OrCA IDE.}
 \label{tab:tabelaGramatica}
 \begin{tabular}{|l|l|}
 \hline Regra  & Definição  \\ 
-\hline REGRA1 & \begin{tabular}[l]{@{}l@{}} dskdjfghslkdfjgh sdkfjghs dlkf gjsdlkfgjhsdlfkjgsdfg.\end{tabular} \\
-\hline REGRA2 & \begin{tabular}[l]{@{}l@{}} dskdjfghslkdfjgh sdkfjghs dlkf gjsdlkfgjhsdlfkjgsdfg.\end{tabular} \\
-\hline REGRA3 & \begin{tabular}[l]{@{}l@{}} dskdjfghslkdfjgh sdkfjghs dlkf gjsdlkfgjhsdlfkjgsdfg.\end{tabular} \\
+\hline <OP> & \begin{tabular}[l]{@{}l@{}} some || all || only || and || or || isa || equivalent || that \end{tabular} \\
+\hline <ID> & \begin{tabular}[l]{@{}l@{}} a-Z* \end{tabular} \\
+\hline <NUM> & \begin{tabular}[l]{@{}l@{}} 0-9* \end{tabular} \\
+\hline <FIM> & \begin{tabular}[l]{@{}l@{}} ; || <DEF> || \varepsilon \end{tabular} \\ 
+\hline <DEF> & 
+\begin{tabular}[l]{@{}l@{}} 
+<ID> <OP> <ID> <FIM> \textbf{||} \\
+<ID> <OP> (<DEF>) <FIM> || \\
+(<DEF>) <OP> <ID> <FIM> || \\
+<ID> <OP> <DEF> <FIM> || \\
+\end{tabular} \\
 \hline
-\end{tabular}
+\end{tabular} 
 \end{table} 
 
 \subsection{Analisador Léxico}
 
-Este analisador é responsável por fazer o primeiro e menos complexo processamento sobre o código, em linguagem natural, inserido pelo usuário. Esse processamento nada mais é do que receber o texto da interface gráfica e verificar se as palavras e símbolos inseridos pelo usuário são válidos, ou seja, se são aceitos pela gramática do compilador. Essas palavras e símbolos podem ser vistos na Figura \ref{fig:codigoTokenenum}. Com exceção de \textit{END}, \textit{NUMBER} e \textit{IDENTIFIER}, cada palavra e símbolo desta imagem é chamado de "palavra reservada", e não podem ser utilizados para outro fim se não o que foi definido pela gramática deste compilador. O tipo \textit{NUMBER} diz respeito a uma numeração, que pode variar de 1 a ±\textit{n}, ou seja, um número qualquer, já o \textit{IDENTIFIER} diz respeito a uma palavra, que não é reservada pelo compilador, mas foi criada pelo usuário, por exemplo "Cachorro" ou "Vaca". \textit{END} siginifica que é o final do código inserido pelo usuário. Cada palavra e/ou símbolo inserido pelo usuário é chamado de \textit{token}.
+Este analisador é responsável por fazer o primeiro e menos complexo processamento sobre o código, em linguagem natural, inserido pelo usuário. Esse processamento nada mais é do que receber o texto da interface gráfica e verificar se as palavras e símbolos inseridos pelo usuário são válidos, ou seja, se são aceitos pela gramática do compilador. Essas palavras e símbolos podem ser vistos na Figura \ref{fig:codigoTokenenum}. Com exceção de \textit{END}, \textit{NUMBER} e \textit{IDENTIFIER}, cada palavra e símbolo desta imagem é chamado de "palavra reservada", e não podem ser utilizados para outro fim se não o que foi definido pela gramática deste compilador. O tipo \textit{NUMBER} diz respeito a uma numeração, que pode variar de 1 a ±\textit{n}, ou seja, um número qualquer, já o \textit{IDENTIFIER} diz respeito a uma palavra, que não é reservada pelo compilador, mas foi criada pelo usuário, por exemplo "Cachorro" ou "Vaca". \textit{END} significa que é o final do código inserido pelo usuário. Cada palavra e/ou símbolo inserido pelo usuário é chamado de \textit{token}.
 
 \begin{figure}[H]
 \centering
@@ -395,25 +403,35 @@ A análise léxica consiste em verificar todos os \textit{tokens}. Caso o \texti
 
 %A arvore de tokens é \textit{top-down}, ou seja, de cima para baixo. Como na gramática não há recursão a esquerda, apenas a direita, a leitura dos \textit{tokens} são feitas da esquerda para direita.
 
-Após a análise léxica, esse \textit{controller} é acionado. Ele é responsável por identificar se o código fonte inserido pelo usuário faz parte da gramática que o sistema aceita. Em alguns casos é utilizado lookAhead de 1 ou 2 tokens para garantir que a leitura na pilha de execução é a esperada pelo sistema, como pode ser visto na Figura \ref{fig:codigoLookAhead} que traz um trecho de código de ControllerSintatic.java mostrando utilização de look ahead. Esse código verifica se o item atual da pilha é um NOT e lookAhead(1) for um identificador e lookAhead(2) for "OR, ISA, AND...", então entra no if e adiciona itens a pilha.
+Após a análise léxica, o analisador sintático é acionado. Ele é responsável por identificar se o código inserido pelo usuário faz parte da gramática que o compilador aceita. Em outras palavras, enquanto o analisador léxico se preocupa em verificar se as palavras são aceitas pelo compilador, o analisador sintático verifica se as palavras foram utilizadas na posição correta. Em alguns casos é utilizado \textit{look ahead} de 1 ou 2 tokens para garantir que a leitura na pilha de execução seja a esperada pelo sistema. A Figura \ref{fig:codigoLookAhead} traz um trecho de código do analisador sintático mostrando a utilização de \textit{look ahead}. Esse código verifica se o item atual da pilha é um \textit{not} e, utilizando 1 \textit{token} de \textit{look ahead}, verifica se o próximo item é um \textit{identifier}, e, utilizando mais 1 \textit{token} de \textit{look ahead}, verifica se esse próximo \textit{token} é um operador (\textit{OR}, \textit{AND}, \textit{ISA}, etc).
+
+
+%for um identificador e lookAhead(2) for "OR, ISA, AND...", então entra no if e adiciona itens a pilha.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=.8\textwidth]{Figuras/codigo_lookahead.png}
-\caption{Código Look Ahead}
+\caption{Trecho de código mostrando a utilização do \textit{look ahead}. }
 \label{fig:codigoLookAhead}
 \end{figure}
 
-Caso algum o código fonte inserido pelo usuário não pertença a gramática aceita pelo sistema, uma exceção do tipo SintaticAnalyzerException será lançada na View (ver Figura \ref{fig:codigoErroSintatico}). Caso o código fonte faça parte da gramática do sistema, irá passar para o analisador semântico.
+Caso alguma expressão do código inserido pelo usuário não pertença a gramática aceita pelo compilador, uma exceção do tipo \textit{SintaticAnalyzerException} será lançada (ver Figura \ref{fig:codigoErroSintatico}). Caso o código do usuário respeite a gramática, esse passo será encerrado, mostrando ao usuário uma mensagem de sucesso (ver Figura \ref{fig:codigoSucessoSintatico}).
+
+%irá passar para o analisador semântico.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=.7\textwidth]{Figuras/codigo_erro_sintatico.png}
-\caption{Código erro sintático}
+\caption{Erro do Analisador Sintático sendo mostrado ao usuário na Tela \textit{Compiler}}
 \label{fig:codigoErroSintatico}
 \end{figure}
 
-A Figura \ref{fig:codigoErroSintatico} está divida em parte A que mostra quando o código passa com sucesso pelo analisador sintático e parte B que mostra quando o código fonte não faz parte da gramática aceita pelo sistema
+\begin{figure}[H]
+\centering
+\includegraphics[width=.2\textwidth]{Figuras/codigo_sucesso_sintatico.png}
+\caption{Analisador Sintático foi executado com sucesso}
+\label{fig:codigoSucessoSintatico}
+\end{figure}
 
 \subsection{Analisador Semântico}
 
