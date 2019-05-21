@@ -1,4 +1,6 @@
 \documentclass{bcc}
+\usepackage{amssymb}
+
 
 \titulo{OrCA IDE: Uma IDE geradora de Ontologias}
 \palavrasChave{Ontologia}{Linguagem Natural}{OWL}
@@ -24,6 +26,7 @@
 \capa
 
 % \capaDois
+\include{agradecimentos}
 
 \begin{resumo}
 INSERIR RESUMO
@@ -61,7 +64,7 @@ TEXTO
 
 \section{Motivação e Justificativa}
 
-TEXTO
+As ontologias estabelecem um nível de abstração superior, não ambíguo e comum para vários domínios do conhecimento \cite{rocha2014}. 
 
 
 \section{Definição do Problema}
@@ -78,11 +81,9 @@ Além deste capítulo inicial que traz uma introdução sobre o tema, a motivaç
 
 • O \autoref{chap:fundamentacao} apresenta a fundamentação teórica, contendo referências bibliográficas de estudos na área e apresenta as ferramentas e conceitos que foram utilizados no desenvolvimento;
 
-• O \autoref{chap:atividades}
-
 • O \autoref{chap:sistema} mostra a arquitetura do sistema e a maneira que ele foi construído, utilizando os conceitos e ferramentas que foram previamente apresentados no capítulo \autoref{chap:fundamentacao}.
 
-• O \autoref{chap:atividades} expõe os experimentos que foram realizados e seus respectivos resultados, exibindo assim, o funcionamento do sistema.
+• O \autoref{chap:exp} expõe os experimentos que foram realizados e seus respectivos resultados, exibindo assim, o funcionamento do sistema.
 
 
 \chapter{Fundamentação teórica}
@@ -94,38 +95,137 @@ Nesta seção são apresentados os conceitos e ferramentas que foram utilizados 
 
 Existem diversas técnicas que podem ser utilizadas para organizar informações e conhecimento, a aplicação de ontologias tem recebido uma atenção cada vez maior \cite{almeida2014}. O termo pode ser encontrado não apenas na ciência da computação, mas também em diversas áreas do conhecimento, por isso, é importante entender seu significado e sua aplicação em cada área específica.
 
-\subsection{Histórico e Definições}
-
-A palavra ontologia está presente em diversas áreas do conhecimento e possui diferentes significados para cada uma delas. Devido ao seu
-uso diversificado, seu significado tende a ser muito vago. Dessa forma, existem muitas definições para o termo \cite{gava2003}.
-
 O termo ontologia teve origem no século XVII na área da filosofia, a palavra vem do grego e pode ser traduzida como estudo da existência \cite{guizzardi2005}. Segundo \cite{gruber1995} o termo é emprestado da filosofia onde uma Ontologia é uma explicação sistemática da existência. Para um sistema de Inteligência Artificial, o que existe é tudo aquilo que pode ser representado.
 
 Na computação, o termo foi usado pela primeira vez no fim dos anos 70 e desde então, ontologias têm sido aplicadas em uma infinidade de áreas da ciência da computação, uma das motivações foi a necessidade de criar representações de princípios de conhecimento de domínio na comunidade de compartilhamento e reutilização de conhecimento em IA \cite{guizzardi2005}.
 
 Em áreas relacionadas com Modelagem Conceitual, ontologias são usadas de acordo com dua definição em Filosofia. Na Inteligência Artificial, Engenharia de Software e \textit{Web} Semântica geralmente ontologia é usada como: (i)um artefato concreto de engenharia desenhado com um intuito específico sem focar muito em questões de fundamentação ou (ii) uma representação de um domínio particular que pode ser expressa em alguma linguagem de representação de conhecimento (RDF, OWL, F-Logic) ou de modelagem conceitual (UML, EER) \cite{guizzardi2008}. Neste trabalho, será considerada a definição ii, que é a mais utilizada na área de Inteligência Artificial.
 
-Segundo \cite{gruber1995} uma ontologia é uma especificação explícita de uma conceituação. \cite{lv2011} afirma que o principal papel das ontologias é melhorar a comunicação entre humanos ou entre computadores, especificando a semântica do aparato simbólico usado no processo de comunicação.
+Segundo \cite{gruber1995} uma ontologia é uma especificação formal e explícita de uma conceituação compartilhada. A partir da definição dada por Gruber, \cite{rocha2014} complementa o pensamento afirmando que “formal”, significa que é definido declarativamente para que possa ser compreendido por agentes inteligentes; “explícito”, significa que os elementos e suas restrições estão claramente definidos; “conceituação”, representa um modelo abstrato de um campo de conhecimento ou um universo limitado de discurso; “compartilhado”, indica que é um conhecimento consensual, uma terminologia comum do campo modelado \cite{rocha2014}.
+
+\cite{lv2011} afirma que o principal papel das ontologias é melhorar a comunicação entre humanos ou entre computadores, especificando a semântica do aparato simbólico usado no processo de comunicação.
+
+Ontologias podem ser representadas de maneira formal, usada para que elas possam ser processada por comutadores, ou de maneira gráfica, usada para facilitar a compreensão humana \cite{isotani2015}. As linguagens mais populares para descrever ontologias são RDF, RDF-S e OWL \cite{mcguinness}.
+
 
 \section{OWL}
 
-A \textit{Web Ontology Language} (OWL) é projetada para ser usada por aplicações que precisam processar o conteúdo da informação em vez de apenas apresentar informações aos seres humanos. OWL fornece uma maior facilidade para a máquina interpretar o conteúdo da Web do que linguagens suportadas por XML, RDF e RDF Schema (RDF-S), pois fornece vocabulário adicional junto com uma semântica formal. Ela possui três sub-linguagens cada vez mais expressivas: OWL Lite, OWL DL e OWL Full \cite{mcguinness}.
+A web atual possui deficiências que serão superadas com o uso da Web Semântica. Portanto, se faz necessária uma linguagem para descrever as ontologias que permitem a Web Semântica. A\textit{Web Ontology Language} (OWL) OWL é uma linguagem para definir ontologias e dados individuais associados. Sistemas de raciocínio baseados em quadros, lógicas de descrição e linguagens da Web existentes influenciaram o desenvolvimento da OWL, que foi desenvolvida para representar informações analisáveis por computador \cite{lacy2005}.
 
-\subsection{OWL Manchester Syntax}
+A OWL é projetada para ser usada por aplicações que precisam processar o conteúdo da informação em vez de apenas apresentar informações aos seres humanos. OWL fornece uma maior facilidade para a máquina interpretar o conteúdo da Web do que linguagens suportadas por XML, RDF e RDF Schema (RDF-S), pois fornece vocabulário adicional junto com uma semântica formal. Ela possui três sub-linguagens cada vez mais expressivas: OWL Lite, OWL DL e OWL Full \cite{mcguinness}. Na Figura \ref{fig:owlsub} é possível observar uma pequena definição sobre cada uma dessas sub-linguagens de OWL.
 
-TEXTO d hsdgsdfghdfghdfghdfghdfghdfghdfghdfgh
+\begin{figure}[H]
+\centering
+\includegraphics[width=.9\textwidth]{Figuras/owl_sub.png}
+\caption{Sub-linguagens de OWL}
+\label{fig:owlsub}
+\end{figure}
+
+Através da definição do conceito de bicicleta, é possível ter um exemplo de uma representação formal: uma bicicleta (\textit{bicycle}) é um tipo de veículo (\textit{vehicle}) de transporte, ou seja, pode ser feita a relação “\textit{bicycle is-a vehicle}”. Além disso, um bicicleta pode ser categorizada em bicicletas esportivas (\textit{sport bicycle}) e bicicletas para uso na cidade (\textit{city bicycle}). Por fim, é possível identificar os atributos e propriedades da bicicleta como cor, peso, tamanho, etc. O resultado disto, pode ser visto na Figura \ref{fig:codowl}, onde se encontra parte do código de uma ontologia em OWL que descreve uma bicicleta \cite{isotani2015}.
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.9\textwidth]{Figuras/codigo_owl.png}}
+\caption{Exemplo de código OWL. Fonte: http://hozo.jp/}
+\label{fig:codowl}
+\end{figure}
+
+\subsection{Elementos básicos}
+ 
+Para construir uma ontologia OWL, são necessários alguns elementos básicos, são eles as classes, instâncias das classes (indivíduos) e os relacionamentos entre instâncias (propriedades).
+ 
+Classes fornecem um mecanismo de abstração para agrupar recursos com características semelhantes. Cada classe OWL é associada a um conjunto de indivíduos, chamado de extensão de classe. Os indivíduos na extensão de classe são chamados de instâncias da classe \cite{mcguinness}. 
+
+Cada indivíduo na OWL é membro da classe \textit{owl:Thing}. Assim, ela é superclasse de todas as classes OWL definidas pelos usuários. Além disso, existe a classe \textit{owl:Nothing} (não possui instâncias) que é uma subclasse de todas as classes OWL. Uma classe é sintaticamente representada como uma instância nomeada da \textit{owl:Class} \cite{de2005}.
+
+Uma propriedade é uma relação binária que pode ser de dois tipos:
+
+• Propriedades de dados tipados: relação entre indivíduos e valores
+de dados;
+
+• Propriedades de objetos: relação entre indivíduos \cite{welty2004}.
+
+\subsubsection{Restrições em propriedade}
+
+OWL permite que sejam impostas restrições sobre propriedades, restrição é um tipo especial de descrição de classe, isto é, descreve uma classe anônima de indivíduos que satisfazem as restrições \cite{de2005}.
+
+A restrição \textit{allValuesFrom} e a \textit{someValuesFrom} são exemplos de restrição de valores. A \textit{owl:allValuesFrom} é usada para descrever uma classe de todos os indivíduos para os quais todos os valores da propriedade em questão são membros da extensão de classe da descrição da classe ou são valores de dados dentro do intervalo de dados especificado \cite{welty2004}, um exemplo do uso dessa propriedade por ser observado na Figura \ref{fig:allvalues}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.9\textwidth]{Figuras/all_values.PNG}}
+\caption{Exemplo de uso da restrição allValuesFrom}
+\label{fig:allvalues}
+\end{figure}
+
+A restrição \textit{someValuesFrom} descreve uma classe de todos os indivíduos para os quais pelo menos um valor da propriedade em questão é uma instância da descrição da classe ou um valor de dados no intervalo de dados \cite{welty2004}. Um exemplo do uso dessa propriedade por ser visto na Figura \ref{fig:somevalues}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.9\textwidth]{Figuras/some_values.PNG}}
+\caption{Exemplo de uso da restrição someValuesFrom}
+\label{fig:somevalues}
+\end{figure}
+
+\subsection{Conjunto de Operadores}
+
+OWL permite combinações booleanas arbitrárias para manipulações das extensões de classes, chamados de conjunto de operadores, eles podem ser vistos como representando os operadores AND, OR e NOT nas classes. Os três operadores obtêm os nomes padrão de operador de conjunto: interseção, união e complemento \cite{bechhofer2004}.
+
+• \textit{owl:intersectionOf}: semelhante é análogo ao operador lógido AND, declara uma classe cuja extensão de classe contém somente indivíduos que são membros da extensão de classe de todas classes descritas em uma lista \cite{bechhofer2004}. Um exemplo de um trecho de código que utiliza este operador pode ser encontrado na Figura \ref{fig:opand}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.9\textwidth]{Figuras/op_and.PNG}}}
+\caption{Operador intersectionOf}
+\label{fig:opand}
+\end{figure}
+
+\subsection{Sintaxe Manchester OWL}
+
+A sintaxe \textit{Manchester OWL} \cite{horridge2006} foi criada para suprir a necessidade que algumas sintaxes geravam devido a falta de símbolos não-lógicos, pois, a maioria utiliza símbolos de lógica de descrição. Assim, a \textit{Manchester Sintax} fornecer aos casos em que são necessários utilizar símbolos não lógicos, uma sintaxe que facilita a criação de ontologias. Ela foi projetada principalmente para apresentar e editar expressões de classe em ferramentas, mas também pode ser usada para representar ontologias completas \cite{horridge2006}.
+
+A Manchester OWL é uma sintaxe que de fácil utilização para para descrições OWL \cite{horridge2009}. Ela é influenciada tanto pela sintaxe \textit{Abstract OWL} quanto pela sintaxe \textit{DL style}, que usa símbolos lógicos de descrição, como o quantificador universal ($\forall$) ou o quantificador existencial ($\exists$). A sintaxe  Manchester usa símbolos matemáticos especiais como $\exists$, $\forall$, ¬ para serem substituídos por palavras-chave como “\textit{some}”, “\textit{only}” e “\textit{not}” respectivamente \cite{yauri2012}. Outro ponto diz respeito a palavra-chave \textit{"that"}, que possui a mesma função da palavra-chave \textit{"and"}, porém foi introduzida na sintaxe apenas para fazer com que a leitura das expressões fossem mais fluidas \cite{horridge2006}. Isso pode ser visto na Figura \ref{fig:manchester_exemplo}; onde existe \textit{"that"} pode ser substituído por \textit{"and"}, e vice-versa, e continuará com a mesma semântica.
+
+Desde que o Manchester OWL Syntax foi criado, tornou-se a sintaxe padrão do Protegé OWL \cite{horridge2006}. No caso do Protegé \cite{noy2001}, ele estende a sintaxe para permitir uma apresentação ainda mais compacta em algumas situações (por exemplo, para explicação) \cite{horridge2009}.
+
+Na Figura \ref{fig:manchester_exemplo} é possível ver a definição de uma expressão de classe. Essa expressão descreve um conjunto de pessoas que têm pelo menos um filho, que têm filhos que são apenas homens.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.5\textwidth]{Figuras/manchester_exemplo.png}
+\caption{Exemplo de uma expressão de classe. Fonte: \cite{horridge2006}}
+\label{fig:manchester_exemplo}
+\end{figure}
 
 \section{Pellet}
 
-Pellet é implementado em Java e é \textit{open source}, ele fornece uma gama de recursos como: suporte a regras, conexão de raciocínio, identificação de axiomas. Para tornar seus recursos de raciocínio acessível aos usuários, ele fornece diferentes interfaces \cite{sirin2007}.
+A máquina de inferência Pellet, é implementado em Java e é \textit{open source}, ele fornece uma gama de recursos como: suporte a regras, conexão de raciocínio, identificação de axiomas. Para tornar seus recursos de raciocínio acessível aos usuários, ele fornece diferentes interfaces \cite{sirin2007}. 
 
-Os recursos do Pellet são expostos a partir de uma API Java, uma interface de linha de comando ou um formulário da Web. Ele fornece acesso programático às funções de raciocínio por meio de duas interfaces diferentes, uma para o kit de ferramentas do Jena e uma para a biblioteca da API do OWL \cite{parsia2004}. No desenvolvimento da ferramenta em questão o Pellet foi utilizado a partir de uma API Java e suas funções foram acessadas através da biblioteca do OWL.
+Os recursos do Pellet são expostos a partir de uma API Java, uma interface de linha de comando ou um formulário da Web. Ele fornece acesso programático às funções de raciocínio por meio de duas interfaces diferentes, uma para o kit de ferramentas do Jena e uma para a biblioteca da API do OWL \cite{parsia2004}. No desenvolvimento da ferramenta em questão, o Pellet foi utilizado a partir de uma API Java e suas funções foram acessadas através da biblioteca do OWL. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1.0\textwidth]{Figuras/pellet_inconsistencia.png}
+\caption{Código de procura por classes inconsistentes}
+\label{fig:pellet_inconsistencia}
+\end{figure}
+
+Como é possível ver na Figura \ref{fig:pellet_inconsistencia}, a API fornece métodos que possibilitam fazer busca por inconsistência nos dados, a partir de um dado \textit{reasoner}, que por sua vez é criado a partir de uma ontologia. Ainda com a API do Pellet é possível inferir informação sobre uma ontologia, como é possível ver na Figura \ref{fig:pellet_inferencia}.
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.9\textwidth]{Figuras/pellet_inferencia.png}
+\caption{Exemplo de código inferindo informação sobre a ontologia}
+\label{fig:pellet_inferencia}
+\end{figure}
 
 \section{Arquitetura MVC}
 
 MVC (\textit{Model View Controller}) é um padrão de arquitetura de \textit{software} que sugere uma divisão de componentes, permitindo assim, um código mais organizado e simples além de facilitar e tornar mais segura a manutenção do sistema \cite{da2012}. Essa arquitetura se tornou popular no desenvolvimento de sistemas complexos, pois, ela auxilia na separação dos principais componentes do sistema, além de apoiar a manipulação, gerenciamento e armazenamento dos dados \cite{de2013}.
 
-Nessa abordagem, em resumo, o sistema é dividido em três componentes interconectados: \textit{model}, que expressa o conhecimento do domínio, \textit{view}, que apresenta a interface do usuário e \textit{control} que gerencia as atualizações para as \textit{views} \cite{selfa2006}.
+Nessa abordagem, simplificando, o sistema é dividido em três componentes interconectados: \textit{model}, que expressa o conhecimento do domínio, \textit{view}, que apresenta a interface do usuário e \textit{control} que gerencia as atualizações para as \textit{views} \cite{selfa2006}.
  
  \textit{Model} é a camada responsável pela manipulação e gerenciamento dos dados, ou seja, faz a leitura, escrita e validação dos dados, e se houver necessidade, também permite a comunicação do banco de dados. Ela contém os dados do aplicativo, a definição lógica, a especificação da função e o envolvimento da regra de negócios. O \textit{model} pode ser um único objeto ou uma composição de objetos \cite{jailia2016}.
  
@@ -133,9 +233,6 @@ Nessa abordagem, em resumo, o sistema é dividido em três componentes intercone
  
  Por fim, \textit{controller} é a camada que recebe todas as requisições do usuário e faz a sua conexão com o sistema. Ele controla o \textit{model} a ser utilizado assim como seu fluxo de dados, e atualiza a exibição na \textit{view} que será mostrada ao usuário \cite{jailia2016}. 
 
-\section{Java}
-
-TEXTO
 
 \section{Maven}
 
@@ -143,30 +240,76 @@ O Maven é uma ferramenta de integração de projetos Java utilizada no gerencia
 
 A ferramenta surgiu da dificuldades que muitos grupos de desenvolvimento tinham ao gerenciar bibliotecas em grandes projetos, de maneira dinâmica o Maven baixa a biblioteca Java e os seus \textit{plugins} de diversos repositórios que ficam armazenados em cache local, que pode ser atualizado quando sempre que for preciso \cite{oliveira2016}. Sua configuração é feita através do arquivo pom.xml (Project Object Model) onde são declarados o tipo de empacotamento, suas dependências e os repositórios de onde as dependências serão buscadas, podendo ser tanto repositórios locais ou remotos. \cite{junior2014}
 
+A Figura \ref{fig:pom_xml} mostra um trecho do arquivo pom.xml utilizado na implementação da OrCA IDE. É possível ver definições de compilação, como por exemplo a versão do Java que será utilizado, a classe principal que será executada ao projeto ser iniciado, o tipo de empacotamento, versão e id (pacote) que serão utilizados na publicação desses arquivos para o repositório local do maven, bem como as dependências utilizadas pelo projeto.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.8\textwidth]{Figuras/pom_xml.png}
+\caption{Trecho de arquivo pom.xml do \textit{OrCA} IDE}
+\label{fig:pom_xml}
+\end{figure}
 
 \section{Compilador}
-TEXTO (Analisadores, lexema, lookahead, regra de produção, gramática)
 
 De maneira geral, um compilador é um programa que tem como entrada um código de programa numa certa linguagem e produz como saída um código de programa numa outra linguagem, preservando o significado do código durante esse processo \cite{grune2012}.
 
-Um compilador é dividido em fases, cada uma delas representam uma etapa do processo de compilação, elas podem ser desenvolvida de maneira separada, mesmo que na prática elas funcionem intercaladamente \cite{foleiss2009}.
+Um compilador é dividido em fases, cada uma delas representam uma etapa do processo de compilação, elas podem ser desenvolvidas de maneira separada, mesmo que na prática elas funcionem intercaladamente \cite{foleiss2009}. 
+
+Em seu livro, \cite{somerville2003} faz uma definição geral, onde ele afirma que os compiladores de linguagem de programação possuem uma arquitetura genérica, ela pode ser dividida em componentes como os que seguem:
+
+• \textbf{Analisador Léxico}: pega os \textit{tokens} da linguagem de entrada e os converte em um formato interno;
+
+• \textbf{Tabela de Símbolos}: possui informações sobre os nomes das entidades (variáveis, nomes de classes, nomes de objetos etc.) usadas no texto que está sendo traduzido;
+
+• \textbf{Analisador Sintático}: realiza a verificação da sintaxe da linguagem a ser traduzida. Para isso, ele faz uso da gramática da linguagem que foi pré definida e então constrói uma árvore de sintaxe;
+
+• \textbf{Árvore Sintática}: é uma estrutura interna utilizada para representar o programa a ser compilado;
+
+• \textbf{Analisador Semântico}: utiliza as informações da árvore sintática e da tabela de símbolos para verificar a correção semântica do texto na linguagem de entrada;
+
+• \textbf{Gerador de Código}: percorre a árvore sintática e sem seguida gera códigos de máquina abstrata.
+
+Cada linguagem de programação possui uma gramática, que consiste em símbolos terminais, símbolos não-terminais, um símbolo inicial e produções. Símbolos terminais são os símbolos básicos a partir dos
+quais as cadeias são formadas \cite{ferreira2015}.
 
 \subsection{Analisador Léxico}
 
+O analisador léxico recebe como entrada o código fonte e sua função é ler os caracteres deste código e categorizar suas sequências em \textit{tokens}, que são unidades lógicas denominadas que em seguida serão utilizadas por outras partes do compilador, como o
+analisador sintático \cite{foleiss2009}. Um \textit{token} é uma sequência de caracteres que pode ser tratada como uma unidade na gramática de uma linguagem de programação, que por sua vez classifica os \textit{tokens} em um conjunto finito de tipos de \textit{token} \cite{andrew2002}.
+
+Na fase de análise léxica, o analisador utiliza um fluxo de caracteres e produz um fluxo de nomes, palavras-chave e sinais de pontuação, ele descarta espaço em branco e comentários entre os \textit{tokens}, a presença de espaços em branco e comentários, complicaria indevidamente o analisador \cite{andrew2002}.
+
+Diversas atividades com grande importância são realizadas durante essa análise, as que mais se destacam são: conversão numérica, identificação de palavras reservadas, e criação e manutenção das tabelas de símbolos, que serão muito utilizadas durante o processo de compilação \cite{neto2017}.
+
+\subsubsection{Tabela de Símbolos}
+
 \subsection{Analisador Sintático}
+
+Responsável pela análise sintática, o analisador sintático recebe como entrada uma cadeia de \textit{tokens} que foi gerada pelo analisador léxico, e faz a verificação para confirmar se ela pode ser gerada pela gramática da linguem em questão. Assim, espera-se que o analisador mostre qualquer erro de sintaxe \cite{aho2007}.
+
+\subsubsection{Árvore Sintática}
 
 \subsection{Analisador Semântico}
 
-\chapter{Atividades Desenvolvidas}
-\label{chap:atividades}
+O analisador semântico realiza a verificação da correção semântica das instruções, a análise é feita através de regras que são previamente definidas e então disparadas durante a fase análise sintática. De modo similar, regras de geração de código são associadas à estrutura sintática da linguagem. O código gerado implementa as operações especificadas pelo programa na linguagem de saída do compilador \cite{barbosa2009}.
 
-TEXTO
+A fase de análise semântica de um compilador conecta definições de variáveis a seus usos, verifica se cada expressão tem um tipo correto e traduz a sintaxe abstrata em uma representação mais simples adequada para gerar código de máquina \cite{andrew2002}.
+
+\subsubsection{Gerador de Código}
+
 
 \chapter{Arquitetura do Sistema}
 \label{chap:sistema}
 
 \section{Introdução}
-Com a finalidade de criar uma ontologia a partir de  Processamento de Linguagem Natural (PLN), o sistema OrCA IDE (\textit{Ontology vieweR and CreAtor Integrated Development Environment}) foi desenvolvido. Neste capítulo são detalhadas a arquitetura do sistema e suas funcionalidades, bem com a linguagem natural controlada utilizada. O intuito, ao definir esta linguagem, foi facilitar ao máximo o desenvolvimento das ontologias por parte dos usuários do sistema.
+Com a finalidade de criar ontologias a partir de  Processamento de Linguagem Natural (PLN), o sistema OrCA IDE (\textit{Ontology vieweR and CreAtor Integrated Development Environment}) foi desenvolvido. Neste capítulo são detalhadas a arquitetura do sistema e suas funcionalidades, bem com a linguagem natural controlada utilizada. O intuito, ao definir esta linguagem, foi facilitar ao máximo o desenvolvimento das ontologias por parte dos usuários do sistema. Na Figura \ref{fig:diagComponenteGeral} é possível ver o diagrama de componentes do sistema de uma maneira geral. O componente \textit{Ontology} depende do componente \textit{Compiler}, de igual forma o componente \textit{Reasoner} depende do componente \textit{Compiler}. Já o componente \textit{Graph Viewer} depende do componente \textit{Ontology}. Com isso é possível dizer que o componente \textit{Compiler}, ou seja, o compilador em si, é o principal componente do sistema, no qual todos os demais componentes possuem dependência direta ou indireta.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.7\textwidth]{Figuras/DiagramadeComponentes.png}
+\caption{Diagrama de componentes geral}
+\label{fig:diagComponenteGeral}
+\end{figure}
 
 \section{Arquitetura}
 
@@ -196,7 +339,7 @@ O \textit{compiler} é responsável por receber a linguagem natural do usuário 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.7\textwidth]{Figuras/tela_compiler.png}
+\includegraphics[width=.8\textwidth]{Figuras/tela_compiler.png}
 \caption{Tela \textit{Compiler} completa}
 \label{fig:telaCompiler}
 \end{figure}
@@ -205,7 +348,7 @@ Como podemos ver na Figura \ref{fig:telaCompiler1}, o campo de texto chamado \te
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.7\textwidth]{Figuras/tela_compiler1.png}
+\includegraphics[width=.8\textwidth]{Figuras/tela_compiler1.png}
 \caption{Tela \textit{Compiler}: parte da edição da Linguagem Natural}
 \label{fig:telaCompiler1}
 \end{figure}
@@ -222,7 +365,7 @@ Na mesma tela, porém no campo Console, é possível ver a saída do compilador 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.7\textwidth]{Figuras/tela_compiler2.png}
+\includegraphics[width=.8\textwidth]{Figuras/tela_compiler2.png}
 \caption{Tela \textit{Compiler}: retorno da compilação da linguagem natural}
 \label{fig:telaCompiler2}
 \end{figure}
@@ -235,7 +378,7 @@ O botão \textit{Graph} tem a função de abrir o componente \textit{Graph}, e o
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.7\textwidth]{Figuras/tela_ontology.png}
+\includegraphics[width=.8\textwidth]{Figuras/tela_ontology.png}
 \caption{Tela Ontology}
 \label{fig:telaOntology}
 \end{figure}
@@ -244,24 +387,38 @@ O botão \textit{Graph} tem a função de abrir o componente \textit{Graph}, e o
 
 Se tratando de ontologias, um \textit{reasoner} é um software capaz de inferir consequências lógicas sobre a ontologia, muitas vezes não explícitas na sua base de conhecimento. O campo de texto superior do componente \textit{Reasoner} é onde é mostrada a saída que o \textit{reasoner} integrado ao sistema (\textit{Pellet}) conseguiu deduzir através da ontologia inserida (linguagem natural). No início da saída, ele informa se na ontologia base (a linguagem natural inserida pelo usuário) existe algum tipo de inconsistência, por exemplo: "Gato não é vaca (Gato is not Vaca)" e mais a frente existir o axioma "Gato é vaca (Gato is Vaca)", isso vai gerar um aviso de inconsistência, porém, a dedução de novos axiomas ainda será realizada.
 
-O botão \textit{Reason} refaz o processamento de deduzir sobre a ontologia base. O campo de texto \textit{Ontology Inferred} é o código \textit{OWL} da nova ontologia criada a partir dos axiomas deduzidos. O botão \textit{Save on Text File} tem a função de abrir uma caixa de diálogo permitindo que o usuário salve essa nova ontologia em seu computador. A Figura \ref{fig:telaReasoner} mostra essa tela completa.
+O botão \textit{Reason} refaz o processamento de deduzir sobre a ontologia base. O campo de texto \textit{Ontology Inferred} é o código \textit{OWL} da nova ontologia criada a partir dos axiomas deduzidos. O botão \textit{Save on Text File} tem a função de abrir uma caixa de diálogo permitindo que o usuário salve essa nova ontologia em seu computador. A Figura \ref{fig:telaReasoner} mostra essa tela completa. A Figura \ref{fig:ucontology} mostra os casos de uso da tela \textit{Ontology}.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.7\textwidth]{Figuras/tela_reasoner.png}
+\includegraphics[width=.8\textwidth]{Figuras/tela_reasoner.png}
 \caption{Tela Reasoner}
 \label{fig:telaReasoner}
 \end{figure}
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=.6\textwidth]{Figuras/UseCaseOntologia.png}
+\caption{Caso de Uso da tela \textit{Ontology}} 
+\label{fig:ucontology}
+\end{figure}
+
 \subsection{Graph Viewer}
 
-\textit{Graph Viewer} é apenas um facilitador gráfico, afim de mostrar a ontologia compilada em forma de grafo. A Figura \ref{fig:telGraph} mostra a tela \textit{Graph Viewer}, que é responsável por mostrar ao usuário uma perspectiva de grafo da ontologia criada. Nela é possível aumentar e diminuir zoom, assim como exportar tanto em arquivo de imagem no formato SVG como em texto no formato JSON. É possível também movimentar os nós, bem como aumentar ou diminuir o tamanho desses, para facilitar a visualização.
+\textit{Graph Viewer} é apenas um facilitador gráfico, afim de mostrar a ontologia compilada em forma de grafo. A Figura \ref{fig:telGraph} mostra a tela \textit{Graph Viewer}, que é responsável por mostrar ao usuário uma perspectiva de grafo da ontologia criada. Nela é possível aumentar e diminuir zoom, assim como exportar tanto em arquivo de imagem no formato SVG como em texto no formato JSON. É possível também movimentar os nós, bem como aumentar ou diminuir o tamanho desses, para facilitar a visualização. Na Figura \ref{fig:ucgv} são mostrados os casos de uso da tela \textit{Graph Viewer}.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=.7\textwidth]{Figuras/tela_graph.png}
 \caption{Tela Graph Viewer}
 \label{fig:telGraph}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.6\textwidth]{Figuras/UseCaseGrafo.png}
+\caption{Caso de Uso da tela \textit{Graph Viewer}} 
+\label{fig:ucgv}
 \end{figure}
 
 \section{Compilador}
@@ -272,13 +429,19 @@ Para um programa ser definido como um compilador, ele precisa ter alguns process
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.7\textwidth]{Figuras/compiladorscheme.png}
+\includegraphics[width=.8\textwidth]{Figuras/compiladorscheme.png}
 \caption{Fluxo de um compilador}
 \label{fig:compilerscheme}
 \end{figure}
 
-O fluxo que o compilador OrCA IDE segue é o mesmo de um compilador padrão. Inicialmente o código é examinado pelo Analisador Léxico, caso haja algum erro que esse analisador possa detectar, o processo de compilação é suspenso, e é informado ao usuário, na tela \textit{Compiler} > \textit{Console}, a linha e a posição onde o erro ocorreu. Caso as verificações desse analisador não detectem erro o próximo passo é iniciado, o Analisador Sintático. Neste passo, acontece de igual forma ao Analisador Léxico, porém, ele faz suas próprias verificações. Caso não sejam detectados erros, o passo seguinte é inicializado, o Analisador Semântico. De maneira semelhante aos passos anteriores, o Analisador Semântico faz suas próprias verificações e análises. Se nenhum erro for encontrado, a próxima etapa é iniciada, a conversão. Nesta fase, o código inserido pelo usuário é transformado em \textit{OWL 2 DL}, finalizando o fluxo do compilador. 
+O fluxo que o compilador OrCA IDE segue é o mesmo de um compilador padrão. Inicialmente o código é examinado pelo Analisador Léxico, caso haja algum erro que esse analisador possa detectar, o processo de compilação é suspenso, e é informado ao usuário, na tela \textit{Compiler} > \textit{Console}, a linha e a posição onde o erro ocorreu. Caso as verificações desse analisador não detectem erro o próximo passo é iniciado, o Analisador Sintático. Neste passo, acontece de igual forma ao Analisador Léxico, porém, ele faz suas próprias verificações. Caso não sejam detectados erros, o passo seguinte é inicializado, o Analisador Semântico. De maneira semelhante aos passos anteriores, o Analisador Semântico faz suas próprias verificações e análises. Se nenhum erro for encontrado, a próxima etapa é iniciada, a conversão. Nesta fase, o código inserido pelo usuário é transformado em \textit{OWL 2 DL}, finalizando o fluxo do compilador. Na Figura \ref{fig:uclnc} é possível verificar os casos de uso dessa tela.
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=.6\textwidth]{Figuras/UseCaseLNC.png}
+\caption{Caso de Uso da tela \textit{Compiler}} 
+\label{fig:uclnc}
+\end{figure}
 
 \iffalse
 % -------------------------------------- COMENTADO -----------------------------------
@@ -372,13 +535,38 @@ Idiomas como o português, inglês e espanhol possuem um conjunto de regras e no
 \end{tabular} 
 \end{table} 
 
+
+\section{Linguagem Natural Controlada}
+
+Para que o usuário consiga utilizar o sistema, se faz necessário que ele possua o conhecimento da linguagem natural que será definida a seguir, na Tabela \ref{tab:tabelaPalavrasReservadas} se encontram as palavras reservadas, suas respectivas descrições e um exemplo de sua aplicação.
+
+\begin{table}[H]
+\centering
+\caption{Palavras Reservadas}
+\label{tab:tabelaPalavrasReservadas}
+\begin{tabular}{|c|l|l|}
+\hline Reservado  & Descrição & Exemplo  \\ 
+\hline isa & \begin{tabular}[l]{@{}l@{}} Uma classe X é um \\tipo de classe Y.\end{tabular} & Gato isa Felino \\ \hline
+equivalent & \begin{tabular}[l]{@{}l@{}} Uma classe X é um tipo \\ de classe irmã de Y.\end{tabular} & JanelaBanheiro equivalent JanelaCasa \\ \hline and / that & \begin{tabular}[l]{@{}l@{}} Uma classe X interseção\\ com uma classe Y.\end{tabular} & (Correr and Pular) isa ExercicioFisico  \\ \hline or & \begin{tabular}[l]{@{}l@{}}Uma classe X disjunção\\ de uma classe Y. \end{tabular} & Trabalhar isa nor(Dormir or Comer) \\ \hline only & \begin{tabular}[l]{@{}l@{}}Uma propriedade X\\ only classe Y. \end{tabular} & podeLatir only Cachorro \\ \hline some & \begin{tabular}[l]{@{}l@{}}Uma propriedade X\\ some classe Y. \end{tabular} & andarNoMuro some Gato \\ \hline all & \begin{tabular}[l]{@{}l@{}}Uma propriedade X \\ all classe Y. \end{tabular} & comerGrama all Vaca \\ \hline not & Negação de uma Classe & not Gato \\ \hline nor & Negação de uma expressão & nor(Gato isa Felino) \\ \hline 
+\end{tabular}
+\end{table}
+
+Como visto de maneira resumida na Tabela \ref{tab:tabelaPalavrasReservadas}, na Figura \ref{fig:codigoFonteInicial} está o código fonte que o sistema mostra ao ser aberto, para que o usuário entenda o funcionamento da sintaxe.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.8\textwidth]{Figuras/codigo_codigofonte_inicial.png}
+\caption{Código inicial}
+\label{fig:codigoFonteInicial}
+\end{figure}
+
 \subsection{Analisador Léxico}
 
 Este analisador é responsável por fazer o primeiro e menos complexo processamento sobre o código, em linguagem natural, inserido pelo usuário. Esse processamento nada mais é do que receber o texto da interface gráfica e verificar se as palavras e símbolos inseridos pelo usuário são válidos, ou seja, se são aceitos pela gramática do compilador. Essas palavras e símbolos podem ser vistos na Figura \ref{fig:codigoTokenenum}. Com exceção de \textit{END}, \textit{NUMBER} e \textit{IDENTIFIER}, cada palavra e símbolo desta imagem é chamado de "palavra reservada", e não podem ser utilizados para outro fim se não o que foi definido pela gramática deste compilador. O tipo \textit{NUMBER} diz respeito a uma numeração, que pode variar de 1 a ±\textit{n}, ou seja, um número qualquer, já o \textit{IDENTIFIER} diz respeito a uma palavra, que não é reservada pelo compilador, mas foi criada pelo usuário, por exemplo "Cachorro" ou "Vaca". \textit{END} significa que é o final do código inserido pelo usuário. Cada palavra e/ou símbolo inserido pelo usuário é chamado de \textit{token}.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.7\textwidth]{Figuras/codigo_tokenenum.png}
+\includegraphics[width=.6\textwidth]{Figuras/codigo_tokenenum.png}
 \caption{Palavras reservadas e símbolos permitidos pela gramática}
 \label{fig:codigoTokenenum}
 \end{figure}
@@ -387,7 +575,7 @@ A análise léxica consiste em verificar todos os \textit{tokens}. Caso o \texti
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.7\textwidth]{Figuras/codigo_erro_lexico.png}
+\includegraphics[width=.8\textwidth]{Figuras/codigo_erro_lexico.png}
 \caption{Erro do Analisador Léxico sendo mostrado ao usuário na Tela \textit{Compiler}}
 \label{fig:codigoErroLexico}
 \end{figure}
@@ -415,27 +603,27 @@ Após a análise léxica, o analisador sintático é acionado. Ele é responsáv
 \label{fig:codigoLookAhead}
 \end{figure}
 
-Caso alguma expressão do código inserido pelo usuário não pertença a gramática aceita pelo compilador, uma exceção do tipo \textit{SintaticAnalyzerException} será lançada (ver Figura \ref{fig:codigoErroSintatico}). Caso o código do usuário respeite a gramática, esse passo será encerrado, mostrando ao usuário uma mensagem de sucesso (ver Figura \ref{fig:codigoSucessoSintatico}).
+Caso alguma expressão do código inserido pelo usuário não pertença a gramática aceita pelo compilador, uma exceção do tipo \textit{SintaticAnalyzerException} será lançada, como é possível observar na Figura \ref{fig:codigoErroSintatico}. Caso o código do usuário respeite a gramática, esse passo será encerrado, mostrando ao usuário uma mensagem de sucesso como a exibida na Figura \ref{fig:codigoSucessoSintatico}.
 
 %irá passar para o analisador semântico.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.7\textwidth]{Figuras/codigo_erro_sintatico.png}
+\includegraphics[width=.8\textwidth]{Figuras/codigo_erro_sintatico.png}
 \caption{Erro do Analisador Sintático sendo mostrado ao usuário na Tela \textit{Compiler}}
 \label{fig:codigoErroSintatico}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.2\textwidth]{Figuras/codigo_sucesso_sintatico.png}
+\includegraphics[width=.3\textwidth]{Figuras/codigo_sucesso_sintatico.png}
 \caption{Analisador Sintático foi executado com sucesso}
 \label{fig:codigoSucessoSintatico}
 \end{figure}
 
 \subsection{Analisador Semântico}
 
-Posterior a análise sintática esse controller entra em ação. Ele tem um comportamento diferente dos analisadores semânticos de outros compiladores. A função dele é atomizar o código fonte inserido pelo usuário a fim de criar subexpressões de tamanho mínimo, por exemplo "Homem and Mulher", embora essa expressão faça parte de uma expressão maior denominada "(Homem and Mulher) isa Humano". Essa substituição pode ser vista na Figura \ref{fig:codigoAtomizacao} onde se encontra o código do arquivo ControllerSemantic.java e exibe o momento em que a atomização envolvendo essas palavras reservadas é feita. 
+Posterior a análise sintática esse componente entra em ação. Ele tem um comportamento diferente dos analisadores semânticos de outros compiladores. A função dele é atomizar o código fonte inserido pelo usuário a fim de criar sub expressões de tamanho mínimo, por exemplo "Homem and Mulher", embora essa expressão faça parte de uma expressão maior denominada "(Homem and Mulher) isa Humano". Essa substituição pode ser vista na Figura \ref{fig:codigoAtomizacao} onde se encontra o código do arquivo ControllerSemantic.java que exibe o momento em que a atomização envolvendo essas palavras reservadas é feita. 
 
 \begin{figure}[H]
 \centering
@@ -444,7 +632,7 @@ Posterior a análise sintática esse controller entra em ação. Ele tem um comp
 \label{fig:codigoAtomizacao}
 \end{figure}
 
-Cada expressão atomizada é inserida em uma lista que será enviada para o ControllerConversor. Caso aconteça algum erro na atomização, uma exceção do tipo SemanticAnalyzerException será lançada (ver Figura \ref{fig:codigoErroSemantico}) na view. Caso o código fonte seja atomizado com sucesso, irá passar para o Controller Conversor.
+Cada expressão atomizada é inserida em uma lista que será enviada para o ControllerConversor. Caso aconteça algum erro na atomização, uma exceção do tipo SemanticAnalyzerException será lançada na view, como é possível observar na Figura \ref{fig:codigoErroSemantico}. Caso o código fonte seja atomizado com sucesso, irá passar para o Controller Conversor.
 
 \begin{figure}[H]
 \centering
@@ -453,12 +641,14 @@ Cada expressão atomizada é inserida em uma lista que será enviada para o Cont
 \label{fig:codigoErroSemantico}
 \end{figure}
 
-A Figura \ref{fig:codigoErroSemantico} está dividida em duas partes, a parte A mostra quando o código passa com sucesso pelo analisador semântico e a parte B mostra quando houve um erro ao tentar atomizar o código fonte
+A Figura \ref{fig:codigoErroSemantico} está dividida em duas partes, a parte A mostra quando o código passa com sucesso pelo analisador semântico e a parte B mostra quando houve um erro ao tentar atomizar o código fonte.
 
 
-\subsection{Controller Conversor}
+\subsection{Conversor}
 
-Esse \textit{controller} é o responsável por converter o código fonte inserido pelo usuário em uma ontologia. Ao chegar nesse ponto todas as verificações já foram feitas, garantindo que na conversão do código fonte não haja nenhum problema no que diz respeito a parte léxica, semântica e sintática.
+Esse componente é responsável por converter a linguagem natural inserida pelo usuário em uma ontologia 2 DL. Ao chegar nesse ponto, todas as verificações referentes a análise léxica, sintática e semântica já foram feitas, garantindo que não ocorrerá nenhum tipo de erro no que diz respeito a linguagem natural inserida.
+
+A Figura \ref{fig:codigoConversor} exibe o trecho de código em que ocorre o processo inicial de conversão das expressões AND e THAT, é nessa parte onde é feita a separação quando a expressão é CLASSE vs CLASSE, ou CLASSE vs EXPRESSÃO (vice-versa) ou ainda, EXPRESSÃO vs EXPRESSÃO.
 
 \begin{figure}[H]
 \centering
@@ -467,36 +657,17 @@ Esse \textit{controller} é o responsável por converter o código fonte inserid
 \label{fig:codigoConversor}
 \end{figure}
 
-A Figura \ref{fig:codigoConversor} exibe o trecho de código em que ocorre o processo inicial de conversão de expressões AND e THAT, é nessa parte onde é feita a separação quando a expressão é CLASSE vs CLASSE, ou CLASSE vs EXPRESSÃO ou ainda, EXPRESSÃO vs EXPRESSÃO.
-
-\section{Linguagem Natural Controlada}
-
-Para que o usuário consiga utilizar o sistema, será necessário o conhecimento dessa linguagem natural que será definida a seguir, na Tabela \ref{tab:tabelaPalavrasReservadas} se encontra as palavras reservadas, suas respectivas descrições e um exemplo de sua aplicação.
-
-\begin{table}[H]
-\centering
-\caption{Palavras Reservadas}
-\label{tab:tabelaPalavrasReservadas}
-\begin{tabular}{|l|l|l|}
-\hline Reservado  & Descrição & Exemplo  \\ 
-\hline isa & \begin{tabular}[l]{@{}l@{}} Uma classe X é um \\tipo de classe Y.\end{tabular} & Gato isa Felino \\ \hline
-equivalent & \begin{tabular}[l]{@{}l@{}} Uma classe X é um tipo \\ de classe irmã de Y.\end{tabular} & JanelaBanheiro equivalent JanelaCasa \\ \hline and / that & \begin{tabular}[l]{@{}l@{}} Uma classe X interseção\\ com uma classe Y.\end{tabular} & (Correr and Pular) isa ExercicioFisico  \\ \hline or & \begin{tabular}[l]{@{}l@{}}Uma classe X disjunção\\ de uma classe Y. \end{tabular} & Trabalhar isa nor(Dormir or Comer) \\ \hline only & \begin{tabular}[l]{@{}l@{}}Uma propriedade X\\ only classe Y. \end{tabular} & podeLatir only Cachorro \\ \hline some & \begin{tabular}[l]{@{}l@{}}Uma propriedade X\\ some classe Y. \end{tabular} & andarNoMuro some Gato \\ \hline all & \begin{tabular}[l]{@{}l@{}}Uma propriedade X \\ all classe Y. \end{tabular} & comerGrama all Vaca \\ \hline not & Negação de uma Classe & not Gato \\ \hline nor & Negação de uma expressão & nor(Gato isa Felino) \\ \hline 
-\end{tabular}
-\end{table}
-
-Como visto de maneira resumida na Tabela \ref{tab:tabelaPalavrasReservadas}, na Figura \ref{fig:codigoFonteInicial} está o código fonte que o sistema mostra ao ser aberto, para que o usuário entenda o funcionamento da sintaxe.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=.8\textwidth]{Figuras/codigo_codigofonte_inicial.png}
-\caption{Código inicial}
-\label{fig:codigoFonteInicial}
-\end{figure}
-
 \subsection{Funcionalidades}
-NÃO SEI O QUE PODERIA COLOCAR AQUI
+O sistema possui algumas funcionalidades básicas no menu contextual (clique direito do mouse sobre o painel) ou na barra de ferramentas (Menu > \textit{Edit}), podendo variar de acordo com o painel, são elas: Copiar, Colar, Cortar, Selecionar tudo, Limpar, Desfazer e Refazer (ver Figura \ref{fig:uclnc}). Na tela \textit{Compiler} o usuário pode inserir sua Linguagem Natural Controlada, bem como compilar, salvar, carregar,  além das opções do menu contextual. 
 
-Aqui vc vai mostrar as funcionalidades do sistema, inclusive colocar diagramas de casos de uso em UML mostrando quais as funcionalidades os usuários realizam.operando a ferramenta.
+A tela \textit{Ontology} fornece ao usuário, além das opções do menu contextual: visualizar a ontologia proveniente da sua LNC e mudar formato da ontologia (RDF/XML, Latex, etc), ver Figura \ref{fig:ucontology}.
+
+Na tela \textit{Graph Viewer} é possível aumentar/diminuir zoom, movimentar nós, visualizar informações do nó, exportar o grafo (Json e PNG) e fazer filtros para simplificar o grafo, entre outros. Ver Figura \ref{fig:ucgv}.
+
+
+%NÃO SEI O QUE PODERIA COLOCAR AQUI
+%Aqui vc vai mostrar as funcionalidades do sistema, inclusive colocar diagramas de casos de uso em UML mostrando quais as funcionalidades os usuários realizam.operando a ferramenta.
+
 
 \subsection{Conclusões}
 Conclusões
@@ -505,11 +676,16 @@ Concluir o capítulo, pode deixar sem fazer que eu ajudo. No final da revisão q
 
 
 \chapter{Experimentos e Resultados}
+\label{chap:exp}
+
+\chapter{Conclusão}
 \label{chap:conclusao}
+
+\section{Trabalhos Futuros}
 
 TEXTO
 
-\bibliographystyle{estilo_ABNT}
+\bibliographystyle{sbc.bst}
 \bibliography{refs}
 \addcontentsline{toc}{chapter}{Bibliografia}
 

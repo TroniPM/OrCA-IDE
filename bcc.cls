@@ -575,7 +575,7 @@
 \newcommand{\@palavrasChave}{}
 \newcommand{\palavrasChave}[3]{
   \renewcommand{\@palavrasChave}{
-      #1. #2. #3}
+      #1. #2. #3.}
   \newcommand{\@palavrasChaveA}{
       #1}
   \newcommand{\@palavrasChaveB}{
@@ -673,9 +673,9 @@ Bacharel em Ciência da Computação da Unidade Acadêmica de Garanhuns da Unive
     %% Configura para utilizar o cabeçalho e rodapé definidos anteriormente.    
     \pagestyle{fancy}
     %% Define o módulo de citação abreviado(Harvard)
-    %% \citationmode{abbr}
+    %\citationmode{abbr}
     %% Define o estilo bibligráfico agsm(Harvard)
-    %%\bibliographystyle{agsm}
+    %%bibliographystyle{agsm}
 \addto\captionsportuguese{\def\bibname{\centerline{Bibliografia}}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
