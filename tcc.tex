@@ -1,6 +1,60 @@
 \documentclass{bcc}
 \usepackage{amssymb}
 
+%Para aparecer XML como codigo
+\usepackage{listings}
+\usepackage{color}
+%\definecolor{codegreen}{rgb}{0,0.6,0}
+%\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+%\definecolor{codepurple}{rgb}{0.58,0,0.82}
+%\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+%\lstdefinestyle{mystyle}{
+%    backgroundcolor=\color{backcolour},   
+%    commentstyle=\color{codegreen},
+%    keywordstyle=\color{magenta},
+%    numberstyle=\tiny\color{codegray},
+%    stringstyle=\color{codepurple},
+%    basicstyle=\footnotesize,
+%    breakatwhitespace=false,         
+%    breaklines=true,                 
+%    captionpos=b,                    
+%    keepspaces=true,                 
+%    numbers=left,                    
+%    numbersep=5pt,                  
+%    showspaces=false,                
+%    showstringspaces=false,
+%    showtabs=false,                  
+%    tabsize=2
+%}
+%\lstset{style=mystyle}
+
+\definecolor{maroon}{rgb}{0.5,0,0}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\lstdefinelanguage{xml}
+{
+  basicstyle=\ttfamily,
+  morestring=[s]{"}{"},
+  morecomment=[s]{?}{?},
+  morecomment=[s]{!--}{--},
+  commentstyle=\color{darkgreen},
+  moredelim=[s][\color{black}]{>}{<},
+  moredelim=[s][\color{red}]{\ }{=},
+  stringstyle=\color{blue},
+  identifierstyle=\color{maroon},
+  basicstyle=\footnotesize,
+  breakatwhitespace=false,         
+  breaklines=true,                 
+  captionpos=b,                    
+  keepspaces=true,                 
+  numbers=left,                    
+  numbersep=5pt,                  
+  showspaces=false,                
+  showstringspaces=false,
+  showtabs=false,                  
+  tabsize=2
+}
+%Para aparecer XML como codigo
+
 
 \titulo{OrCA IDE: Uma IDE geradora de Ontologias}
 \palavrasChave{Ontologia}{Linguagem Natural}{OWL}
@@ -55,9 +109,6 @@ INSERIR ABSTRACT
 \inicio
 \chapter{Introdução}
 
-TEXTO
-
-
 \section {Contextualização}
 
 O campo do Processamento de Linguagem Natural (PLN) visa converter a linguagem humana em uma representação formal que é fácil para os computadores manipularem. As aplicações finais atuais incluem a extração de informações, tradução automática, resumo, pesquisa e interfaces de computadores humanos \cite{collobert2008}.
@@ -66,21 +117,23 @@ O objetivo do PLN é construir modelos computacionais de linguagem natural para 
 
 Ontologias estão sendo reconhecidas como componentes importantes dos sistemas de informação e processamento de informações \cite{estival2004}. Os desenvolvedores de ontologia geralmente capturam os relacionamentos entre entidades como relacionamentos formais e lógicos. Para fazer isso, geralmente se utiliza a lógica descritiva \cite{liu2011}.
 
+As ontologias estabelecem um nível de abstração superior, não ambíguo e comum para vários domínios do conhecimento \cite{rocha2014}. Não há dúvida de que, em todos os casos, as ontologias oferecem uma maneira de abordar o significado dos termos (conceitos, relações) necessários para o processamento da informação \cite{estival2004}.
 
 \section{Definição do Problema}
 
+Atualmente, o processo de desenvolvimento de ontologias é em grande parte manual. Os usuários devem adicionar identificadores e seus sinônimos e relacionamentos, um por um. O investimento no desenvolvimento de ontologias é imenso \cite{liu2011}. Surge então a necessidade e a importância de facilitar e viabilizar esse desenvolvimento para que usuários com diversos níveis de conhecimento e experiência possam participar ativamente do desenvolvimento de ontologias.
+
+Existem muitas ferramentas de construções de ontologias que podem ser usadas, mas há algumas dificuldades para o especialista em domínio entender o significado entre essas abordagens, como a abordagem de geração pouco clara, a linguagem de ontologia não unificada e assim por diante \cite{zhou2010}. Esse grande número de ferramentas, muitas vezes requer um grande esforço para serem utilizadas, tanto por exigir um nível alto de conhecimento na área de web semântica quanto por demandar tempo e esforço para aprender a usá-las.
+
 Em seu trabalho \cite{estival2004} fornece algumas sugestões sobre como o processamento de linguagem natural pode se beneficiar do uso de ontologias. É apresentado um projeto de pesquisa em larga escala no qual ontologias são parte do processo de raciocínio utilizado para o gerenciamento de informações e para a apresentação de informações. No trabalho, o acesso dos usuários à informação e a apresentação de informações aos usuários são mediados via linguagem natural, e as ontologias utilizadas no componente de raciocínio são acopladas ao léxico utilizado no componente de linguagem natural.
 
-Caracterização do Problema:
-Por que o Problema é um problema:
-Algumas das Soluções Existentes e por que não são tão adequadas a solução do nosso problema:
-Solução Adotada (Nossa Solução):
-Motivação para a Solução Adotada:
-Resumo dos Resultados Obtidos nos experimentos:
+\cite{mousavi2013} apresenta um sistema baseado em PNL profundo, chamado OntoHarvester, um sistema não supervisionado gerador de ontologias, que gera automaticamente ontologias de domínio específico a partir de texto não estruturado, e produz resultados que superam as técnicas existentes em termos de precisão e cobertura.
+
 
 \section{Motivação e Justificativa}
 
-As ontologias estabelecem um nível de abstração superior, não ambíguo e comum para vários domínios do conhecimento \cite{rocha2014}. Não há dúvida de que, em todos os casos, as ontologias oferecem uma maneira de abordar o significado dos termos (conceitos, relações) necessários para o processamento da informação \cite{estival2004}.
+Através dos resultados obtidos nos testes realizados com a ferramenta desenvolvida, foi possível observar seu sucesso em gerar códigos OWL que representam ontologias, recebendo como entrada textos em linguagem natural. O uso de linguagem natural facilita a usabilidade, uma vez que o utilizador não precisa ter conhecimento em linguagens de programação, apenas conhecimento das palavras reservadas pelo compilador e como usá-las.
+
 
 
 \section{Objetivos}
@@ -490,8 +543,6 @@ Idiomas como o português, inglês e espanhol possuem um conjunto de regras e no
 
 \begin{table}[H]
 \centering
-\caption{Gramática OrCA IDE.}
-\label{tab:tabelaGramatica}
 \begin{tabular}{|l|l|}
 \hline Regra  & Definição  \\ 
 \hline <OP>  & \begin{tabular}[l]{@{}l@{}} some || all || only || and || or || isa || equivalent || that \end{tabular} \\
@@ -507,6 +558,8 @@ Idiomas como o português, inglês e espanhol possuem um conjunto de regras e no
 \end{tabular} \\
 \hline
 \end{tabular} 
+\caption{Gramática OrCA IDE.}
+\label{tab:tabelaGramatica}
 \end{table} 
 
 
@@ -516,13 +569,13 @@ Para que o usuário consiga utilizar o sistema, se faz necessário que ele possu
 
 \begin{table}[H]
 \centering
-\caption{Palavras Reservadas}
-\label{tab:tabelaPalavrasReservadas}
 \begin{tabular}{|c|l|l|}
 \hline Reservado  & Descrição & Exemplo  \\ 
 \hline isa & \begin{tabular}[l]{@{}l@{}} Uma classe X é um \\tipo de classe Y.\end{tabular} & Gato isa Felino \\ \hline
 equivalent & \begin{tabular}[l]{@{}l@{}} Uma classe X é um tipo \\ de classe irmã de Y.\end{tabular} & JanelaBanheiro equivalent JanelaCasa \\ \hline and / that & \begin{tabular}[l]{@{}l@{}} Uma classe X interseção\\ com uma classe Y.\end{tabular} & (Correr and Pular) isa ExercicioFisico  \\ \hline or & \begin{tabular}[l]{@{}l@{}}Uma classe X disjunção\\ de uma classe Y. \end{tabular} & Trabalhar isa nor(Dormir or Comer) \\ \hline only & \begin{tabular}[l]{@{}l@{}}Uma propriedade X\\ only classe Y. \end{tabular} & podeLatir only Cachorro \\ \hline some & \begin{tabular}[l]{@{}l@{}}Uma propriedade X\\ some classe Y. \end{tabular} & andarNoMuro some Gato \\ \hline all & \begin{tabular}[l]{@{}l@{}}Uma propriedade X \\ all classe Y. \end{tabular} & comerGrama all Vaca \\ \hline not & Negação de uma Classe & not Gato \\ \hline nor & Negação de uma expressão & nor(Gato isa Felino) \\ \hline 
 \end{tabular}
+\caption{Palavras Reservadas}
+\label{tab:tabelaPalavrasReservadas}
 \end{table}
 
 Como visto de maneira resumida na Tabela \ref{tab:tabelaPalavrasReservadas}, na Figura \ref{fig:codigoFonteInicial} está o código fonte que o sistema mostra ao ser aberto, para que o usuário entenda o funcionamento da sintaxe.
@@ -640,10 +693,79 @@ Concluímos que a ferramenta foi criada com o intuito de facilitar a criação d
 \label{chap:exp}
 Para realização dos experimentos, alguns axiomas foram extraídos da ontologia NTD \cite{ntdo}. %Essa ontologia tem como alvo modelar o domínio de doenças tropicais negligenciadas.%
 
-The Neglected Tropical Diseases (NTDs) are a set of diseases which persist in exactly the physical, psychosocial and economic situation of the poorest, most marginalized populations of the developing world. Most NTDs diseases are chronic diseases which are related to poverty as a promoter of parasitic, bacterial, and also viral or fungal infections. Although of major healthcare impact in developing and threshold countries NTDs are still seen as a rare event in developed countries. 
+%The Neglected Tropical Diseases (NTDs) are a set of diseases which persist in exactly the physical, psychosocial and economic situation of the poorest, most marginalized populations of the developing world. Most NTDs diseases are chronic diseases which are related to poverty as a promoter of parasitic, bacterial, and also viral or fungal infections. Although of major healthcare impact in developing and threshold countries NTDs are still seen as a rare event in developed countries.%
+
+As Doenças Tropicais Negligenciadas (em português DTN, em inglês NTD) são um conjunto de doenças que persistem na situação física, psicossocial e econômica das populações mais pobres e marginalizadas de países subdesenvolvidos. A maioria das doenças causadas por NTDs são doenças crônicas relacionadas à pobreza como promotoras de infecções parasíticas, bacterianas e também virais ou fúngicas. Apesar do grande impacto dos cuidados de saúde nos países em desenvolvimento e limítrofes, as NDTs ainda são vistas como um evento raro nos países desenvolvidos \cite{ntdo}.
 
 
+Para realizar os testes na ferramenta, foram utilizadas alguns axiomas, estes foram convertidos para a linguagem natural que é aceita pela OrCA.
 
+Na Figura \ref{fig:axioma1}, é possível ver o Axioma 1 e sua respectiva conversão para a LN na Figura \ref{fig:axioma1_ln}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.5\textwidth]{Figuras/axioma1.png}
+\caption{Axioma 1, retirado da NTDO} 
+\label{fig:axioma1}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.8\textwidth]{Figuras/axioma1_ln.png}
+\caption{Axioma 1 convertido} 
+\label{fig:axioma1_ln}
+\end{figure}
+
+Na Figura \ref{fig:axioma2}, é possível ver o Axioma 2 e sua respectiva conversão para a LN na Figura \ref{fig:axioma2_ln}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.8\textwidth]{Figuras/axioma2.png}
+\caption{Axioma 2, retirado da NTDO} 
+\label{fig:axioma2}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.9\textwidth]{Figuras/axioma2_ln.png}
+\caption{Axioma 2 convertido} 
+\label{fig:axioma2_ln}
+\end{figure}
+
+Na Figura \ref{fig:axioma3}, é possível ver o Axioma 3 e sua respectiva conversão para a LN na Figura \ref{fig:axioma3_ln}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.6\textwidth]{Figuras/axioma3.png}
+\caption{Axioma 3, retirado da NTDO} 
+\label{fig:axioma3}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.8\textwidth]{Figuras/axioma3_ln.png}
+\caption{Axioma 3 convertido} 
+\label{fig:axioma3_ln}
+\end{figure}
+
+Na Figura \ref{fig:axioma4}, é possível ver o Axioma 4 e sua respectiva conversão para a LN na Figura \ref{fig:axioma4_ln}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.8\textwidth]{Figuras/axioma4.png}
+\caption{Axioma 4, retirado da NTDO} 
+\label{fig:axioma4}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.9\textwidth]{Figuras/axioma4_ln.png}
+\caption{Axioma 4 convertido} 
+\label{fig:axioma4_ln}
+\end{figure}
+
+No que diz respeito a conversão dos axiomas, a única diferença significativa diz respeito a cardinalidade. A OrCA não permite definir cardinalidade, seja ela para indivíduos, classes ou propriedades. Cardinalidade foi substituída pela palavra reservada \textit{only}.
+Os resultados completos de cada um dos testes realizados, podem ser encontrados no apêndice A.
 
 
 \chapter{Conclusão}
@@ -656,5 +778,62 @@ TEXTO
 \bibliographystyle{sbc.bst}
 \bibliography{refs}
 \addcontentsline{toc}{chapter}{Bibliografia}
+
+\appendix
+\chapter{Diversos}
+\section{Instalando a OrCA IDE}
+Acesse a url https://github.com/TroniPM/IAproject, clique no botão \textit{Clone or download}, e posteriormente no botão \textit{Download ZIP}, como mostrado na Figura \ref{fig:install1}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.7\textwidth]{Figuras/install1.png}
+\caption{Botões para efetuar download} 
+\label{fig:install1}
+\end{figure}
+
+Extraia o arquivo baixado, abra o Netbeans (versão superior ou igual a 8.0) e clique em "Arquivo", e posteriormente em "Abrir Projeto" (Figura \ref{fig:install2}). Selecione a com ícone "ma" dentro da pasta extraída (Figura \ref{fig:install3}) e o projeto será aberto (Figura \ref{fig:install4}) e estará pronto para edição e execução. O Plugin JAVA SE é obrigatório para execução deste projeto, visto que ele fornece suporte ao Maven no Netbeans, com mostrado na Figura \ref{fig:install5}. Por padrão esse plugin já vem instalado, mas caso não esteja instalado será necessário a instalação. Uma conexão com internet também é necessária para baixar os pacotes necessários.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.7\textwidth]{Figuras/install2.png}
+\caption{Abrindo projeto no netbeans} 
+\label{fig:install2}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.9\textwidth]{Figuras/install3.png}
+\caption{Menu para abrir projeto} 
+\label{fig:install3}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.5\textwidth]{Figuras/install4.png}
+\caption{Projeto aberto e pronto para edição} 
+\label{fig:install4}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.9\textwidth]{Figuras/install5.png}
+\caption{Plugin que dá suporte ao Maven no Netbeans} 
+\label{fig:install5}
+\end{figure}
+
+Após isso, é necessário clicar com o botão direito do mouse sobre a pasta raiz do projeto e depois em \textit{Clean and Build} com mostra a Figura \ref{fig:install6}, e após isso, o projeto está pronto para ser executado.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.6\textwidth]{Figuras/install6.png}
+\caption{Clicar no botão \textit{Clean and Build}, e depois \textit{Run}} 
+\label{fig:install6}
+\end{figure}
+
+\section{Saídas}
+\lstinputlisting[language=xml, caption=Saída do Axioma 1] {Axiomas/axioma1.xml}
+\lstinputlisting[language=xml, caption=Saída do Axioma 2] {Axiomas/axioma2.xml}
+\lstinputlisting[language=xml, caption=Saída do Axioma 3] {Axiomas/axioma3.xml}
+\lstinputlisting[language=xml, caption=Saída do Axioma 4] {Axiomas/axioma4.xml}
 
 \end{document}

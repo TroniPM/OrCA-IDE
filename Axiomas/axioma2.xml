@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="new2.com/#"
+     xml:base="new2.com/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="new2.com/#"/>
+	
+    <owl:ObjectProperty rdf:about="new2.com/#hasGeographicLocation"/>
+	
+    <owl:ObjectProperty rdf:about="new2.com/#precededBy">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Class>
+                        <owl:unionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="new2.com/#DeathEvent"/>
+                            <rdf:Description rdf:about="new2.com/#PathologicalProcess"/>
+                        </owl:unionOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+	
+    <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="new2.com/#precededBy"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="new2.com/#DeathEvent"/>
+                                    <rdf:Description rdf:about="new2.com/#PathologicalProcess"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+	
+    <owl:Class rdf:about="new2.com/#Action">
+        <owl:equivalentClass rdf:resource="new2.com/#HealthSurveillanceNotificationAction"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="new2.com/#DeathEvent"/>
+	
+    <owl:Class rdf:about="new2.com/#HealthSurveillanceNotificationAction"/>
+	
+    <owl:Class rdf:about="new2.com/#LivingOrganism">
+        <rdfs:subClassOf rdf:resource="new2.com/#Organism"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="new2.com/#Organism"/>
+	
+    <owl:Class rdf:about="new2.com/#PathologicalProcess"/>
+	
+    <owl:Class rdf:about="new2.com/#SpatialRegion">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="new2.com/#hasGeographicLocation"/>
+                <owl:someValuesFrom rdf:resource="new2.com/#SpatialRegion"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+	
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
+        </owl:intersectionOf>
+        <rdfs:subClassOf rdf:resource="new2.com/#Action"/>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
+        </owl:intersectionOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="new2.com/#SpatialRegion"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="new2.com/#SpatialRegion"/>
+        </owl:intersectionOf>
+        <rdfs:subClassOf rdf:resource="new2.com/#LivingOrganism"/>
+    </owl:Class>
+    <owl:Class>
+        <owl:intersectionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="new2.com/#SpatialRegion"/>
+        </owl:intersectionOf>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2002/07/owl#Thing"/>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+</rdf:RDF>
