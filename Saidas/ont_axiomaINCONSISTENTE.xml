@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="new1.com/#"
+     xml:base="new1.com/"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="new1.com/#"/>
+	
+    <owl:ObjectProperty rdf:about="new1.com/#madeBy"/>
+
+    <owl:Class rdf:about="new1.com/#Brand">
+        <rdfs:subClassOf rdf:resource="new1.com/#Concept"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="new1.com/#CG125">
+        <rdfs:subClassOf rdf:resource="new1.com/#Motorcycle"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="new1.com/#Car">
+        <rdfs:subClassOf rdf:resource="new1.com/#Vehicle"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf rdf:resource="new1.com/#Motorcycle"/>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+	
+    <owl:Class rdf:about="new1.com/#Concept"/>
+	
+    <owl:Class rdf:about="new1.com/#Fiat">
+        <rdfs:subClassOf rdf:resource="new1.com/#Brand"/>
+        <rdfs:subClassOf rdf:resource="new1.com/#Uno"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="new1.com/#madeBy"/>
+                <owl:allValuesFrom rdf:resource="new1.com/#Fiat"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+	
+    <owl:Class rdf:about="new1.com/#Honda">
+        <rdfs:subClassOf rdf:resource="new1.com/#Brand"/>
+        <rdfs:subClassOf rdf:resource="new1.com/#CG125"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="new1.com/#madeBy"/>
+                <owl:allValuesFrom rdf:resource="new1.com/#Honda"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+	
+    <owl:Class rdf:about="new1.com/#Motorcycle">
+        <rdfs:subClassOf rdf:resource="new1.com/#Car"/>
+        <rdfs:subClassOf rdf:resource="new1.com/#Vehicle"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="new1.com/#Uno">
+        <rdfs:subClassOf rdf:resource="new1.com/#Car"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="new1.com/#Vehicle"/>
+</rdf:RDF>

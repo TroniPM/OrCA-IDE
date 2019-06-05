@@ -1,0 +1,44 @@
+Can perform reasoning? true.
+
+There are no inconsistence classes.
+
+DEDUCTION:
+
+IF:
+[(Action EquivalentTo HealthSurveillanceNotificationAction)]
+THEN:
+	 EquivalentClasses: Thing, Action, HealthSurveillanceNotificationAction, LivingOrganism, Organism, SpatialRegion
+IF:
+[(LivingOrganism SubClassOf Organism)]
+THEN:
+	 EquivalentClasses: Thing, Action, HealthSurveillanceNotificationAction, LivingOrganism, Organism, SpatialRegion
+IF:
+[NoAxiom: <new1.com/#Organism>]
+THEN:
+	 EquivalentClasses: Thing, Action, HealthSurveillanceNotificationAction, LivingOrganism, Organism, SpatialRegion
+IF:
+[NoAxiom: <new1.com/#PathologicalProcess>]
+THEN:
+	PathologicalProcess SubClassOf LivingOrganism
+	PathologicalProcess SubClassOf HealthSurveillanceNotificationAction
+	PathologicalProcess SubClassOf Action
+	PathologicalProcess SubClassOf Organism
+	PathologicalProcess SubClassOf Thing
+	PathologicalProcess SubClassOf SpatialRegion
+IF:
+[(Action EquivalentTo HealthSurveillanceNotificationAction)]
+THEN:
+	 EquivalentClasses: Thing, Action, HealthSurveillanceNotificationAction, LivingOrganism, Organism, SpatialRegion
+IF:
+[(SpatialRegion SubClassOf hasGeographicLocation some SpatialRegion)]
+THEN:
+	 EquivalentClasses: Thing, Action, HealthSurveillanceNotificationAction, LivingOrganism, Organism, SpatialRegion
+IF:
+[NoAxiom: <new1.com/#DeathEvent>]
+THEN:
+	DeathEvent SubClassOf HealthSurveillanceNotificationAction
+	DeathEvent SubClassOf LivingOrganism
+	DeathEvent SubClassOf Organism
+	DeathEvent SubClassOf Thing
+	DeathEvent SubClassOf Action
+	DeathEvent SubClassOf SpatialRegion

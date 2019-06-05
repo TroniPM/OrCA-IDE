@@ -1,0 +1,33 @@
+Can perform reasoning? true.
+
+There are no inconsistence classes.
+
+DEDUCTION:
+
+IF:
+[(BiologicalDeathProcess SubClassOf precededBy some BiologicalDeathProcess)]
+THEN:
+	 EquivalentClasses: BiologicalDeathProcess, LivingOrganism, Process, SpatialRegion
+	BiologicalDeathProcess SubClassOf InstantaneousProcess
+IF:
+[(DeathEvent SubClassOf InstantaneousProcess)]
+THEN:
+IF:
+[(LivingOrganism SubClassOf hasDeathPatient some LivingOrganism)]
+THEN:
+	 EquivalentClasses: BiologicalDeathProcess, LivingOrganism, Process, SpatialRegion
+	LivingOrganism SubClassOf InstantaneousProcess
+IF:
+[NoAxiom: <new1.com/#InstantaneousProcess>]
+THEN:
+	InstantaneousProcess SubClassOf Thing
+IF:
+[(SpatialRegion SubClassOf hasGeographicLocation some SpatialRegion)]
+THEN:
+	 EquivalentClasses: BiologicalDeathProcess, LivingOrganism, Process, SpatialRegion
+	SpatialRegion SubClassOf InstantaneousProcess
+IF:
+[(Process SubClassOf {hasPrimaryDeathCause})]
+THEN:
+	 EquivalentClasses: BiologicalDeathProcess, LivingOrganism, Process, SpatialRegion
+	Process SubClassOf InstantaneousProcess

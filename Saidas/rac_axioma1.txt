@@ -1,0 +1,22 @@
+Can perform reasoning? true.
+
+There are no inconsistence classes.
+
+DEDUCTION:
+
+IF:
+[(TimeInterval SubClassOf hasDuration some TimeInterval) AND
+(TimeInterval SubClassOf Process)]
+THEN:
+IF:
+[(Chronoid SubClassOf {projectsTo})]
+THEN:
+	Chronoid SubClassOf Thing
+IF:
+[(PointInTime SubClassOf hasPointInTime some PointInTime)]
+THEN:
+	PointInTime SubClassOf Thing
+IF:
+[NoAxiom: <new1.com/#Process>]
+THEN:
+	Process SubClassOf Thing

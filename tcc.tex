@@ -53,6 +53,22 @@
   showtabs=false,                  
   tabsize=2
 }
+
+\lstdefinelanguage{txt}
+{
+  basicstyle=\ttfamily,
+  basicstyle=\footnotesize,
+  breakatwhitespace=true,         
+  breaklines=true,                 
+  captionpos=b,                    
+  keepspaces=true,                 
+  numbers=none,                    
+  numbersep=5pt,                  
+  showspaces=false,                
+  showstringspaces=false,
+  showtabs=false,                  
+  tabsize=2
+}
 %Para aparecer XML como codigo
 
 
@@ -765,8 +781,24 @@ Na Figura \ref{fig:axioma4}, é possível ver o Axioma 4 e sua respectiva conver
 \end{figure}
 
 No que diz respeito a conversão dos axiomas, a única diferença significativa diz respeito a cardinalidade. A OrCA não permite definir cardinalidade, seja ela para indivíduos, classes ou propriedades. Cardinalidade foi substituída pela palavra reservada \textit{only}.
-Os resultados completos de cada um dos testes realizados, podem ser encontrados no apêndice A.
+Os resultados completos das ontologias destes testes podem ser encontrados no Apêndice \ref{chap:apOntologia}, os raciocínios podem ser vistos no Apêndice \ref{chap:apRaciocinio}.
 
+Outro caso importante é quanto a inconsistência. Foram utilizados os axiomas da Figura \ref{fig:axioma_inconsistencia}. Quando há um conflito entre as proposições, uma \textit{flag} é acionada e as classes inconsistentes são listadas (ver Figura \ref{fig:axioma_inconsistencia_rac}), facilitando a criação de ontologias sem inconsistências. A saída completa desse ontologia está no Apêndice \ref{ap:ont_inconsistente} e a saída completa do Raciocínio está no Apêndice \ref{ap:rac_inconsistente}
+
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.5\textwidth]{Figuras/axiomas_inconsistencia.png}
+\caption{Axiomas utilizados para gerar inconsistência} 
+\label{fig:axioma_inconsistencia}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.6\textwidth]{Figuras/axiomas_inconsistencia_rac.png}
+\caption{Classes inconsistentes} 
+\label{fig:axioma_inconsistencia_rac}
+\end{figure}
 
 \chapter{Conclusão}
 \label{chap:conclusao}
@@ -780,8 +812,9 @@ TEXTO
 \addcontentsline{toc}{chapter}{Bibliografia}
 
 \appendix
-\chapter{Diversos}
-\section{Instalando a OrCA IDE}
+\chapter{Instalando a OrCA IDE}
+\label{chap:apInstalacao}
+%\section *{Instalando a OrCA IDE}
 Acesse a url https://github.com/TroniPM/IAproject, clique no botão \textit{Clone or download}, e posteriormente no botão \textit{Download ZIP}, como mostrado na Figura \ref{fig:install1}.
 
 \begin{figure}[H]
@@ -830,10 +863,24 @@ Após isso, é necessário clicar com o botão direito do mouse sobre a pasta ra
 \label{fig:install6}
 \end{figure}
 
-\section{Saídas}
-\lstinputlisting[language=xml, caption=Saída do Axioma 1] {Axiomas/axioma1.xml}
-\lstinputlisting[language=xml, caption=Saída do Axioma 2] {Axiomas/axioma2.xml}
-\lstinputlisting[language=xml, caption=Saída do Axioma 3] {Axiomas/axioma3.xml}
-\lstinputlisting[language=xml, caption=Saída do Axioma 4] {Axiomas/axioma4.xml}
+%\appendix
+\chapter{Ontologias geradas} 
+%\section *{Ontologias geradas}
+\label{chap:apOntologia}
+\lstinputlisting[language=xml, caption=Ontologia Axioma 1] {Saidas/ont_axioma1.xml}
+\lstinputlisting[language=xml, caption=Ontologia Axioma 2] {Saidas/ont_axioma2.xml}
+\lstinputlisting[language=xml, caption=Ontologia Axioma 3] {Saidas/ont_axioma3.xml}
+\lstinputlisting[language=xml, caption=Ontologia Axioma 4] {Saidas/ont_axioma4.xml}
+\lstinputlisting[label=ap:ont_inconsistente, language=xml, caption=Ontologia Inconsistente] {Saidas/ont_axiomaINCONSISTENTE.xml}
+
+%\appendix
+\chapter{Raciocínios gerados}
+%\section{Raciocínios gerados}
+\label{chap:apRaciocinio}
+\lstinputlisting[language=txt, caption=Raciocínio Axioma 1] {Saidas/rac_axioma1.txt}
+\lstinputlisting[language=txt, caption=Raciocínio Axioma 2] {Saidas/rac_axioma2.txt}
+\lstinputlisting[language=txt, caption=Raciocínio Axioma 3] {Saidas/rac_axioma3.txt}
+\lstinputlisting[language=txt, caption=Raciocínio Axioma 4] {Saidas/rac_axioma4.txt}
+\lstinputlisting[label=ap:rac_inconsistente, language=txt, caption=Raciocínio Ontologia Inconsistenet] {Saidas/rac_axiomaINCONSISTENTE.txt}
 
 \end{document}
