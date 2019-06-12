@@ -72,9 +72,9 @@
 %Para aparecer XML como codigo
 
 
-\titulo{OrCA IDE: Uma IDE geradora de Ontologias}
-\palavrasChave{Ontologia}{Linguagem Natural}{OWL}
-\keywords{Ontology, Natural Language, OWL}
+\titulo{OrCA IDE: Uma IDE Geradora de Ontologias}
+\palavrasChave{Ontologias}{Processamento de Linguagem Natural}{Raciocínio Automático}
+\keywords{Ontologies, Natural Language Processing, Automated Reasoning}
 
 \autor{Paulo Mateus da Silva}{paulomatew@gmail.com}
 
@@ -82,12 +82,12 @@
 %\orientadorDois{John von Neumann}{UAG}{UFRPE}
 % \orientadorTres*{Ada Lovelace}{UAG}{UFRPE} % Se feminino use *, tanto para orientador ou examinador
 
-\examinador{John Hopcroft}{UAG}{UFRPE}
+\examinador{Assuero Ximenes Fonseca}{UAG}{UFRPE}
 \examinadorDois{Richard Karp}{UAG}{UFRPE}
-\examinadorTres{Stephen Cook}{UAG}{UFRPE}
-\examinadorQuatro{John Backus}{UAG}{UFRPE}
+%\examinadorTres{Stephen Cook}{UAG}{UFRPE}
+%\examinadorQuatro{John Backus}{UAG}{UFRPE}
 
-\dataMesAno{28}{maio}{2019}
+\dataMesAno{14}{junho}{2019}
 
 \begin{document}
 
@@ -125,30 +125,43 @@ INSERIR ABSTRACT
 \inicio
 \chapter{Introdução}
 
-\section {Contextualização}
-
-O campo do Processamento de Linguagem Natural (PLN) visa converter a linguagem humana em uma representação formal que é fácil para os computadores manipularem. As aplicações finais atuais incluem a extração de informações, tradução automática, resumo, pesquisa e interfaces de computadores humanos \cite{collobert2008}.
-
-O objetivo do PLN é construir modelos computacionais de linguagem natural para sua análise e desenvolvimento. Há uma motivação tecnológica para a construção de sistemas de computadores inteligentes como sistema de tradução automática, interfaces de linguagem natural para bancos de dados, interfaces homem-máquina para computadores em geral, sistemas de compreensão de fala, sistemas de análise e compreensão de textos, sistema de instrução assistido por computador, sistemas que leem e entendem texto impresso ou manuscrito \cite{bharati1995}.
-
-Ontologias estão sendo reconhecidas como componentes importantes dos sistemas de informação e processamento de informações \cite{estival2004}. Os desenvolvedores de ontologia geralmente capturam os relacionamentos entre entidades como relacionamentos formais e lógicos. Para fazer isso, geralmente se utiliza a lógica descritiva \cite{liu2011}.
+A razão pela qual ontologias estão se tornando tão populares é em grande parte devido ao que elas prometem: um entendimento comum e compartilhado de alguns domínios que podem ser comunicados entre pessoas e sistemas \cite{fensel2001}. Além disso, elas provaram ser um elemento essencial em muitas aplicações, pois são usados em sistemas de agentes, sistemas de gerenciamento de conhecimento e plataformas de comércio eletrônico. Podem também gerar linguagem natural, integrar informações inteligentes, fornecer acesso baseado na semântica à Internet e extrair informações de textos, além de serem usadas em muitas outras aplicações para declarar explicitamente o conhecimento incorporado neles \cite{gomez2002}.
 
 As ontologias estabelecem um nível de abstração superior, não ambíguo e comum para vários domínios do conhecimento \cite{rocha2014}. Não há dúvida de que, em todos os casos, as ontologias oferecem uma maneira de abordar o significado dos termos (conceitos, relações) necessários para o processamento da informação \cite{estival2004}.
 
+\section {Contextualização}
+
+Sistemas que processam Linguagem Natural (ou de Processamento de Linguagem Natural, PLN) têm o intuito de converter a linguagem em uma representação formal para que computadores entendam, manipulem e troquem informações com usuários, para isso, faz-se necessário a integração de diversas áreas como Processamento de Linguagem Natural \cite{brill1995}, Representação de Conhecimento \cite{levesque1986} e Raciocínio Automático \cite{wos1984}. A junção das diversas áreas de conhecimento faz do PLN uma ferramenta poderosa, possibilitando que uma linguagem humana qualquer possa ser entendida por uma máquina.
+
+Com PLN é possível descobrir verbos, sujeitos, sinônimos e até mesmo identificar conceitos (desde que o programa possua um vocabulário controlado) em um texto. Mas para tarefas mais complexas, é necessário a utilização de ontologias. Ontologias podem ser usadas para inferências complexas e derivação de regras necessárias para a interpretação semântica e sistemas de perguntas e respostas. Por essa razão, as ontologias têm sido de particular interesse para pesquisadores que desenvolvem sistemas PLN \cite{liu2011}.
+
+O termo ontologia existe em diversas áreas, e até mesmo na esfera da computação a definição pode variar, mesmo assim, podemos dizer que uma ontologia é uma especificação de uma conceito \cite{guarino2009}, ou seja, é um modelo de dados que representa um conjunto de conceitos dentro de um domínio de conhecimento, assim como o relacionamento desses conceitos \cite{estival2004}.
+
+Ontologias estão sendo reconhecidas como componentes importantes dos sistemas de informação e processamento de informações \cite{estival2004}. Por isso, nem todos os criadores de ontologias são programadores ou de áreas correlatas a tecnologia da informação. Assim sendo, fez-se necessário a criação de \textit{softwares} capazes de criar ontologias e abstrair este conhecimento, a fim de que qualquer pessoa possa criar sua ontologia sem conhecimento em áreas que não seja de seu interesse. Existem muitas ferramentas que são capazes de criar ontologias, entre elas \textit{Protégé} \cite{noy2001} e \textit{yEd Graph Editor}. Porém devido a quantidade de plugins e recursos disponíveis dentro dessas ferramentas, pode acabar confundindo e dificultando o processo de criação do usuário, perdendo a sua utilidade e deixando de cumprir com suas finalidades.
+
+A OrCA IDE surgiu com o objetivo de ser um \textit{software} de criação de ontologias simples e rápido, capaz de criar, editar e visualizar ontologias (gerada a partir de PLN), em contra ponto ao \textit{Protégé}. Embora o \textit{Protégé} possua diversos recursos, funções e plugins, a OrCA tem como objetivo ser a versão peso-pena, englobando as principais funções e sendo o mais conciso possível, permitindo ao usuário a criação e visualização da ontologia (textual e gráfica), fazendo com que a curva de aprendizagem seja muito menor. 
+
+%Os desenvolvedores de ontologias geralmente capturam os relacionamentos entre entidades como relacionamentos formais e lógicos. Para fazer isso, geralmente se utiliza a lógica descritiva \cite{liu2011}.
+
 \section{Definição do Problema}
 
-Atualmente, o processo de desenvolvimento de ontologias é em grande parte manual. Os usuários devem adicionar identificadores e seus sinônimos e relacionamentos, um por um. O investimento no desenvolvimento de ontologias é imenso \cite{liu2011}. Surge então a necessidade e a importância de facilitar e viabilizar esse desenvolvimento para que usuários com diversos níveis de conhecimento e experiência possam participar ativamente do desenvolvimento de ontologias.
+Atualmente, o processo de desenvolvimento de ontologias é em grande parte manual, mesmo usando algumas ferramentas e processos de desenvolvimento. Os usuários devem adicionar identificadores e seus sinônimos e relacionamentos, um por um. O investimento no desenvolvimento de ontologias é imenso \cite{liu2011}. Surge então a necessidade e a importância de facilitar e viabilizar esse desenvolvimento para que usuários com diversos níveis de conhecimento e experiência possam participar ativamente do processo de desenvolvimento de ontologias.
 
-Existem muitas ferramentas de construções de ontologias que podem ser usadas, mas há algumas dificuldades para o especialista em domínio entender o significado entre essas abordagens, como a abordagem de geração pouco clara, a linguagem de ontologia não unificada e assim por diante \cite{zhou2010}. Esse grande número de ferramentas, muitas vezes requer um grande esforço para serem utilizadas, tanto por exigir um nível alto de conhecimento na área de web semântica quanto por demandar tempo e esforço para aprender a usá-las.
+Existem muitas ferramentas de construção de ontologias que podem ser utilizadas. Esse grande número de ferramentas muitas vezes requer um grande esforço para serem utilizadas e uma curva de aprendizado alta. Um exemplo dessas ferramentas é o \textit{Protégé}, que é uma ferramenta de autoria de ontologias, porém, como muitas outras ferramentas similares, ela exige habilidades especializadas em engenharia de ontologia \cite{funk2007}. Além destas habilidades, muitas vezes é requerido um alto nível de conhecimento na área de web semântica e também demanda tempo e esforço para aprender a usá-las, devido a quantidade de recursos e funcionalidades, prejudicando ainda mais o processo criativo do usuário.
+% principalmente se a equipe for desenvolver com o protégé
 
-Em seu trabalho \cite{estival2004} fornece algumas sugestões sobre como o processamento de linguagem natural pode se beneficiar do uso de ontologias. É apresentado um projeto de pesquisa em larga escala no qual ontologias são parte do processo de raciocínio utilizado para o gerenciamento de informações e para a apresentação de informações. No trabalho, o acesso dos usuários à informação e a apresentação de informações aos usuários são mediados via linguagem natural, e as ontologias utilizadas no componente de raciocínio são acopladas ao léxico utilizado no componente de linguagem natural.
+Diante deste cenário, surge a necessidade de uma ferramenta que tenha o objetivo de facilitar e viabilizar o processo de desenvolvimento de ontologias, permitindo que esse processo seja mais simples, e não exija do usuário conhecimento prévio de linguagem de programação ou web semântica e que não seja muito complexa em seu uso, torando maior um número de usuários que poderão participar ativamente da criação de ontologias. Para mitigar tais problemas, surgiu a ideia da OrCa IDE.
 
-\cite{mousavi2013} apresenta um sistema baseado em PNL profundo, chamado OntoHarvester, um sistema não supervisionado gerador de ontologias, que gera automaticamente ontologias de domínio específico a partir de texto não estruturado, e produz resultados que superam as técnicas existentes em termos de precisão e cobertura.
+Alguns trabalhos similares foram encontrados, como o sistema apresentado em \cite{mousavi2013} que é baseado em PLN, chamado OntoHarvester; um gerador de ontologias distribuído (utilizando os serviços da Amazon EC2 e S3) e não supervisionado, que gera automaticamente ontologias de um domínio a partir de texto não estruturado. Como a definição mostra, tem como objetivo grandes blocos de textos como entrada, assim como gerar grandes ontologias como saída, que difere do objetivo da OrCA. 
+
+No trabalho feito em \cite{wachter2011} os autores apresentam o DOG4DAG que é uma ferramenta de geração de ontologias no OBO-edit \cite{day2007} que visa facilitar o trabalho dos engenheiros de ontologia, que criam ontologias a partir do zero ou estendem as ontologias existentes. Porém o objetivo apresentado é o de facilitar o processo de desenvolvimento para usuário que já trabalham e possuem conhecimento de ontologias, diferentemente da soluçao adotada pela OrCa, o DOG4DAG não isenta o usuários de conhecimentos mais profundos.
 
 
-\section{Motivação e Justificativa}
+TRABALHOS SIMILARES DE GERADORES DE ONTOLOGIA
+MOSTRAR O QUE FALTA NELES
 
-Através dos resultados obtidos nos testes realizados com a ferramenta desenvolvida, foi possível observar seu sucesso em gerar códigos OWL que representam ontologias, recebendo como entrada textos em linguagem natural. O uso de linguagem natural facilita a usabilidade, uma vez que o utilizador não precisa ter conhecimento em linguagens de programação, apenas conhecimento das palavras reservadas pelo compilador e como usá-las.
+Através dos resultados obtidos nos testes realizados com a ferramenta desenvolvida, foi possível observar seu sucesso em gerar códigos OWL que representam ontologias, recebendo como entrada textos em linguagem natural. O uso de linguagem natural facilita a usabilidade, diminuindo a curva de aprendizagem, uma vez que o utilizador não precisa ter conhecimento em linguagens de programação, web semântica ou engenharia de ontologias, apenas conhecimento das palavras reservadas pelo compilador e como usá-las.
+
 
 
 
@@ -171,9 +184,6 @@ O objetivo geral deste trabalho foi desenvolver uma ferramenta computacional bas
 •	Construir uma ferramenta capaz de realizar raciocínio de subsunção deduzindo que classes são subclasses de outras, a partir de suas respectivas descrições;
 
 •	Detectar e verificar inconsistências em tempo de desenvolvimento nas ontologias construídas.
-
-
-\section{Escopo e Limitações}
 
 \section{Organização do Texto}
 
