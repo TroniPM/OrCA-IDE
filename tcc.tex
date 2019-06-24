@@ -135,7 +135,7 @@ O termo ontologia existe em diversas áreas, em computação o termo recebe a se
 
 Ontologias estão são componentes importantes dos sistemas de informação e processamento de informações \cite{estival2004}. Por isso, nem todos os desenvolvedores de ontologias são programadores ou de áreas correlatas a tecnologia da informação. Assim sendo, fez-se necessário a criação de \textit{softwares} capazes de criar ontologias e mitigar a dificuldade de sua construção, possibilitando que profissionais interessados em seu desenvolvimento possam construir e desenvolver suas bases de conhecimento modeladas como ontologias. Existem muitas ferramentas que são capazes de criar ontologias, entre elas \textit{Protégé} \cite{noy2001} e \textit{yEd Graph Editor}. Porém devido a quantidade de plugins e recursos disponíveis dentro dessas ferramentas, pode acabar dificultando o processo de desenvolvimento dos usuários.
 
-A OrCA IDE surgiu com o objetivo de ser um \textit{software} de criação de ontologias simples e rápido, capaz de criar, editar e visualizar ontologias (gerada a partir de PLN), em contra ponto ao \textit{Protégé}. Embora o \textit{Protégé} possua diversos recursos, funções e plugins, a OrCA tem como objetivo ser a versão \textit{clean} e baseada em PLN, englobando as principais funções necessárias no processo de desenvolvimento de ontologias e sendo o mais conciso possível, permitindo ao usuário a criação e visualização da ontologia (textual e gráfica), fazendo com que a curva de aprendizagem seja menor. 
+A OrCA IDE (\textit{Ontology vieweR and CreAtor Integrated Development Environment}) surgiu com o objetivo de ser um \textit{software} de criação de ontologias simples e rápido, capaz de criar, editar e visualizar ontologias (gerada a partir de PLN), em contra ponto ao \textit{Protégé}. Embora o \textit{Protégé} possua diversos recursos, funções e plugins, a OrCA tem como objetivo ser a versão \textit{clean} e baseada em PLN, englobando as principais funções necessárias no processo de desenvolvimento de ontologias e sendo o mais conciso possível, permitindo ao usuário a criação e visualização da ontologia (textual e gráfica), fazendo com que a curva de aprendizagem seja menor. 
 
 %Os desenvolvedores de ontologias geralmente capturam os relacionamentos entre entidades como relacionamentos formais e lógicos. Para fazer isso, geralmente se utiliza a lógica descritiva \cite{liu2011}.
 
@@ -708,21 +708,62 @@ Concluímos que a ferramenta foi criada com o intuito de facilitar a criação d
 
 \chapter{Experimentos e Resultados}
 \label{chap:exp}
+\section{Método}
+A realização dos experimentos foi dividido em três etapas: 
 
-\section{Material e Método}
+\textbf{Etapa um}:
+Foi verificado a capacidade de construção de ontologias a partir de linguagem natural, bem como a validação da ontologia criada, tendo como base axiomas de uma ontologia já existente. 
 
-Os experimentos foram realizados através da utilização dos seguintes materiais:
-\newline
-\newline
-\textbf{Extração de axiomas de uma ontologia existente}: para realização dos experimentos, alguns axiomas foram extraídos da ontologia NTDO (\textit{Neglected Tropical Disease Ontology} -
-Ontologia de Doenças Tropicais Negligenciadas). A ontologia utilizada tem o objetivo de representar um domínio com relevância e impacto reconhecido pela literatura e por instituições de saúde pública. Ela descreve detalhadamente o processo de transmissão de doenças e o falecimento de indivíduos que podem vir a ocorrer a partir da doença transmitida \cite{ntdo}.
-\newline
-\newline
-\textbf{Análise das Inferências}: para verificar se as inferências feitas pela ferramenta OrCA estão corretas, foi utilizada a ferramenta \textit{protègè}, que é a ferramenta mais utilizadas para edição de ontologias, para fazer uma comparação dos resultados.
-\newline
-\newline
-\textbf{Análise das Inconsistências}: 
+\textbf{Etapa dois}:
+Se deu pela verificação de inconsistência dos axiomas gerados através da etapa um. Como foram utilizados axiomas de uma ontologia real, não existiam inconsistências, desta forma, foram criados axiomas específicos para gerar inconsistências e testar a capacidade da OrCA.
 
+\textbf{Etapa três}:
+Foi verificado a ontologia inferida pela OrCA, utilizando como base a ontologia gerada na etapa um. Para ter um comparativo, a mesma ontologia gerada na etapa um foi processada pelo \textit{Protègè}, que uma das ferramentas mais utilizadas pelos engenheiros de ontologias na atualidade, a fim de obter a ontologia inferida neste software e então realizar um comparativo entre os resultados.
+
+\section{Material}
+
+Os axiomas foram extraídos da ontologia NTDO (\textit{Neglected Tropical Disease Ontology} - Ontologia de Doenças Tropicais Negligenciadas). A ontologia utilizada tem o objetivo de representar um domínio com relevância e impacto reconhecido pela literatura e por instituições de saúde pública. Ela descreve detalhadamente o processo de transmissão de doenças e o falecimento de indivíduos que podem vir a ocorrer a partir da doença transmitida \cite{ntdo}.
+
+Uma vez que a OrCA é focada em axiomas de expressividade ALC, foram considerados unicamente axiomas relacionados a subclasses, equivalência de classes, asserção de classe, disjunção de classes e asserção de propriedades. É importante ressaltar também que a OrCA utiliza apenas os construtores de união, interseção, negação, restrição universal, restrição existencial e negação. Cardinalidade não é suportada.
+
+Nas Tabelas \ref{tab:QtdALSNTDO} e \ref{tab:QtdConstNTDO} é possível ver o quantitativo da amostra extraída da NTDO.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+Tipo              & Quantidade \\ \hline
+SubClassOf        & 48         \\ \hline
+EquivalentClasses & 5          \\ \hline
+DisjointClasses   & 1          \\ \hline
+\end{tabular}
+\caption{Quantitativo de axiomas extraídos da NTDO}
+\label{tab:QtdALSNTDO}
+\end{table}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|}
+\hline
+Construtor & Quantidade \\ \hline
+And        & 9          \\ \hline
+Or         & 4          \\ \hline
+Some       & 6          \\ \hline
+All*        & 11         \\ \hline
+\end{tabular}
+\caption{Quantitativo de construtores extraídos da NTDO}
+\label{tab:QtdConstNTDO}
+\end{table}
+
+É possível ver na Tabela \ref{tab:QtdConstNTDO}, o item \textit{All*}. Na sintaxe da OrCA, \textit{All} é o equivalente a \textit{Only} no \textit{Protègè}, que é o equivalente ao quantificador universal.
+
+%\newline
+%\newline
+%\textbf{Análise das Inferências}: para verificar se as inferências feitas pela ferramenta OrCA estão corretas, foi utilizada a ferramenta \textit{protègè}, que é a ferramenta mais utilizadas para edição de ontologias, para fazer uma comparação dos resultados.
+%\newline
+%\newline
+%\textbf{Análise das Inconsistências}: 
+%AAAAAAAA
 
 %Fazer tabela com quantidade de axiomas extraidos (subclasses, equivalent, diskoint, interceção, ObjectPropertyDomai
 
