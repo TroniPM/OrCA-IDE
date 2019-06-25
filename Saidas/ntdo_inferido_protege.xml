@@ -1,0 +1,389 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/pmateus/ontologies/2019/5/untitled-ontology-22#"
+     xml:base="http://www.semanticweb.org/pmateus/ontologies/2019/5/untitled-ontology-22"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/pmateus/ontologies/2019/5/untitled-ontology-22"/>
+
+    <owl:ObjectProperty rdf:about="/biotop/bearerOf"/>
+    
+    <owl:ObjectProperty rdf:about="/biotop/causedBy"/>
+    
+    <owl:ObjectProperty rdf:about="/biotop/hasDuration"/>
+    
+    <owl:ObjectProperty rdf:about="/biotop/hasLocus"/>
+    
+    <owl:ObjectProperty rdf:about="/biotop/hasPointInTime"/>
+    
+    <owl:ObjectProperty rdf:about="/biotop/precededBy"/>
+    
+    <owl:ObjectProperty rdf:about="/biotop/precedes"/>
+    
+    <owl:ObjectProperty rdf:about="/biotop/qualityLocated"/>
+    
+    <owl:ObjectProperty rdf:about="/injuryAndDeath/hasConvalescentPatient"/>
+    
+    <owl:ObjectProperty rdf:about="/injuryAndDeath/hasInjuriedPatient"/>
+    
+    <owl:ObjectProperty rdf:about="/ntdo/hasGeographicLocation"/>
+    
+    <owl:ObjectProperty rdf:about="/ntdo/hasRelatedDeathCause"/>
+    
+    <owl:Class rdf:about="/GeoOnto/SpatialRegion">
+        <owl:equivalentClass rdf:resource="/biotop/SpatialRegion"/>
+        <rdfs:subClassOf rdf:resource="/biotop/ImmaterialThreeDimensionalPhysicalEntity"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="/Leishmaniasis/ArgentinaLocation">
+        <rdfs:subClassOf rdf:resource="/Ontology1317128918920/CountryLocation"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="/Leishmaniasis/BelizeLocation">
+        <rdfs:subClassOf rdf:resource="/Ontology1317128918920/CountryLocation"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="/Leishmaniasis/BoliviaLocation">
+        <rdfs:subClassOf rdf:resource="/Ontology1317128918920/CountryLocation"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="/Leishmaniasis/BrazilLocation">
+        <rdfs:subClassOf rdf:resource="/Ontology1317128918920/CountryLocation"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="/Leishmaniasis/ColombiaLocation">
+        <rdfs:subClassOf rdf:resource="/Ontology1317128918920/CountryLocation"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="/Leishmaniasis/CostaRicaLocation">
+        <rdfs:subClassOf rdf:resource="/Ontology1317128918920/CountryLocation"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="/Leishmaniasis/DominicanLocation">
+        <rdfs:subClassOf rdf:resource="/Ontology1317128918920/CountryLocation"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="/Leishmaniasis/EcuadorLocation">
+        <rdfs:subClassOf rdf:resource="/Ontology1317128918920/CountryLocation"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="/Leishmaniasis/ElSalvadorLocation">
+        <rdfs:subClassOf rdf:resource="/Ontology1317128918920/CountryLocation"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="/Leishmaniasis/FrenchGuyanaLocation">
+        <rdfs:subClassOf rdf:resource="/Ontology1317128918920/CountryLocation"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="/Leishmaniasis/GuadeloupeLocation">
+        <rdfs:subClassOf rdf:resource="/Ontology1317128918920/CountryLocation"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="/Leishmaniasis/GuatemalaLocation">
+        <rdfs:subClassOf rdf:resource="/Ontology1317128918920/CountryLocation"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="/Leishmaniasis/GuyanaLocation">
+        <rdfs:subClassOf rdf:resource="/Ontology1317128918920/CountryLocation"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="/Leishmaniasis/HondurasLocation">
+        <rdfs:subClassOf rdf:resource="/Ontology1317128918920/CountryLocation"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="/Leishmaniasis/MartiniqueLocation">
+        <rdfs:subClassOf rdf:resource="/Ontology1317128918920/CountryLocation"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="/Leishmaniasis/MexicoLocation">
+        <rdfs:subClassOf rdf:resource="/Ontology1317128918920/CountryLocation"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="/Leishmaniasis/NicaraguaLocation">
+        <rdfs:subClassOf rdf:resource="/Ontology1317128918920/CountryLocation"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="/Leishmaniasis/PanamaLocation">
+        <rdfs:subClassOf rdf:resource="/Ontology1317128918920/CountryLocation"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="/Leishmaniasis/ParaguayLocation">
+        <rdfs:subClassOf rdf:resource="/Ontology1317128918920/CountryLocation"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="/Leishmaniasis/PeruLocation">
+        <rdfs:subClassOf rdf:resource="/Ontology1317128918920/CountryLocation"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="/Leishmaniasis/SurinamLocation">
+        <rdfs:subClassOf rdf:resource="/Ontology1317128918920/CountryLocation"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="/Leishmaniasis/USALocation">
+        <rdfs:subClassOf rdf:resource="/Ontology1317128918920/CountryLocation"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="/Leishmaniasis/VenezuelaLocation">
+        <rdfs:subClassOf rdf:resource="/Ontology1317128918920/CountryLocation"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="/Ontology1317128918920/CountryLocation">
+        <rdfs:subClassOf rdf:resource="/GeoOnto/SpatialRegion"/>
+        <rdfs:subClassOf rdf:resource="/biotop/SpatialRegion"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="/PATO/PATO_0000047">
+        <rdfs:subClassOf rdf:resource="/PATO/PATO_0001995"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="/PATO/PATO_0000383">
+        <rdfs:subClassOf rdf:resource="/PATO/PATO_0001894"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="/PATO/PATO_0000384">
+        <rdfs:subClassOf rdf:resource="/PATO/PATO_0001894"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="/PATO/PATO_0001894">
+        <rdfs:subClassOf rdf:resource="/PATO/PATO_0000047"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="/PATO/PATO_0001995">
+        <rdfs:subClassOf rdf:resource="/biotop/ObjectQuality"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="/biotop/Action">
+        <rdfs:subClassOf rdf:resource="/biotop/Process"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="/biotop/BiologicalProcessualEntity"/>
+	
+    <owl:Class rdf:about="/biotop/Condition"/>
+    
+	
+    <owl:Class rdf:about="/biotop/Death">
+        <owl:equivalentClass rdf:resource="/injuryAndDeath/DeathEvent"/>
+        <rdfs:subClassOf rdf:resource="/biotop/InstantaneousProcess"/>
+    </owl:Class>
+	
+    <owl:Class rdf:about="/biotop/Disposition"/>
+	
+    <owl:Class rdf:about="/biotop/Human">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="/biotop/bearerOf"/>
+                <owl:someValuesFrom>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <rdf:Description rdf:about="/PATO/PATO_0001894"/>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="/biotop/qualityLocated"/>
+                                <owl:someValuesFrom rdf:resource="/ntdo/PhenotypicSexValueRegion"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:someValuesFrom>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+	
+    <owl:Class rdf:about="/biotop/ImmaterialThreeDimensionalPhysicalEntity"/>
+    
+    <owl:Class rdf:about="/biotop/InstantaneousProcess"/>
+    
+    <owl:Class rdf:about="/biotop/LivingOrganism">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="/biotop/hasLocus"/>
+                <owl:allValuesFrom rdf:resource="/biotop/LivingOrganism"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="/ntdo/hasGeographicLocation"/>
+                <owl:allValuesFrom rdf:resource="/biotop/SpatialRegion"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+    <owl:Class rdf:about="/biotop/ObjectQuality"/>
+    
+    <owl:Class rdf:about="/biotop/PathologicalProcess"/>
+    
+    <owl:Class rdf:about="/biotop/PointInTime">
+        <owl:equivalentClass rdf:resource="/injuryAndDeath/TimeBoundary"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="/biotop/Process">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="/biotop/hasDuration"/>
+                        <owl:someValuesFrom rdf:resource="/biotop/TimeInterval"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="/biotop/hasPointInTime"/>
+                        <owl:someValuesFrom rdf:resource="/biotop/PointInTime"/>
+                    </owl:Restriction>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+    <owl:Class rdf:about="/biotop/SpatialRegion">
+        <rdfs:subClassOf rdf:resource="/biotop/ImmaterialThreeDimensionalPhysicalEntity"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="/biotop/Time"/>
+    
+    <owl:Class rdf:about="/biotop/TimeInterval">
+        <owl:equivalentClass rdf:resource="/injuryAndDeath/Chronoid"/>
+        <rdfs:subClassOf rdf:resource="/biotop/Time"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="/biotop/ValueRegion"/>
+    
+    <owl:Class rdf:about="/injuryAndDeath/BiologicalDeathProcess">
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="/biotop/causedBy"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="/biotop/PathologicalProcess"/>
+                                    <rdf:Description rdf:about="/injuryAndDeath/InjuryEvent"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="/injuryAndDeath/hasConvalescentPatient"/>
+                        <owl:allValuesFrom rdf:resource="/biotop/LivingOrganism"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+    <owl:Class rdf:about="/injuryAndDeath/BirthEvent">
+        <rdfs:subClassOf rdf:resource="/biotop/InstantaneousProcess"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="/injuryAndDeath/Chronoid">
+        <rdfs:subClassOf rdf:resource="/biotop/Time"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="/injuryAndDeath/DeathEvent">
+        <rdfs:subClassOf rdf:resource="/biotop/InstantaneousProcess"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="/biotop/precedes"/>
+                <owl:allValuesFrom rdf:resource="/ntdo/HealthSurveillanceNotificationAction"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="/ntdo/hasRelatedDeathCause"/>
+                <owl:allValuesFrom rdf:resource="/biotop/Condition"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+    <owl:Class rdf:about="/injuryAndDeath/InjuryEvent">
+        <rdfs:subClassOf rdf:resource="/biotop/InstantaneousProcess"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="/biotop/InstantaneousProcess"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="/biotop/causedBy"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="/biotop/Process"/>
+                                    <owl:Class>
+                                        <owl:complementOf rdf:resource="/biotop/BiologicalProcessualEntity"/>
+                                    </owl:Class>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="/injuryAndDeath/hasInjuriedPatient"/>
+                        <owl:allValuesFrom rdf:resource="/biotop/LivingOrganism"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="/ntdo/hasGeographicLocation"/>
+                        <owl:allValuesFrom rdf:resource="/biotop/SpatialRegion"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+    <owl:Class rdf:about="/injuryAndDeath/TimeBoundary"/>
+    
+    <owl:Class rdf:about="/ntdo/DeathDisposition">
+        <rdfs:subClassOf rdf:resource="/biotop/Disposition"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="/ntdo/HealthSurveillanceNotificationAction">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="/biotop/Action"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="/biotop/precededBy"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="/biotop/PathologicalProcess"/>
+                                    <rdf:Description rdf:about="/injuryAndDeath/DeathEvent"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="/ntdo/hasGeographicLocation"/>
+                        <owl:someValuesFrom rdf:resource="/biotop/SpatialRegion"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="/biotop/Action"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="/biotop/precededBy"/>
+                        <owl:allValuesFrom>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="/biotop/PathologicalProcess"/>
+                                    <rdf:Description rdf:about="/injuryAndDeath/DeathEvent"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:allValuesFrom>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="/ntdo/hasGeographicLocation"/>
+                        <owl:allValuesFrom rdf:resource="/biotop/SpatialRegion"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+    <owl:Class rdf:about="/ntdo/OrganismCharacteristicValueRegion">
+        <rdfs:subClassOf rdf:resource="/biotop/ValueRegion"/>
+    </owl:Class>
+    
+    <owl:Class rdf:about="/ntdo/PhenotypicSexValueRegion">
+        <rdfs:subClassOf rdf:resource="/ntdo/OrganismCharacteristicValueRegion"/>
+    </owl:Class>
+</rdf:RDF>
