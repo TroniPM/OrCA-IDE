@@ -73,7 +73,7 @@
 %Para aparecer XML como codigo
 
 
-\titulo{OrCA IDE: Uma IDE Geradora de Ontologias}
+\titulo{OrCA: uma Ferramenta Baseada em Linguagem Natural Controlada para Construção Automática de Ontologias}
 \palavrasChave{Ontologias}{Processamento de Linguagem Natural}{Raciocínio Automático}
 \keywords{Ontologies, Natural Language Processing, Automated Reasoning}
 
@@ -88,7 +88,7 @@
 %\examinadorTres{Stephen Cook}{UAG}{UFRPE}
 %\examinadorQuatro{John Backus}{UAG}{UFRPE}
 
-\dataMesAno{14}{junho}{2019}
+\dataMesAno{25}{junho}{2019}
 
 \begin{document}
 
@@ -126,27 +126,29 @@ INSERIR ABSTRACT
 \inicio
 \chapter{Introdução}
 
-A razão pela qual ontologias estão se tornando tão populares é em grande parte devido ao que elas prometem: um entendimento comum e compartilhado de alguns domínios que podem ser utilizados entre pessoas e sistemas \cite{fensel2001}. Além disso, elas são artefatos essenciais em muitas aplicações tais como: PLN, Extração de Informação, Gestão de Conhecimento, Sistemas Inteligentes, plataformas de comércio eletrônico, entre outros.
+A razão pela qual ontologias estão se tornando tão populares é em grande parte devido ao que elas prometem: um entendimento comum e compartilhado de alguns domínios de conhecimento que podem ser utilizados entre pessoas e sistemas \cite{fensel2001}. Além disso, são consideradas artefatos essenciais em muitas aplicações.
 
-Sistemas que processam linguagem natural (ou de Processamento de Linguagem Natural, PLN) têm o intuito de converter a linguagem usada por humanos em uma representação formal para que computadores entendam, manipulem e troquem informações com usuários, para isso, faz-se necessário a integração de diversas áreas do conhecimento como Processamento de Linguagem Natural \cite{brill1995}, Representação de Conhecimento \cite{levesque1986} e Raciocínio Automático \cite{wos1984}. A junção das diversas áreas faz do PLN uma ferramenta poderosa, possibilitando que a linguagem humana possa ser entendida por máquinas.
+Sistemas que processam linguagem natural (ou de Processamento de Linguagem Natural, PLN) têm o intuito de converter a linguagem usada por humanos em uma representação formal para que computadores entendam, manipulem e troquem informações com usuários, para isso, faz-se necessário a integração de diversas áreas do conhecimento como Processamento de Linguagem Natural \cite{brill1995}, Representação de Conhecimento \cite{levesque1986} e Raciocínio Automático \cite{wos1984}.
 
-Com PLN é possível descobrir verbos, sujeitos, sinônimos e até mesmo identificar conceitos (desde que o programa possua um vocabulário controlado) em um texto. Mas para tarefas mais complexas, é necessário a utilização de ontologias. Ontologias podem ser usadas para inferências complexas e derivação de regras necessárias para a interpretação semântica e sistemas de perguntas e respostas. Por essa razão, as ontologias têm sido de particular interesse para pesquisadores que desenvolvem sistemas PLN \cite{liu2011}.
+Com a utilização do PLN é possível descobrir verbos, sujeitos, sinônimos e até mesmo identificar conceitos (desde que o sistema possua um vocabulário controlado) em um texto. Mas para tarefas mais complexas, faz-se-a necessário a utilização de ontologias. Ontologias podem ser usadas para inferências complexas e derivação de regras necessárias para a interpretação semântica e sistemas de perguntas e respostas. Por essa razão, as ontologias têm sido de particular interesse para pesquisadores que desenvolvem sistemas inteligentes \cite{liu2011}.
 
 O termo ontologia existe em diversas áreas, em computação o termo recebe a seguinte definição: uma ontologia é uma especificação formal e explícita de uma conceituação compartilhada \cite{gruber1995}.
 
-Ontologias estão são componentes importantes dos sistemas de informação e processamento de informações \cite{estival2004}. Por isso, nem todos os desenvolvedores de ontologias são programadores ou de áreas correlatas a tecnologia da informação. Assim sendo, fez-se necessário a criação de \textit{softwares} capazes de criar ontologias e mitigar a dificuldade de sua construção, possibilitando que profissionais interessados em seu desenvolvimento possam construir e desenvolver suas bases de conhecimento modeladas como ontologias. Existem muitas ferramentas que são capazes de criar ontologias, entre elas \textit{Protégé} \cite{noy2001} e \textit{yEd Graph Editor}. Porém devido a quantidade de plugins e recursos disponíveis dentro dessas ferramentas, pode acabar dificultando o processo de desenvolvimento dos usuários.
+Ontologias são componentes importantes em Sistemas de Informação \cite{estival2004}. Por isso, nem todos os desenvolvedores de ontologias são programadores ou de áreas correlatas a Tecnologia da Informação e Comunicação. Portanto, a criação de \textit{softwares} capazes de criar ontologias e mitigar a dificuldade de sua construção, possibilitando que profissionais interessados em seu desenvolvimento é de bastante relevância para assim poderem desenvolver suas bases de conhecimento modeladas como ontologias. Existem muitas ferramentas que são capazes de criar ontologias, entre elas \textit{Protégé} \cite{noy2001} e \textit{yEd Graph Editor}. Porém devido a quantidade de plugins e recursos disponíveis dentro dessas ferramentas, pode acabar dificultando o processo de desenvolvimento dos usuários.
 
-A OrCA IDE (\textit{Ontology vieweR and CreAtor Integrated Development Environment}) surgiu com o objetivo de ser um \textit{software} de criação de ontologias simples e rápido, capaz de criar, editar e visualizar ontologias (gerada a partir de PLN), em contra ponto ao \textit{Protégé}. Embora o \textit{Protégé} possua diversos recursos, funções e plugins, a OrCA tem como objetivo ser a versão \textit{clean} e baseada em PLN, englobando as principais funções necessárias no processo de desenvolvimento de ontologias e sendo o mais conciso possível, permitindo ao usuário a criação e visualização da ontologia (textual e gráfica), fazendo com que a curva de aprendizagem seja menor. 
+A ferramenta OrCA (\textit{Ontology vieweR and CreAtor}) surgiu com o objetivo de ser um sistema computacional baseado em linguagem natural controlada para criação de ontologias. Embora o \textit{Protégé} possua diversos recursos, funções e plugins, a OrCA tem como objetivo ser uma versão objetiva e mais "\textit{clean}", englobando as funções necessárias no desenvolvimento de ontologias, permitindo ao usuário a criação e visualização de ontologias (textual e gráfica), de maneira simples e rápida.
 
 %Os desenvolvedores de ontologias geralmente capturam os relacionamentos entre entidades como relacionamentos formais e lógicos. Para fazer isso, geralmente se utiliza a lógica descritiva \cite{liu2011}.
 
 \section{Definição do Problema}
 
-Atualmente, o processo de desenvolvimento de ontologias é em grande parte manual, mesmo usando ferramentas e processos de desenvolvimento. Os usuários devem adicionar identificadores e seus sinônimos e relacionamentos, um por um. O investimento no desenvolvimento de ontologias é imenso \cite{liu2011}. Surge então a necessidade e a importância de facilitar e viabilizar esse desenvolvimento para que usuários com diversos níveis de conhecimento e experiência possam participar ativamente do processo de desenvolvimento de ontologias.
+Atualmente, o processo de desenvolvimento de ontologias é em grande parte manual, mesmo usando ferramentas e processos de desenvolvimento. Os usuários devem adicionar conceitos e relacionamentos, um por um. O investimento no desenvolvimento de ontologias é imenso \cite{liu2011}. Surge então a necessidade e a importância de facilitar e viabilizar esse desenvolvimento para que usuários com diversos níveis de conhecimento e experiência possam participar ativamente do processo de desenvolvimento.
 
-Existem muitas ferramentas de construção de ontologias que podem ser usadas, mas há algumas dificuldades para o especialista em domínio entender o significado entre essas abordagens, como a abordagem de geração pouco clara, a linguagem de ontologia não unificada e assim por diante, tais questões tornam grande a curva de aprendizado para utilização dessas ferramentas \cite{zhou2010}. Um exemplo dessas ferramentas é o \textit{Protégé}, que é uma ferramenta de autoria de ontologias, porém, como muitas outras ferramentas similares, ela exige habilidades especializadas em engenharia de ontologia \cite{funk2007}. Além destas habilidades, muitas vezes é requerido um alto nível de conhecimento na área de web semântica e também demanda de tempo e esforço para aprender a usá-las, devido a quantidade de recursos e funcionalidades.
+Existem muitas ferramentas de construção de ontologias que podem ser usadas, mas há algumas dificuldades para o especialista em domínio entender o significado entre essas abordagens, como a abordagem de geração pouco clara, a linguagem de ontologia não unificada e assim por diante, tais questões tornam grande a curva de aprendizado para utilização dessas ferramentas \cite{zhou2010}. Um exemplo dessas ferramentas é o \textit{Protégé}, que é uma ferramenta de autoria de ontologias, porém, como muitas outras ferramentas similares, ela exige habilidades especializadas em engenharia de ontologia \cite{funk2007}. Além destas habilidades, muitas vezes é requerido um alto nível de conhecimento na área de Web Semântica e também de tempo e esforço para aprender a usá-las, devido a quantidade de recursos e funcionalidades.
 
-Diante deste contexto, surge a necessidade de uma ferramenta que tenha o objetivo de facilitar e viabilizar o processo de desenvolvimento de ontologias, permitindo que esse processo seja mais simples, e não exija do usuário conhecimento prévio de linguagem de programação ou web semântica e que não seja muito complexa em seu uso, tornando maior o número de usuários que poderão participar ativamente da criação de ontologias. Para mitigar tais problemas, surgiu a ideia da OrCA IDE.
+Diante deste contexto, surge a necessidade de uma ferramenta que tenha o objetivo de facilitar e viabilizar o processo de desenvolvimento de ontologias, permitindo que esse processo seja mais simples, e não exija do usuário conhecimento prévio de linguagem de programação ou Web Semântica e que não seja muito complexa em seu uso, tornando maior o número de usuários que poderão participar ativamente da criação de ontologias.
+
+\section{Trabalhos Relacionados}
 
 Alguns trabalhos similares foram encontrados, como o sistema apresentado em \cite{mousavi2013} que é baseado em PLN, chamado OntoHarvester; um gerador de ontologias distribuído (utilizando os serviços da Amazon EC2 e S3) e não supervisionado, que gera automaticamente ontologias de um domínio a partir de texto não estruturado. Como a definição mostra, tem como objetivo grandes blocos de textos como entrada, assim como gerar grandes ontologias como saída, que difere do objetivo da OrCA. 
 
@@ -181,11 +183,11 @@ O objetivo geral deste trabalho foi desenvolver uma ferramenta computacional bas
 
 Além deste capítulo inicial que traz uma introdução sobre o tema, a motivação e justificativa para realização do trabalho, a definição do problema e o objetivo; este trabalho está organizado em mais 4 capítulos, como seguem:
 
-• O \autoref{chap:fundamentacao} apresenta a fundamentação teórica, contendo referências bibliográficas de estudos na área e das ferramentas e conceitos que foram utilizados no desenvolvimento;
+• O \autoref{chap:fundamentacao} apresenta a fundamentação teórica, contendo referências bibliográficas de estudos na área e das ferramentas e conceitos que foram utilizados no desenvolvimento da ferramenta;
 
-• O \autoref{chap:sistema} mostra a arquitetura do sistema e a maneira que ele foi construído;
+• O \autoref{chap:sistema} mostra a arquitetura do sistema, seus componentes, funcionamento e a maneira que ele foi desenvolvido;
 
-• O \autoref{chap:exp} expõe os experimentos que foram realizados e seus respectivos resultados.
+• O \autoref{chap:exp} expõe os experimentos que foram realizados para validar a ferramenta, assim como seus respectivos resultados.
 
 
 \chapter{Fundamentação teórica}
@@ -310,7 +312,7 @@ A sintaxe \textit{Manchester OWL} \cite{horridge2006} foi criada para suprir a n
 
 A Manchester OWL é uma sintaxe que de fácil utilização para para descrições OWL \cite{horridge2009}. Ela é influenciada tanto pela sintaxe \textit{Abstract OWL} quanto pela sintaxe \textit{DL style}, que usa símbolos lógicos de descrição, como o quantificador universal ($\forall$) ou o quantificador existencial ($\exists$). A sintaxe  Manchester usa símbolos matemáticos especiais como $\exists$, $\forall$, ¬ para serem substituídos por palavras-chave como “\textit{some}”, “\textit{only}” e “\textit{not}” respectivamente \cite{yauri2012}. Outro ponto diz respeito a palavra-chave \textit{"that"}, que possui a mesma função da palavra-chave \textit{"and"}, porém foi introduzida na sintaxe apenas para fazer com que a leitura das expressões fossem mais fluidas \cite{horridge2006}. Isso pode ser visto na Figura \ref{fig:manchester_exemplo}; onde existe \textit{"that"} pode ser substituído por \textit{"and"}, e vice-versa, e continuará com a mesma semântica.
 
-Desde que o Manchester OWL Syntax foi criado, tornou-se a sintaxe padrão do Protegé OWL \cite{horridge2006}. No caso do Protegé \cite{noy2001}, ele estende a sintaxe para permitir uma apresentação ainda mais compacta em algumas situações (por exemplo, para explicação) \cite{horridge2009}.
+Desde que o Manchester OWL Syntax foi criado, tornou-se a sintaxe padrão do \textit{Protégé} OWL \cite{horridge2006}. No caso do \textit{Protégé} \cite{noy2001}, ele estende a sintaxe para permitir uma apresentação ainda mais compacta em algumas situações (por exemplo, para explicação) \cite{horridge2009}.
 
 Na Figura \ref{fig:manchester_exemplo} é possível ver a definição de uma expressão de classe. Essa expressão descreve um conjunto de pessoas que têm pelo menos um filho, que têm filhos que são apenas homens.
 
@@ -361,12 +363,12 @@ O Maven é uma ferramenta de integração de projetos Java utilizada no gerencia
 
 A ferramenta surgiu da dificuldades que muitos grupos de desenvolvimento tinham ao gerenciar bibliotecas em grandes projetos, de maneira dinâmica o Maven baixa a biblioteca Java e os seus \textit{plugins} de diversos repositórios que ficam armazenados em cache local, que pode ser atualizado quando sempre que for preciso \cite{oliveira2016}. Sua configuração é feita através do arquivo pom.xml (Project Object Model) onde são declarados o tipo de empacotamento, suas dependências e os repositórios de onde as dependências serão buscadas, podendo ser tanto repositórios locais ou remotos. \cite{junior2014}
 
-A Figura \ref{fig:pom_xml} mostra um trecho do arquivo pom.xml utilizado na implementação da OrCA IDE. É possível ver definições de compilação, como por exemplo a versão do Java que será utilizado, a classe principal que será executada ao projeto ser iniciado, o tipo de empacotamento, versão e id (pacote) que serão utilizados na publicação desses arquivos para o repositório local do maven, bem como as dependências utilizadas pelo projeto.
+A Figura \ref{fig:pom_xml} mostra um trecho do arquivo pom.xml utilizado na implementação da OrCA. É possível ver definições de compilação, como por exemplo a versão do Java que será utilizado, a classe principal que será executada ao projeto ser iniciado, o tipo de empacotamento, versão e id (pacote) que serão utilizados na publicação desses arquivos para o repositório local do maven, bem como as dependências utilizadas pelo projeto.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=1\textwidth]{Figuras/pom_xml.png}
-\caption{Trecho de arquivo pom.xml do \textit{OrCA} IDE}
+\caption{Trecho de arquivo pom.xml da \textit{OrCA}}
 \label{fig:pom_xml}
 \end{figure}
 
@@ -411,7 +413,7 @@ quais as cadeias são formadas \cite{ferreira2015}.
 \label{chap:sistema}
 
 \section{Introdução}
-Com a finalidade de criar ontologias a partir de Processamento de Linguagem Natural (PLN), o sistema OrCA IDE (\textit{Ontology vieweR and CreAtor Integrated Development Environment}) foi desenvolvido. Neste capítulo descrevemos detalhes da arquitetura do sistema e suas funcionalidades, bem com a linguagem natural controlada (LNC) utilizada para criação das ontologias. O intuito, ao definir esta LNC, foi facilitar ao máximo o desenvolvimento das ontologias por parte dos usuários do sistema. Na Figura \ref{fig:diagComponenteGeral} é possível observar o diagrama de componentes do sistema. O componente \textit{Ontology} depende do componente \textit{Compiler}, o componente \textit{Reasoner} depende do componente \textit{Compiler}. Já o componente \textit{Graph Viewer} depende do componente \textit{Ontology}. O componente \textit{Compiler} é o principal componente do sistema, no qual todos os demais componentes possuem dependência direta ou indireta.
+Com a finalidade de criar ontologias a partir de Processamento de Linguagem Natural (PLN), o sistema OrCA (\textit{Ontology vieweR and CreAtor}) foi desenvolvido. Neste capítulo descrevemos detalhes da arquitetura do sistema e suas funcionalidades, bem com a linguagem natural controlada (LNC) utilizada para criação das ontologias. O intuito, ao definir esta LNC, foi facilitar ao máximo o desenvolvimento das ontologias por parte dos usuários do sistema. Na Figura \ref{fig:diagComponenteGeral} é possível observar o diagrama de componentes do sistema. O componente \textit{Ontology} depende do componente \textit{Compiler}, o componente \textit{Reasoner} depende do componente \textit{Compiler}. Já o componente \textit{Graph Viewer} depende do componente \textit{Ontology}. O componente \textit{Compiler} é o principal componente do sistema, no qual todos os demais componentes possuem dependência direta ou indireta.
 
 \begin{figure}[H]
 \centering
@@ -534,7 +536,7 @@ Os casos de uso da tela \textit{Graph Viewer} são apresentados na Figura \ref{f
 
 \section{Componente Compilador}
 
-Um compilador é um tipo de programa que traduz um código descrito em alto nível, ou seja, mais legível e fácil de entender pelo ser humano, em um código semanticamente equivalente em baixo nível, não legível pelo ser humano e não necessariamente executável pela máquina. Geralmente um compilador não traduz imediatamente um código de máquina, mas sim um código intermediário, em linguagem simbólica, só a partir deste momento o código é traduzido para uma linguagem de máquina \cite{grune2012}. De forma semelhante, o compilador desenvolvido para a OrCA IDE não irá traduzir o código descrito pelo usuário para um código de máquina, mas sim para um código "intermediário", o \textit{OWL 2 DL}, que para os fins desse projeto já é o código final.
+Um compilador é um tipo de programa que traduz um código descrito em alto nível, ou seja, mais legível e fácil de entender pelo ser humano, em um código semanticamente equivalente em baixo nível, não legível pelo ser humano e não necessariamente executável pela máquina. Geralmente um compilador não traduz imediatamente um código de máquina, mas sim um código intermediário, em linguagem simbólica, só a partir deste momento o código é traduzido para uma linguagem de máquina \cite{grune2012}. De forma semelhante, o compilador desenvolvido para a OrCA não irá traduzir o código descrito pelo usuário para um código de máquina, mas sim para um código "intermediário", o \textit{OWL 2 DL}, que para os fins desse projeto já é o código final.
 
 Para um programa ser definido como um compilador, ele precisa ter alguns processos, são eles: análise léxica, análise sintática, análise semântica e conversor. Juntos, esses quatro processos formam  o ciclo necessário para um compilador verificar se o código descrito pelo usuário não possui erros e pode ser compilado. O fluxo de um compilador padrão pode ser observado na Figura \ref{fig:compilerscheme}.
 
@@ -545,7 +547,7 @@ Para um programa ser definido como um compilador, ele precisa ter alguns process
 \label{fig:compilerscheme}
 \end{figure}
 
-O fluxo que o compilador OrCA IDE segue é o mesmo de um compilador padrão. Inicialmente o código é examinado pelo Analisador Léxico, caso haja algum erro que esse analisador possa detectar, o processo de compilação é suspenso, e é informado ao usuário, na tela \textit{Compiler} > \textit{Console}, a linha e a posição onde o erro ocorreu. Caso as verificações desse analisador não detectem erro o próximo passo é iniciado, o Analisador Sintático. Neste passo, acontece de igual forma ao Analisador Léxico, porém, ele faz suas próprias verificações. Caso não sejam detectados erros, o passo seguinte é inicializado, o Analisador Semântico. De maneira semelhante aos passos anteriores, o Analisador Semântico faz suas próprias verificações e análises. Se nenhum erro for encontrado, a próxima etapa é iniciada, a conversão. Nesta fase, as sentenças em LNC inseridas pelos usuários, passam por todo o processo apresentado de compilação e o resultado é um código \textit{OWL 2 DL}. Na Figura \ref{fig:uclnc} é possível verificar os casos de uso dessa tela.
+O fluxo que o compilador OrCA segue é o mesmo de um compilador padrão. Inicialmente o código é examinado pelo Analisador Léxico, caso haja algum erro que esse analisador possa detectar, o processo de compilação é suspenso, e é informado ao usuário, na tela \textit{Compiler} > \textit{Console}, a linha e a posição onde o erro ocorreu. Caso as verificações desse analisador não detectem erro o próximo passo é iniciado, o Analisador Sintático. Neste passo, acontece de igual forma ao Analisador Léxico, porém, ele faz suas próprias verificações. Caso não sejam detectados erros, o passo seguinte é inicializado, o Analisador Semântico. De maneira semelhante aos passos anteriores, o Analisador Semântico faz suas próprias verificações e análises. Se nenhum erro for encontrado, a próxima etapa é iniciada, a conversão. Nesta fase, as sentenças em LNC inseridas pelos usuários, passam por todo o processo apresentado de compilação e o resultado é um código \textit{OWL 2 DL}. Na Figura \ref{fig:uclnc} é possível verificar os casos de uso dessa tela.
 
 \begin{figure}[H]
 \centering
@@ -557,7 +559,7 @@ O fluxo que o compilador OrCA IDE segue é o mesmo de um compilador padrão. Ini
 
 \subsection{Gramática}
 
-Idiomas como o português, inglês e espanhol possuem um conjunto de regras e normas bem definidas. Isto permite que pessoas com conhecimento destas regras comuniquem-se entre si, tanto no ato de escrever como no de ler. O conjunto dessas regras é chamado gramática. Assim como em um idioma normal, um compilador precisa de regras e normas gramaticais. Isso garante que, ao usuário escrever seu código, ele será entendido por outras pessoas, assim como pelo compilador. Na Tabela \ref{tab:tabelaGramatica} é possível observar a gramática definida para o compilador OrCA IDE. Cada linha é chamada de Regra de Produção. A coluna da esquerda é o título da regra, enquanto a coluna da direita é a regra em si. Para fins de leitura, chamada de regra é feita com <...>, por exemplo <OP>. Chamada de terminal é feita sem <...>, por exemplo \textit{some} ou (. O Símbolo "||" é apenas um separador entre as regras.
+Idiomas como o português, inglês e espanhol possuem um conjunto de regras e normas bem definidas. Isto permite que pessoas com conhecimento destas regras comuniquem-se entre si, tanto no ato de escrever como no de ler. O conjunto dessas regras é chamado gramática. Assim como em um idioma normal, um compilador precisa de regras e normas gramaticais. Isso garante que, ao usuário escrever seu código, ele será entendido por outras pessoas, assim como pelo compilador. Na Tabela \ref{tab:tabelaGramatica} é possível observar a gramática definida para o compilador OrCA. Cada linha é chamada de Regra de Produção. A coluna da esquerda é o título da regra, enquanto a coluna da direita é a regra em si. Para fins de leitura, chamada de regra é feita com <...>, por exemplo <OP>. Chamada de terminal é feita sem <...>, por exemplo \textit{some} ou (. O Símbolo "||" é apenas um separador entre as regras.
 
 \begin{table}[H]
 \centering
@@ -576,7 +578,7 @@ Idiomas como o português, inglês e espanhol possuem um conjunto de regras e no
 \end{tabular} \\
 \hline
 \end{tabular} 
-\caption{Gramática OrCA IDE.}
+\caption{Gramática OrCA IDE}
 \label{tab:tabelaGramatica}
 \end{table} 
 
@@ -716,10 +718,10 @@ A realização dos experimentos foi dividida em três etapas:
 Foi verificada a capacidade de construção de ontologias a partir de linguagem natural, bem como a validação da ontologia criada, tendo como base axiomas de uma ontologia já existente. 
 
 \textbf{Etapa dois}:
-Se deu pela verificação de inconsistência dos axiomas gerados através da etapa um. Como foram utilizados axiomas de uma ontologia real, não existiam inconsistências, desta forma, foram criados axiomas específicos para gerar inconsistências e testar a capacidade da OrCA. Foi utilizado também os resultados obtidos pelo \textit{Protègè} as mesmas ontologias inconsistentes, para fins de comparação, já que ele é uma das ferramentas mais utilizadas pelos engenheiros de ontologias na atualidade,.
+Se deu pela verificação de inconsistência dos axiomas gerados através da etapa um. Como foram utilizados axiomas de uma ontologia real, não existiam inconsistências, desta forma, foram criados axiomas específicos para gerar inconsistências e testar a capacidade da OrCA. Foi utilizado também os resultados obtidos pelo \textit{Protégé} as mesmas ontologias inconsistentes, para fins de comparação, já que ele é uma das ferramentas mais utilizadas pelos engenheiros de ontologias na atualidade,.
 
 \textbf{Etapa três}:
-Foi verificada a ontologia inferida pela OrCA, utilizando como base a ontologia gerada na etapa um. Para ter um comparativo, de igual forma a etapa anterior, a ontologia gerada na etapa um foi processada pelo \textit{Protègè} a fim de obter uma ontologia inferida e então realizar um comparativo entre os resultados.
+Foi verificada a ontologia inferida pela OrCA, utilizando como base a ontologia gerada na etapa um. Para ter um comparativo, de igual forma a etapa anterior, a ontologia gerada na etapa um foi processada pelo \textit{Protégé} a fim de obter uma ontologia inferida e então realizar um comparativo entre os resultados.
 
 \section{Material}
 
@@ -749,9 +751,9 @@ And        & 9          \\ \hline
 Or         & 4          \\ \hline
 Some       & 6          \\ \hline
 All (*)    & 11         \\ \hline
-Not (**)   & 1         \\ \hline
+Not        & 1         \\ \hline
 \end{tabular}
-\caption{Quantitativo de construtores extraídos da NTDO. (*) é o equivalente ao construtor \textit{Only} no \textit{Protègè}, que é o equivalente ao quantificador universal. (**) não é um construtor.}
+\caption{Quantitativo de construtores extraídos da NTDO. (*) é o equivalente ao construtor \textit{Only} no \textit{Protégé}, que é o equivalente ao quantificador universal.}
 \label{tab:QtdConstNTDO}
 \end{table}
 
@@ -793,7 +795,7 @@ And        & 6          \\ \hline
 Or         & 4          \\ \hline
 Some       & 6          \\ \hline
 All (*)    & 11         \\ \hline
-Not (**)   & 1         \\ \hline
+Not        & 1         \\ \hline
 \end{tabular}
 \caption{Quantitativo de construtores da NTDO após filtro.}
 \label{tab:QtdConstNTDO_filtro}
@@ -813,7 +815,7 @@ Property      & 12         \\ \hline
 
 \section{Etapa um}
 \subsection{Axioma 1}
-O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma1_o}. Em representação DL, o axioma tem a forma da Figura \ref{fig:axioma1_dl}, e convertido para a sintaxe do OrCA, possui a forma exibida na Figura \ref{fig:axioma1_orca}. 
+O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma1_o}. Em representação DL, o axioma tem a forma da Figura \ref{fig:axioma1_dl}, e convertido para a sintaxe da OrCA, possui a forma exibida na Figura \ref{fig:axioma1_orca}. 
 
 \begin{figure}[H]
 \centering
@@ -837,7 +839,7 @@ O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma1_o}. Em 
 \end{figure}
 
 \subsection{Axioma 2}
-O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma2_o}. Em representação DL, o axioma tem a forma da Figura \ref{fig:axioma2_dl}, e convertido para a sintaxe do OrCA, possui a forma exibida na Figura \ref{fig:axioma2_orca}. 
+O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma2_o}. Em representação DL, o axioma tem a forma da Figura \ref{fig:axioma2_dl}, e convertido para a sintaxe da OrCA, possui a forma exibida na Figura \ref{fig:axioma2_orca}. 
 
 \begin{figure}[H]
 \centering
@@ -861,7 +863,7 @@ O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma2_o}. Em 
 \end{figure}
 
 \subsection{Axioma 3}
-O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma3_o}. Também é possível ver na Figura \ref{fig:axioma3_o} o trecho de cardinalidade desconsiderado para o experimento. Em representação DL, o axioma tem a forma da Figura \ref{fig:axioma3_dl}, e convertido para a sintaxe do OrCA, possui a forma exibida na Figura \ref{fig:axioma3_orca}. 
+O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma3_o}. Também é possível ver na Figura \ref{fig:axioma3_o} o trecho de cardinalidade desconsiderado para o experimento. Em representação DL, o axioma tem a forma da Figura \ref{fig:axioma3_dl}, e convertido para a sintaxe da OrCA, possui a forma exibida na Figura \ref{fig:axioma3_orca}. 
 
 \begin{figure}[H]
 \centering
@@ -873,7 +875,7 @@ O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma3_o}. Tam
 \begin{figure}[H]
 \centering
 \includegraphics[width=.6\textwidth]{Figuras/axioma3_orca.png}
-\caption{Axioma 3 na sintaxe Orca} 
+\caption{Axioma 3 na sintaxe OrCA} 
 \label{fig:axioma3_orca}
 \end{figure}
 
@@ -885,7 +887,7 @@ O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma3_o}. Tam
 \end{figure}
 
 \subsection{Axioma 4}
-O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma4_o}. É possível ver na Figura \ref{fig:axioma4_o} a parte referente a cardinalidade que foi desconsiderada para o experimento. Em representação DL, o axioma tem a forma da Figura \ref{fig:axioma4_dl} e convertido para a sintaxe do OrCA, possui a forma exibida na Figura \ref{fig:axioma4_orca}. 
+O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma4_o}. É possível ver na Figura \ref{fig:axioma4_o} a parte referente a cardinalidade que foi desconsiderada para o experimento. Em representação DL, o axioma tem a forma da Figura \ref{fig:axioma4_dl} e convertido para a sintaxe da OrCA, possui a forma exibida na Figura \ref{fig:axioma4_orca}. 
 
 \begin{figure}[H]
 \centering
@@ -909,7 +911,7 @@ O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma4_o}. É 
 \end{figure}
 
 \subsection{Axioma 5}
-O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma5_o}. Em representação DL, o axioma tem a forma da Figura \ref{fig:axioma5_dl}, e convertido para a sintaxe do OrCA, possui a forma exibida na Figura \ref{fig:axioma5_orca}. 
+O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma5_o}. Em representação DL, o axioma tem a forma da Figura \ref{fig:axioma5_dl}, e convertido para a sintaxe da OrCA, possui a forma exibida na Figura \ref{fig:axioma5_orca}. 
 
 \begin{figure}[H]
 \centering
@@ -933,7 +935,7 @@ O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma5_o}. Em 
 \end{figure}
 
 \subsection{Axioma 6}
-O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma6_o}. Em representação DL, o axioma tem a forma da Figura \ref{fig:axioma6_dl}, e convertido para a sintaxe do OrCA, possui a forma exibida na Figura \ref{fig:axioma6_orca}. 
+O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma6_o}. Em representação DL, o axioma tem a forma da Figura \ref{fig:axioma6_dl}, e convertido para a sintaxe da OrCA, possui a forma exibida na Figura \ref{fig:axioma6_orca}. 
 
 \begin{figure}[H]
 \centering
@@ -957,7 +959,7 @@ O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma6_o}. Em 
 \end{figure}
 
 \subsection{Axioma 7}
-O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma7_o}. Em representação DL, o axioma tem a forma da Figura \ref{fig:axioma7_dl}, e convertido para a sintaxe do OrCA, possui a forma exibida na Figura \ref{fig:axioma7_orca}. 
+O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma7_o}. Em representação DL, o axioma tem a forma da Figura \ref{fig:axioma7_dl}, e convertido para a sintaxe da OrCA, possui a forma exibida na Figura \ref{fig:axioma7_orca}. 
 
 \begin{figure}[H]
 \centering
@@ -981,10 +983,10 @@ O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma7_o}. Em 
 \end{figure}
 
 
-Para reduzir o número de imagens, visto que a saída da OrCA IDE em comparação com sua forma original será similar em absolutamente todos os caracteres, não faz-se necessário anexar as imagens separadas para cada caso, porém todas as saídas geradas pela OrCA IDE podem ser vistas no Apêndice \ref{chap:apOntologia}.
+Para reduzir o número de imagens, visto que a saída da OrCA em comparação com sua forma original será similar em absolutamente todos os caracteres, não faz-se necessário anexar as imagens separadas para cada caso, porém todas as saídas geradas pela OrCA podem ser vistas no Apêndice \ref{chap:apOntologia}.
 
 \subsection{Resultados da Etapa um}
-A OrCA IDE foi capaz de reproduzir 100\% da expressividade dos axiomas propostos nos Tópicos 4.3.X, levando em consideração que as restrições de cardinalidade foram desconsideradas. Apesar disso, um axioma específico, que não foi selecionado para a demonstração acima, mas pode ser visto na Figura \ref{fig:axiomae_o}, não pôde ter sua expressividade 100\% representada pela OrCA, visto que não é possível utilizar a \textit{TAG} de disjunção (\textit{disjointWith}). Sendo assim, qualquer axioma que utilize esta \textit{TAG} não poderá ser representado pela OrCA IDE (ver Figura \ref{fig:axiomae_orca}).
+A OrCA foi capaz de reproduzir 100\% da expressividade dos axiomas propostos nos Tópicos 4.3.X, levando em consideração que as restrições de cardinalidade foram desconsideradas. Apesar disso, um axioma específico, que não foi selecionado para a demonstração acima, mas pode ser visto na Figura \ref{fig:axiomae_o}, não pôde ter sua expressividade 100\% representada pela OrCA, visto que não é possível utilizar a \textit{TAG} de disjunção (\textit{disjointWith}). Sendo assim, qualquer axioma que utilize esta \textit{TAG} não poderá ser representado pela OrCA (ver Figura \ref{fig:axiomae_orca}).
 
 \begin{figure}[H]
 \centering
@@ -1026,7 +1028,7 @@ Esse axioma pode ser visto na Figura \ref{fig:axiomai_1}, onde sua representaç�
 \begin{figure}[H]
 \centering
 \includegraphics[width=.6\textwidth]{Figuras/axiomai_1_res.png}
-\caption{Resposta da Orca IDE ao axioma 1} 
+\caption{Resposta da Orca ao axioma 1} 
 \label{fig:axiomai_1_res}
 \end{figure}
 
@@ -1035,11 +1037,11 @@ O \textit{Reasoner} conseguiu deduzir que duas classes estão inconsistentes: \t
 \begin{figure}[H]
 \centering
 \includegraphics[width=.6\textwidth]{Figuras/axiomai_1_protege.png}
-\caption{Resposta do \textit{Protègè} a mesma ontologia inconsistente do axioma 1} 
+\caption{Resposta do \textit{Protégé} a mesma ontologia inconsistente do axioma 1} 
 \label{fig:axiomai_1_protege}
 \end{figure}
 
-Na Figura \ref{fig:axiomai_1_protege} é possível ver a resposta do \textit{Protègè} a mesma ontologia. O \textit{Protègè} marca de vermelho as classes quando estas são inconsistentes. Logo, podemos observar que a OrCA teve o mesmo resultado que o \textit{Protègè}, que utiliza um \textit{reasoner} diferente da OrCA. O \textit{Protègè} utiliza o HermiT (versão 1.4.3.456), enquanto a OrCA utiliza o Pellet (versão 2.4.0 ignazio1977).
+Na Figura \ref{fig:axiomai_1_protege} é possível ver a resposta do \textit{Protégé} a mesma ontologia. O \textit{Protégé} marca de vermelho as classes quando estas são inconsistentes. Logo, podemos observar que a OrCA teve o mesmo resultado que o \textit{Protégé}, que utiliza um \textit{reasoner} diferente da OrCA. O \textit{Protégé} utiliza o HermiT (versão 1.4.3.456), enquanto a OrCA utiliza o Pellet (versão 2.4.0 ignazio1977).
 
 
 \subsection{Axioma inconsistente 2}
@@ -1062,7 +1064,7 @@ Esse axioma pode ser visto na Figura \ref{fig:axiomai_2}. O fator inconsistente 
 \begin{figure}[H]
 \centering
 \includegraphics[width=.6\textwidth]{Figuras/axiomai_2_res.png}
-\caption{Resposta da Orca IDE ao axioma 2} 
+\caption{Resposta da Orca ao axioma 2} 
 \label{fig:axiomai_2_res}
 \end{figure}
 
@@ -1071,11 +1073,11 @@ O \textit{Reasoner} conseguiu deduzir que duas classes estão inconsistentes: \t
 \begin{figure}[H]
 \centering
 \includegraphics[width=.6\textwidth]{Figuras/axiomai_2_protege.png}
-\caption{Resposta do \textit{Protègè} a mesma ontologia inconsistente do axioma 2} 
+\caption{Resposta do \textit{Protégé} a mesma ontologia inconsistente do axioma 2} 
 \label{fig:axiomai_2_protege}
 \end{figure}
 
-O \textit{Reasoner} deduziu que a classe \textit{LivingOrganism} é inconsistente. Observando toda a ontologia, é possível notar também que esta classe não está diretamente ligada a nenhuma outra classe, deste modo o \textit{Reasoner} não informou outras classes como inconsistentes. Na Figura \ref{fig:axiomai_2_protege} é possível ver a resposta do \textit{Protègè} a mesma ontologia. Obteve o mesmo resultado corretamente.
+O \textit{Reasoner} deduziu que a classe \textit{LivingOrganism} é inconsistente. Observando toda a ontologia, é possível notar também que esta classe não está diretamente ligada a nenhuma outra classe, deste modo o \textit{Reasoner} não informou outras classes como inconsistentes. Na Figura \ref{fig:axiomai_2_protege} é possível ver a resposta do \textit{Protégé} a mesma ontologia. Obteve o mesmo resultado corretamente.
 
 \subsection{Axioma inconsistente 3}
 Esse axioma pode ser visto na Figura \ref{fig:axiomai_3}. O fator inconsistente se dá porque existe uma definição desta mesma classe sem a negação da expressão, como visto na Figura \ref{fig:axiomai_3_o}. A resposta da OrCA para esse axioma pode ser vista na Figura \ref{fig:axiomai_3_res}.
@@ -1097,16 +1099,16 @@ Esse axioma pode ser visto na Figura \ref{fig:axiomai_3}. O fator inconsistente 
 \begin{figure}[H]
 \centering
 \includegraphics[width=.6\textwidth]{Figuras/axiomai_3_res.png}
-\caption{Resposta da Orca IDE ao axioma 3} 
+\caption{Resposta da Orca ao axioma 3} 
 \label{fig:axiomai_3_res}
 \end{figure}
 
-O \textit{Reasoner} deduziu que a classe \textit{BiologicalDeathProcess} é inconsistente, da mesma forma que o \textit{Protègè}, como visto na Figura \ref{fig:axiomai_3_protege}.
+O \textit{Reasoner} deduziu que a classe \textit{BiologicalDeathProcess} é inconsistente, da mesma forma que o \textit{Protégé}, como visto na Figura \ref{fig:axiomai_3_protege}.
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=.5\textwidth]{Figuras/axiomai_3_protege.png}
-\caption{Resposta do \textit{Protègè} a mesma ontologia inconsistente do axioma 3} 
+\caption{Resposta do \textit{Protégé} a mesma ontologia inconsistente do axioma 3} 
 \label{fig:axiomai_3_protege}
 \end{figure}
 
@@ -1114,40 +1116,40 @@ O \textit{Reasoner} deduziu que a classe \textit{BiologicalDeathProcess} é inco
 É possível concluir que a OrCA não é só capaz de verificar inconsistência entre classes diretamente envolvidas em axiomas inconsistentes, mas também é capaz de deduzir inconsistência em classes indiretas, que por sua vez utilizam diretamente classes inconsistentes.
 
 \section{Etapa três}
-Nesta etapa foi utilizado o recurso de inferência de axiomas da OrCA para a ontologia utilizada na etapa um. Quando axiomas são inseridos na OrCA, automaticamente inferências são realizadas. Esta etapa irá validar estas informações. Para ter um comparativo, foi executado a mesma ontologia no \textit{Protègè}, a fim de comparar os resultados.
+Nesta etapa foi utilizado o recurso de inferência de axiomas da OrCA para a ontologia utilizada na etapa um. Quando axiomas são inseridos na OrCA, automaticamente inferências são realizadas. Esta etapa irá validar estas informações. Para ter um comparativo, foi executado a mesma ontologia no \textit{Protégé}, a fim de comparar os resultados.
 
 \subsection{Resultados}
-Ao executar a ontologia da etapa um no \textit{Protègè}, 4 axiomas foram inferidos da ontologia. A mesma ontologia quando executada na OrCA foi inferido os mesmos 4 axiomas (ver Figuras \ref{fig:e3_axioma1}, \ref{fig:e3_axioma2}, \ref{fig:e3_axioma3} e \ref{fig:e3_axioma4}).
+Ao executar a ontologia da etapa um no \textit{Protégé}, 4 axiomas foram inferidos da ontologia. A mesma ontologia quando executada na OrCA foi inferido os mesmos 4 axiomas (ver Figuras \ref{fig:e3_axioma1}, \ref{fig:e3_axioma2}, \ref{fig:e3_axioma3} e \ref{fig:e3_axioma4}).
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=.7\textwidth]{Figuras/e3_axioma1.png}
-\caption{Axioma inferido 1 após execução no \textit{Protègè}} 
+\caption{Axioma inferido 1 após execução no \textit{Protégé}} 
 \label{fig:e3_axioma1}
 \end{figure}
 \begin{figure}[H]
 \centering
 \includegraphics[width=.7\textwidth]{Figuras/e3_axioma2.png}
-\caption{Axioma inferido 2 após execução no \textit{Protègè}} 
+\caption{Axioma inferido 2 após execução no \textit{Protégé}} 
 \label{fig:e3_axioma2}
 \end{figure}
 \begin{figure}[H]
 \centering
 \includegraphics[width=.8\textwidth]{Figuras/e3_axioma3.png}
-\caption{Axioma inferido 3 após execução no \textit{Protègè}} 
+\caption{Axioma inferido 3 após execução no \textit{Protégé}} 
 \label{fig:e3_axioma3}
 \end{figure}
 \begin{figure}[H]
 \centering
 \includegraphics[width=.7\textwidth]{Figuras/e3_axioma4.png}
-\caption{Axioma inferido 4 após execução no \textit{Protègè}} 
+\caption{Axioma inferido 4 após execução no \textit{Protégé}} 
 \label{fig:e3_axioma4}
 \end{figure}
 
 \chapter{Conclusão}
 \label{chap:conclusao}
 
-O presente trabalho apresentou a ferramenta OrCA IDE, que é uma ferramenta geradora de ontologias que se propõe a facilitar o processo de desenvolvimento de ontologias e permitir que um número maior de usuários possa se envolver nesse processo, sem precisar possuir conhecimento prévio de programação. 
+O presente trabalho apresentou a ferramenta OrCA, que é uma ferramenta geradora de ontologias que se propõe a facilitar o processo de desenvolvimento de ontologias e permitir que um número maior de usuários possa se envolver nesse processo, sem precisar possuir conhecimento prévio de programação. 
 
 Através dos experimentos e testes realizados, podemos concluir que a OrCA é capaz de realizar tudo o que se propôs a fazer. É capaz construir ontologias com baixo ou alto grau de complexidade, embora falhe em apenas um aspecto (expressividade da disjunção), possibilitando que usuários sem conhecimento em programação sejam capazes de desenvolver suas próprias ontologias. A OrCA também é capaz de representar conhecimento de forma efetiva, no que diz respeito ao código \textit{OWL}, ou seja, código criado corretamente. Foi provado também que a OrCA é capaz de deduzir inconsistências e inferir novos axiomas, assim como as maiores e mais utilizadas ferramentas do seguimento na atualidade.
 
@@ -1159,9 +1161,8 @@ Deseja-se implementar a utilização da \textit{tag} \textit{disjointWith} para 
 \addcontentsline{toc}{chapter}{Bibliografia}
 
 \appendix
-\chapter{Instalando a OrCA IDE}
+\chapter{Instalando a OrCA}
 \label{chap:apInstalacao}
-%\section *{Instalando a OrCA IDE}
 Acesse a url https://github.com/TroniPM/IAproject, clique no botão \textit{Clone or download}, e posteriormente no botão \textit{Download ZIP}, como mostrado na Figura \ref{fig:install1}.
 
 \begin{figure}[H]
