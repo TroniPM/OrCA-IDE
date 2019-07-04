@@ -1,10 +1,13 @@
 \documentclass{bcc}
 \usepackage{amssymb}
+\usepackage{fancyhdr}
+
 
 %Para aparecer XML como codigo
 \usepackage{listings}
 \usepackage{color}
 \usepackage{comment}
+\usepackage{url}
 %\definecolor{codegreen}{rgb}{0,0.6,0}
 %\definecolor{codegray}{rgb}{0.5,0.5,0.5}
 %\definecolor{codepurple}{rgb}{0.58,0,0.82}
@@ -88,7 +91,7 @@
 %\examinadorTres{Stephen Cook}{UAG}{UFRPE}
 %\examinadorQuatro{John Backus}{UAG}{UFRPE}
 
-\dataMesAno{25}{junho}{2019}
+\dataMesAno{01}{julho}{2019}
 
 \begin{document}
 
@@ -100,13 +103,18 @@
 \include{agradecimentos}
 
 \begin{resumo}
-INSERIR RESUMO
+
+Com a crescente necessidade de capturar, representar e compartilhar conhecimento entre humanos e máquinas, desenvolvemos a ferramenta OrCA. Uma ferramenta para construção automática de ontologias baseada em Processamento de Linguagem Natural, cujo objetivo é o de criar de forma semiautomática, com pouca ou nenhuma intervenção humana, ontologias expressivas em OWL DL. A ferramenta também é capaz  de realizar raciocínio automático de inconsistências e subsunção em tempo de desenvolvimento. Ontologias são especificações formais e compartilhadas de um domínio de conhecimento. Para uma maior adoção do uso e do desenvolvimento de ontologias, tanto por parte de profissionais experientes como leigos interessados em seu desenvolvimento faz-se-a necessário a criação de ferramentas que facilitem esse processo, permitindo que usuários com pouco conhecimento em Web Semântica ou em desenvolvimento de ontologias possam se engajar no desenvolvimento de ontologias modeladas em OWL DL. Nossos resultados demostram o sucesso do OrCA em criar ontologias com baixo ou alto nível de complexidade baseada numa Linguagem Natural Controlada e com capacidade de realizar raciocínio automático.
+
 \end{resumo}
 
 \selectlanguage{english}
+
 \begin{abstract}
-INSERIR ABSTRACT
+TRADUZIR    
 \end{abstract}
+
+
 \selectlanguage{portuguese}
 
 % Centralizar titulos
@@ -329,6 +337,14 @@ O Processamento de Linguagem Natural é uma área de pesquisa e aplicação que 
 
 Em seu trabalho \cite{liddy2001} define PLN como uma gama teoricamente motivada de técnicas computacionais para analisar e representar textos que ocorrem naturalmente em um ou mais níveis de análise linguística com a finalidade de obter processamento de linguagem semelhante ao humano para uma série de tarefas ou aplicações.
 
+\section{Lógica de Descrição}
+
+Lógicas de descrição (DLs) são formalismos de representação de conhecimento baseados em lógica que são adaptados para representar o conhecimento terminológico de um domínio de aplicação de uma forma estruturada e formalmente bem compreendida. Eles permitem que seus usuários definam as noções (classes, relações, objetos) do domínio usando conceitos, funções e indivíduos; estabelecer restrições sobre o modo como essas noções podem ser interpretadas; e deduzir consequências, como subclasse e relacionamentos entre instâncias, das definições e restrições \cite{baader2001}.
+
+As DLs tem sido empregadas em vários domínios de aplicações como processamento de linguagem natural, bancos de dados, ontologias. Porém, seu sucesso mais notável é provavelmente a adoção da linguagem OWL baseada em DL como linguagem de ontologia padrão para a web semântica \cite{baader2002}.
+
+Uma DL pode ser caracterizada pelos construtores que ele fornece, alguns de seus principais construtores são: união ($\sqcup$), intersecção ($\sqcap$), negação ($\neg$), restrição de valor ($\forall$), quantificação existencial ($\exists$) \cite{kepler2006}.
+
 \section{Pellet}
 
 A máquina de inferência Pellet, é implementado em Java e é \textit{open source}, ele fornece uma gama de recursos como: suporte a regras, conexão de raciocínio, identificação de axiomas. Para tornar seus recursos de raciocínio acessível aos usuários, ele fornece diferentes interfaces \cite{sirin2007}. 
@@ -417,7 +433,7 @@ Com a finalidade de criar ontologias a partir de Processamento de Linguagem Natu
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.7\textwidth]{Figuras/DiagramadeComponentes.png}
+\includegraphics[width=.63\textwidth]{Figuras/DiagramadeComponentes.png}
 \caption{Diagrama de componentes geral}
 \label{fig:diagComponenteGeral}
 \end{figure}
@@ -482,6 +498,7 @@ Na mesma tela, porém no campo Console (Vide Figura \ref{fig:telaCompiler2}), é
 \end{figure}
 
 \subsection{Componente Ontology}
+\label{sec:compOntology}
 
 A \textit{Ontology} mostra a saída da ontologia (em OWL) após a compilação das sentenças dadas pelos usuários. Este campo não é editável, porém, embora o usuário não possa inserir ou remover texto, o modelo de visualização pode ser alterado através do menu suspenso chamado \textit{Output Model} para as seguintes sintaxes: \textit{RDF/XML} (padrão), \textit{KRSS2, Latex, Manchester OWL Syntax, OWL/XML, OWL Functional Syntax} e \textit{Turtle}. Todas essas sintaxes são fornecidas pela \textit{Manchester OWL API}. 
 
@@ -563,8 +580,8 @@ Idiomas como o português, inglês e espanhol possuem um conjunto de regras e no
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|l|l|}
-\hline Regra  & Definição  \\ 
+\begin{tabular}{l|l}
+Regra  & Definição  \\ 
 \hline <OP>  & \begin{tabular}[l]{@{}l@{}} some || all || only || and || or || isa || equivalent || that \end{tabular} \\
 \hline <ID>  & \begin{tabular}[l]{@{}l@{}} a-Z* \end{tabular} \\
 \hline <NUM> & \begin{tabular}[l]{@{}l@{}} 0-9* \end{tabular} \\
@@ -576,7 +593,6 @@ Idiomas como o português, inglês e espanhol possuem um conjunto de regras e no
 (<DEF>) <OP> <ID> <FIM> || \\
 <ID> <OP> <DEF> <FIM> || \\
 \end{tabular} \\
-\hline
 \end{tabular} 
 \caption{Gramática OrCA IDE}
 \label{tab:tabelaGramatica}
@@ -584,15 +600,16 @@ Idiomas como o português, inglês e espanhol possuem um conjunto de regras e no
 
 
 \section{Linguagem Natural Controlada}
+\label{sec:lnc}
 
 Para que o usuário consiga utilizar o sistema, se faz necessário que ele possua o conhecimento da LNC que será definida a seguir, na Tabela \ref{tab:tabelaPalavrasReservadas} observamos as palavras reservadas, suas respectivas descrições e um exemplo de sua aplicação.
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|c|l|l|}
-\hline Reservado  & Descrição & Exemplo  \\ 
+\begin{tabular}{l|l|l}
+ Reservado  & Descrição & Exemplo  \\ 
 \hline isa & \begin{tabular}[l]{@{}l@{}} Uma classe X é um \\tipo de classe Y.\end{tabular} & Gato isa Felino \\ \hline
-equivalent & \begin{tabular}[l]{@{}l@{}} Uma classe X é um tipo \\ de classe irmã de Y.\end{tabular} & JanelaBanheiro equivalent JanelaCasa \\ \hline and / that & \begin{tabular}[l]{@{}l@{}} Uma classe X interseção\\ com uma classe Y.\end{tabular} & (Correr and Pular) isa ExercicioFisico  \\ \hline or & \begin{tabular}[l]{@{}l@{}}Uma classe X disjunção\\ de uma classe Y. \end{tabular} & Trabalhar isa nor(Dormir or Comer) \\ \hline only & \begin{tabular}[l]{@{}l@{}}Uma propriedade X\\ only classe Y. \end{tabular} & podeLatir only Cachorro \\ \hline some & \begin{tabular}[l]{@{}l@{}}Uma propriedade X\\ some classe Y. \end{tabular} & andarNoMuro some Gato \\ \hline all & \begin{tabular}[l]{@{}l@{}}Uma propriedade X \\ all classe Y. \end{tabular} & comerGrama all Vaca \\ \hline not & Negação de uma Classe & not Gato \\ \hline nor & Negação de uma expressão & nor(Gato isa Felino) \\ \hline 
+equivalent & \begin{tabular}[l]{@{}l@{}} Uma classe X é um tipo \\ de classe irmã de Y.\end{tabular} & JanelaBanheiro equivalent JanelaCasa \\ \hline and / that & \begin{tabular}[l]{@{}l@{}} Uma classe X interseção\\ com uma classe Y.\end{tabular} & (Correr and Pular) isa ExercicioFisico  \\ \hline or & \begin{tabular}[l]{@{}l@{}}Uma classe X disjunção\\ de uma classe Y. \end{tabular} & Trabalhar isa nor(Dormir or Comer) \\ \hline only & \begin{tabular}[l]{@{}l@{}}Uma propriedade X\\ only classe Y. \end{tabular} & podeLatir only Cachorro \\ \hline some & \begin{tabular}[l]{@{}l@{}}Uma propriedade X\\ some classe Y. \end{tabular} & andarNoMuro some Gato \\ \hline all & \begin{tabular}[l]{@{}l@{}}Uma propriedade X \\ all classe Y. \end{tabular} & comerGrama all Vaca \\ \hline not & Negação de uma Classe & not Gato \\ \hline nor & Negação de uma expressão & nor(Gato isa Felino) \\ 
 \end{tabular}
 \caption{Palavras Reservadas}
 \label{tab:tabelaPalavrasReservadas}
@@ -711,32 +728,36 @@ Concluímos que a ferramenta foi criada com o intuito de facilitar a criação d
 
 \chapter{Experimentos e Resultados}
 \label{chap:exp}
-\section{Método}
-A realização dos experimentos foi dividida em três etapas: 
 
-\textbf{Etapa um}:
-Foi verificada a capacidade de construção de ontologias a partir de linguagem natural, bem como a validação da ontologia criada, tendo como base axiomas de uma ontologia já existente. 
+Os experimentos realizados tiveram como principal objetivo verificar a capacidade da ferramenta desenvolvida em cumprir com os objetivos propostos, essa verificação se deu através da análise dos resultados que foram coletados durante a execução dos experimentos. Aqui são apresentados o planejamento das etapas que foram realizadas, o material e métodos que foram utilizados, planejamento da amostra e os resultados obtidos.
 
-\textbf{Etapa dois}:
-Se deu pela verificação de inconsistência dos axiomas gerados através da etapa um. Como foram utilizados axiomas de uma ontologia real, não existiam inconsistências, desta forma, foram criados axiomas específicos para gerar inconsistências e testar a capacidade da OrCA. Foi utilizado também os resultados obtidos pelo \textit{Protégé} as mesmas ontologias inconsistentes, para fins de comparação, já que ele é uma das ferramentas mais utilizadas pelos engenheiros de ontologias na atualidade,.
 
-\textbf{Etapa três}:
-Foi verificada a ontologia inferida pela OrCA, utilizando como base a ontologia gerada na etapa um. Para ter um comparativo, de igual forma a etapa anterior, a ontologia gerada na etapa um foi processada pelo \textit{Protégé} a fim de obter uma ontologia inferida e então realizar um comparativo entre os resultados.
+\section{Delineamento Experimental}
+O experimento realizado foi dividido em três etapas: 
 
-\section{Material}
+\textbf{Etapa um}: nesta etapa foi verificada a capacidade da ferramenta de construir ontologias a partir da linguagem natural controlada (Vide Capítulo 3, Seção 3.5). Para que tivéssemos um resultado seguro e confiável, foi selecionado uma ontologia já existente com conceitos claros e bem definidos. Desta forma, ao tentar reproduzir esta ontologia, já é possível saber qual deverá ser o resultado final. O próximo passo foi criar o código na sintaxe da OrCA para descrever esta ontologia. Como grande parte dos axiomas desta ontologia são de baixa complexidade, um filtro com apenas os axiomas mais complexos foi criado, selecionando axiomas com base no quantitativo de classes envolvidas em sua definição. Após este código criado ser executado no OrCA, o resultado foi comparado com a ontologia original, a fim de saber se foi possível recriá-la com a mesma expressividade, ou seja, com os mesmos axiomas.
 
-Os axiomas foram extraídos da ontologia NTDO (\textit{Neglected Tropical Disease Ontology} - Ontologia de Doenças Tropicais Negligenciadas). A ontologia utilizada tem o objetivo de representar um domínio com relevância e impacto reconhecido pela literatura e por instituições de saúde pública. Ela descreve detalhadamente o processo de transmissão de doenças e o falecimento de indivíduos que podem vir a ocorrer a partir da doença transmitida \cite{ntdo}.
+\textbf{Etapa dois}: consistiu nos testes do módulo de raciocínio, verificando a capacidade da OrCA de realizar raciocínio e checar inconsistências. Como foram utilizados axiomas de uma ontologia real, não existiam inconsistências, desta forma, foram criados axiomas específicos para gerar inconsistências e testar a capacidade da OrCA em realizar esse tipo de raciocínio. Diferente da etapa um, a ontologia inteira\footnote{Com as restrições que serão impostas na Seção \ref{sec:materialemetodo}} foi utilizada nesta etapa. Todos os axiomas foram executados na OrCA e no \textit{Protégé}. O código OWL obtido nas duas ferramentas foi comparado, desta forma foi possível ter um resultado confiável entre uma ferramenta amplamente utilizada por profissionais e a ferramenta desenvolvida.
 
-Uma vez que a OrCA é focada em axiomas de expressividade ALC, foram considerados unicamente axiomas relacionados a subclasses, equivalência de classes, definição de classe, disjunção de classes e definição de propriedades (ver Tabelas \ref{tab:QtdALSNTDO} e \ref{tab:QtdObjsNTDO}). É importante ressaltar também que na OrCA cardinalidade não é suportada, assim como ela utiliza apenas os construtores de união, interseção, negação, restrição universal e restrição existencial (ver Tabela e negação \ref{tab:QtdConstNTDO}).
+\textbf{Etapa três}: esta etapa foi baseada em testar o módulo de inferência da ferramenta, constatando se ela é capaz de inferir novos axiomas a ontologia, ou seja, se a ferramenta é capaz deduzir algum conhecimento novo da ontologia que não está explícito. Os axiomas utilizados neste passo foram os mesmos da etapa anterior, porém sem os axiomas inconsistentes. Para ter um resultado confiável, o resultado da OrCA para esta etapa também foi comparado ao resultado do \textit{Protégé}, este também utilizando os mesmos axiomas.
+
+\section{Material e Métodos}
+\label{sec:materialemetodo}
+% COLOCAR TIL NO  MEIO DA LINHA {\raise.17ex\hbox{$\scriptstyle\sim$}}
+
+Uma vez definidas as etapas a serem realizadas na fase de experimentos, se faz necessária a escolha do material a ser utilizado. Para que tenhamos um resultado final controlado e confiável, foi escolhido uma ontologia já existente, com axiomas bem definidos e validada por profissionais, assim, mesmo no início do experimento é possível saber qual deverá ser o resultado obtido pela a OrCA, visto que para uma ontologia ser igual a outra, ela precisa conter os mesmos axiomas. Logo, o código OWL gerado pela OrCA precisa ser o mesmo da ontologia original. 
+
+A ontologia selecionada foi a  NTDO\footnote{\url{http://www.cin.ufpe.br/\~ntdo/}} (\textit{Neglected Tropical Disease Ontology} - Ontologia de Doenças Tropicais Negligenciadas) \cite{ntdo}. Ela tem o objetivo representar um domínio com relevância e impacto reconhecido pela literatura e por instituições de saúde pública. Nela, é modelada em detalhes o processo de transmissão de doenças e o falecimento de indivíduos a partir dessas doenças \cite{ntdo}.
+
+Todos os axiomas que foram utilizados nos experimentos e que formam nossa base de dados experimental, foram extraídos da ontologia NTDO. Uma vez que a OrCA é focado em axiomas de expressividade ALC, foram considerados unicamente axiomas relacionados a subclasses, equivalência de classes, definição de classe, disjunção de classes e definição de propriedades (Vide Tabelas \ref{tab:QtdALSNTDO} e \ref{tab:QtdConstNTDO}). É importante ressaltar também que a OrCA não trata axiomas com cardinalidade e utiliza os construtores de união ($\sqcup$), interseção ($\sqcap$), negação (¬), restrição universal ($\forall$) e restrição existencial ($\exists$) (Vide Tabela \ref{tab:QtdConstNTDO}).
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|l|l|}
-\hline
+\begin{tabular}{l|l}
 Tipo Axioma       & Quantidade \\ \hline
 SubClassOf        & 48         \\ \hline
 EquivalentClasses & 5          \\ \hline
-DisjointClasses   & 1          \\ \hline
+DisjointClasses   & 1          \\
 \end{tabular}
 \caption{Quantitativo de axiomas extraídos da NTDO}
 \label{tab:QtdALSNTDO}
@@ -744,84 +765,96 @@ DisjointClasses   & 1          \\ \hline
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|l|l|}
-\hline
+\begin{tabular}{l|l}
 Construtor & Quantidade \\ \hline
 And        & 9          \\ \hline
 Or         & 4          \\ \hline
 Some       & 6          \\ \hline
-All (*)    & 11         \\ \hline
-Not        & 1         \\ \hline
+All\footnotemark        & 11         \\ \hline
+Not        & 1         \\
 \end{tabular}
-\caption{Quantitativo de construtores extraídos da NTDO. (*) é o equivalente ao construtor \textit{Only} no \textit{Protégé}, que é o equivalente ao quantificador universal.}
+\caption{Quantitativo de construtores extraídos da NTDO}
 \label{tab:QtdConstNTDO}
 \end{table}
 
+\footnotetext{é o equivalente ao construtor \textit{Only} no \textit{Protégé}, quantificador universal}
+
 \begin{table}[H]
 \centering
-\begin{tabular}{|l|l|}
-\hline
+\begin{tabular}{l|l}
 Tipo Objeto   & Quantidade \\ \hline
 Class         & 57         \\ \hline
-Property      & 12         \\ \hline
+Property      & 12         \\
 \end{tabular}
 \caption{Quantitativo de classes e propriedades extraídos da NTDO.}
 \label{tab:QtdObjsNTDO}
 \end{table}
 
-Nas Tabelas \ref{tab:QtdALSNTDO},  \ref{tab:QtdConstNTDO} e \ref{tab:QtdObjsNTDO} é possível ver o quantitativo da amostra extraída da NTDO. Originalmente, a ontologia NTDO é composta por seis arquivos: \textit{NTDO.owl}, \textit{InjuryAndDeath.owl}, \textit{Leishmaniasis.owl}, \textit{DengueFever.owl}, \textit{CID-10.owl} e \textit{GeoOnto.owl}, porém apenas o arquivo \textit{NTDO.owl} foi utilizado, uma vez que este arquivo possui objetos suficientes para o experimento.
+O código OWL completo da ontologia extraída pode ser visto no Apêndice \ref{chap:apOntologia}.3. Nas Tabelas \ref{tab:QtdALSNTDO}, \ref{tab:QtdConstNTDO} e \ref{tab:QtdObjsNTDO} é possível ver o quantitativo da amostra extraída. Originalmente, a ontologia NTDO é composta por seis arquivos: \textit{ntdo.owl}\footnote{\url{http://www.cin.ufpe.br/~ntdo/OWLFiles/ntdo.owl}}, \textit{InjuryAndDeath.owl}\footnote{\url{http://www.cin.ufpe.br/~ntdo/OWLFiles/InjuryAndDeath.owl}}, \textit{Leishmaniasis.owl}\footnote{\url{http://www.cin.ufpe.br/~ntdo/OWLFiles/Leishmaniasis.owl}}, \textit{DengueFever.owl}\footnote{\url{http://www.cin.ufpe.br/~ntdo/OWLFiles/DengueFever.owl}}, \textit{CID-10.owl}\footnote{\url{http://www.cin.ufpe.br/~ntdo/OWLFiles/CID-10.owl}} e \textit{GeoOnto.owl}\footnote{\url{http://www.cin.ufpe.br/~ntdo/OWLFiles/GeoOnto.owl}}, porém apenas o arquivo \textit{ntdo.owl} foi utilizado, uma vez que este arquivo possui objetos suficientes para o experimento.
 
-Uma vez que a maioria dos axiomas desta ontologia é de complexidade baixa, algo como  $X \subseteq Y$ (X é subclasse de Y), apenas axiomas com 3 ou mais classes envolvidas serão utilizados para demonstração. Após este filtro, apenas 7 axiomas principais foram selecionados. O quantitativo de axiomas, construtores e objetos podem ser observados respectivamente nas Tabelas \ref{tab:QtdALSNTDO_filtro}, \ref{tab:QtdConstNTDO_filtro} e \ref{tab:QtdObjsNTDO_filtro}.
+\begin{figure}[H]
+\centering
+\includegraphics[width=.5\textwidth]{Figuras/protege.png}
+\caption{Versão e plugins pre-instalados no \textit{Protégé} } 
+\label{fig:protege}
+\end{figure}
 
+O \textit{Protégé} utilizado nos experimentos está na versão 5.5.0, como pode ser visto na Figura \ref{fig:protege}. Nenhum componente ou plugin foi adicionado, além dos que são instalados juntamente com a ferramenta.
+
+\section{Planejamento da Amostra}
+
+Uma vez que a maioria dos axiomas desta ontologia é de complexidade baixa, algo como  $X \subseteq Y$ (X é subclasse de Y), apenas axiomas com 3 ou mais classes envolvidas serão utilizados para demonstração. Após este filtro, 8 axiomas foram selecionados. O quantitativo de axiomas, construtores e objetos, após o filtro, podem ser observados respectivamente nas Tabelas \ref{tab:QtdALSNTDO_filtro}, \ref{tab:QtdConstNTDO_filtro} e \ref{tab:QtdObjsNTDO_filtro}. 
 \begin{table}[H]
 \centering
-\begin{tabular}{|l|l|}
-\hline
+\begin{tabular}{l|l}
 Tipo Axioma       & Quantidade \\ \hline
-SubClassOf        & 12         \\ \hline
+SubClassOf        & 13         \\ \hline
 EquivalentClasses & 1          \\ \hline
-DisjointClasses   & 0          \\ \hline
+DisjointClasses   & 1          \\ 
 \end{tabular}
-\caption{Quantitativo de axiomas extraídos da NTDO após filtro.}
+\caption{Quantitativo de axiomas extraídos da NTDO após filtro}
 \label{tab:QtdALSNTDO_filtro}
 \end{table}
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|l|l|}
-\hline
+\begin{tabular}{l|l}
 Construtor & Quantidade \\ \hline
 And        & 6          \\ \hline
 Or         & 4          \\ \hline
 Some       & 6          \\ \hline
-All (*)    & 11         \\ \hline
-Not        & 1         \\ \hline
+All        & 11         \\ \hline
+Not        & 1         \\ 
 \end{tabular}
-\caption{Quantitativo de construtores da NTDO após filtro.}
+\caption{Quantitativo de construtores da NTDO após filtro}
 \label{tab:QtdConstNTDO_filtro}
 \end{table}
 
 \begin{table}[H]
 \centering
-\begin{tabular}{|l|l|}
-\hline
+\begin{tabular}{l|l}
 Tipo Objeto   & Quantidade \\ \hline
-Class         & 17         \\ \hline
-Property      & 12         \\ \hline
+Class         & 19         \\ \hline
+Property      & 12         \\ 
 \end{tabular}
-\caption{Quantitativo de classes da NTDO após filtro.}
+\caption{Quantitativo de classes e propriedades da NTDO após filtro}
 \label{tab:QtdObjsNTDO_filtro}
 \end{table}
 
+O código OWL completo da ontologia resultante após essa restrição pode ser visto no Apêndice \ref{chap:apOntologia}.4. As subseções seguintes mostrarão todos os axiomas selecionados em OWL, assim como em representação DL, e na sintaxe OrCA. 
+
 \section{Etapa um}
+
+Nesta sessão serão mostrados todos os axiomas resultantes ao filtro criado. Cada axioma será exibido em OWL, forma original em que foi extraído, e será chamado de código OWL. Também na sintaxe OrCA, uma vez que para que um axioma seja processado pela ferramenta, ele precisa estar na sintaxe descrita no Capítulo \ref{chap:sistema}, Seção \ref{sec:lnc}, e será chamado de código OrCA, e por fim na representação DL. Os códigos OrCA são as entradas do sistema. Os códigos OWL mostrados fazem parte da ontologia original, e serão usados como comparativo, logo, a saída da OrCA deverá conter o mesmo código OWL. Como mostrado no Capítulo \ref{chap:sistema}, Seção \ref{sec:compOntology}, código OWL também é o formato da saída da ferramenta.
+
 \subsection{Axioma 1}
-O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma1_o}. Em representação DL, o axioma tem a forma da Figura \ref{fig:axioma1_dl}, e convertido para a sintaxe da OrCA, possui a forma exibida na Figura \ref{fig:axioma1_orca}. 
+O axioma pode ser visto na representação DL na figura \ref{fig:axioma1_dl}. O código OrCA deste axioma, que será usado como entrada, pode ser visto na figura \ref{fig:axioma1_orca}. E a Figura \ref{fig:axioma1_o} mostra a forma original deste axioma (em OWL) que será usado para comparação. 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.8\textwidth]{Figuras/axioma1_o.png}
-\caption{Axioma 1 retirado da NTDO} 
-\label{fig:axioma1_o}
+\includegraphics[width=.7\textwidth]{Figuras/axioma1_dl.png}
+\caption{Axioma 1 na representação DL} 
+\label{fig:axioma1_dl}
 \end{figure}
 
 \begin{figure}[H]
@@ -833,27 +866,21 @@ O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma1_o}. Em 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.7\textwidth]{Figuras/axioma1_dl.png}
-\caption{Axioma 1 na representação DL} 
-\label{fig:axioma1_dl}
+\includegraphics[width=.8\textwidth]{Figuras/axioma1_o.png}
+\caption{Axioma 1 retirado da NTDO} 
+\label{fig:axioma1_o}
 \end{figure}
+
+A OrCA teve a mesma saída do código OWL mostrado na Figura \ref{fig:axioma1_o}, assim sendo, não é necessário mostrar o mesmo código, visto que eles são idênticos, porém ele pode ser visto no Apêndice \ref{chap:apOntologia}.2.
+
+
+%--------------------------------------------------------------
+
+
+%Para reduzir o número de imagens, visto que a saída da OrCA em comparação com sua forma original será similar em absolutamente todos os caracteres, não faz-se necessário anexar as imagens separadas para cada caso, porém todas as saídas geradas pela OrCA podem ser vistas no Apêndice \ref{chap:apOntologia}.
 
 \subsection{Axioma 2}
-O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma2_o}. Em representação DL, o axioma tem a forma da Figura \ref{fig:axioma2_dl}, e convertido para a sintaxe da OrCA, possui a forma exibida na Figura \ref{fig:axioma2_orca}. 
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=.8\textwidth]{Figuras/axioma2_o.png}
-\caption{Axioma 2 retirado da NTDO} 
-\label{fig:axioma2_o}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=.7\textwidth]{Figuras/axioma2_orca.png}
-\caption{Axioma 2 na sintaxe Orca} 
-\label{fig:axioma2_orca}
-\end{figure}
+O axioma pode ser visto na representação DL na figura \ref{fig:axioma2_dl}. O código OrCA deste axioma, que será usado como entrada, pode ser visto na figura \ref{fig:axioma2_orca}. E a Figura \ref{fig:axioma2_o} mostra a forma original deste axioma (em OWL) que será usado para comparação. 
 
 \begin{figure}[H]
 \centering
@@ -862,22 +889,24 @@ O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma2_o}. Em 
 \label{fig:axioma2_dl}
 \end{figure}
 
+\begin{figure}[H]
+\centering
+\includegraphics[width=.7\textwidth]{Figuras/axioma2_orca.png}
+\caption{Axioma 2 na sintaxe OrCA} 
+\label{fig:axioma2_orca}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.8\textwidth]{Figuras/axioma2_o.png}
+\caption{Axioma 2 retirado da NTDO} 
+\label{fig:axioma2_o}
+\end{figure}
+
+A OrCA teve a mesma saída do código OWL mostrado na Figura \ref{fig:axioma2_o}, assim sendo, não é necessário exibir o mesmo código, visto que eles são idênticos, porém ele pode ser visto no Apêndice \ref{chap:apOntologia}.2.
+
 \subsection{Axioma 3}
-O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma3_o}. Também é possível ver na Figura \ref{fig:axioma3_o} o trecho de cardinalidade desconsiderado para o experimento. Em representação DL, o axioma tem a forma da Figura \ref{fig:axioma3_dl}, e convertido para a sintaxe da OrCA, possui a forma exibida na Figura \ref{fig:axioma3_orca}. 
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=1\textwidth]{Figuras/axioma3_o.png}
-\caption{Axioma 3 retirado da NTDO} 
-\label{fig:axioma3_o}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=.6\textwidth]{Figuras/axioma3_orca.png}
-\caption{Axioma 3 na sintaxe OrCA} 
-\label{fig:axioma3_orca}
-\end{figure}
+O axioma pode ser visto na representação DL na figura \ref{fig:axioma3_dl}. O código OrCA deste axioma, que será usado como entrada, pode ser visto na figura \ref{fig:axioma3_orca}. E a Figura \ref{fig:axioma3_o} mostra a forma original deste axioma (em OWL) que será usado para comparação. 
 
 \begin{figure}[H]
 \centering
@@ -886,14 +915,30 @@ O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma3_o}. Tam
 \label{fig:axioma3_dl}
 \end{figure}
 
-\subsection{Axioma 4}
-O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma4_o}. É possível ver na Figura \ref{fig:axioma4_o} a parte referente a cardinalidade que foi desconsiderada para o experimento. Em representação DL, o axioma tem a forma da Figura \ref{fig:axioma4_dl} e convertido para a sintaxe da OrCA, possui a forma exibida na Figura \ref{fig:axioma4_orca}. 
+\begin{figure}[H]
+\centering
+\includegraphics[width=.7\textwidth]{Figuras/axioma3_orca.png}
+\caption{Axioma 3 na sintaxe OrCA} 
+\label{fig:axioma3_orca}
+\end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1\textwidth]{Figuras/axioma4_o.png}
-\caption{Axioma 4 retirado da NTDO} 
-\label{fig:axioma4_o}
+\includegraphics[width=.9\textwidth]{Figuras/axioma3_o.png}
+\caption{Axioma 3 retirado da NTDO} 
+\label{fig:axioma3_o}
+\end{figure}
+
+Ao ignorar a cardinalidade, a OrCA teve a mesma saída do código OWL mostrado na Figura \ref{fig:axioma3_o}, assim sendo, não é necessário exibir o mesmo código, visto que eles são idênticos, porém ele pode ser visto no Apêndice \ref{chap:apOntologia}.2.
+
+\subsection{Axioma 4}
+O axioma pode ser visto na representação DL na figura \ref{fig:axioma4_dl}. O código OrCA deste axioma, que será usado como entrada, pode ser visto na figura \ref{fig:axioma4_orca}. E a Figura \ref{fig:axioma4_o} mostra a forma original deste axioma (em OWL) que será usado para comparação. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.6\textwidth]{Figuras/axioma4_dl.png}
+\caption{Axioma 4 na representação DL} 
+\label{fig:axioma4_dl}
 \end{figure}
 
 \begin{figure}[H]
@@ -905,51 +950,41 @@ O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma4_o}. É 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.7\textwidth]{Figuras/axioma4_dl.png}
-\caption{Axioma 4 na representação DL} 
-\label{fig:axioma4_dl}
+\includegraphics[width=1\textwidth]{Figuras/axioma4_o.png}
+\caption{Axioma 4 retirado da NTDO} 
+\label{fig:axioma4_o}
 \end{figure}
 
+Ao ignorar a cardinalidade, a OrCA teve a mesma saída do código OWL mostrado na Figura \ref{fig:axioma4_o}, assim sendo, não é necessário exibir o mesmo código, visto que eles são idênticos, porém ele pode ser visto no Apêndice \ref{chap:apOntologia}.2.
+
 \subsection{Axioma 5}
-O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma5_o}. Em representação DL, o axioma tem a forma da Figura \ref{fig:axioma5_dl}, e convertido para a sintaxe da OrCA, possui a forma exibida na Figura \ref{fig:axioma5_orca}. 
+O axioma pode ser visto na representação DL na figura \ref{fig:axioma5_dl}. O código OrCA deste axioma, que será usado como entrada, pode ser visto na figura \ref{fig:axioma5_orca}. E a Figura \ref{fig:axioma5_o} mostra a forma original deste axioma (em OWL) que será usado para comparação. 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1\textwidth]{Figuras/axioma5_o.png}
-\caption{Axioma 5 retirado da NTDO} 
-\label{fig:axioma5_o}
+\includegraphics[width=.6\textwidth]{Figuras/axioma5_dl.png}
+\caption{Axioma 5 na representação DL} 
+\label{fig:axioma5_dl}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=.7\textwidth]{Figuras/axioma5_orca.png}
-\caption{Axioma 5 na sintaxe Orca} 
+\caption{Axioma 5 na sintaxe OrCA} 
 \label{fig:axioma5_orca}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.7\textwidth]{Figuras/axioma5_dl.png}
-\caption{Axioma 5 na representação DL} 
-\label{fig:axioma5_dl}
+\includegraphics[width=.8\textwidth]{Figuras/axioma5_o.png}
+\caption{Axioma 5 retirado da NTDO} 
+\label{fig:axioma5_o}
 \end{figure}
+
+A OrCA teve a mesma saída do código OWL mostrado na Figura \ref{fig:axioma5_o}, assim sendo, não é necessário exibir o mesmo código, visto que eles são idênticos, porém ele pode ser visto no Apêndice \ref{chap:apOntologia}.2.
 
 \subsection{Axioma 6}
-O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma6_o}. Em representação DL, o axioma tem a forma da Figura \ref{fig:axioma6_dl}, e convertido para a sintaxe da OrCA, possui a forma exibida na Figura \ref{fig:axioma6_orca}. 
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=1\textwidth]{Figuras/axioma6_o.png}
-\caption{Axioma 6 retirado da NTDO} 
-\label{fig:axioma6_o}
-\end{figure}
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=.7\textwidth]{Figuras/axioma6_orca.png}
-\caption{Axioma 6 na sintaxe Orca} 
-\label{fig:axioma6_orca}
-\end{figure}
+O axioma pode ser visto na representação DL na figura \ref{fig:axioma6_dl}. O código OrCA deste axioma, que será usado como entrada, pode ser visto na figura \ref{fig:axioma6_orca}. E a Figura \ref{fig:axioma6_o} mostra a forma original deste axioma (em OWL) que será usado para comparação. 
 
 \begin{figure}[H]
 \centering
@@ -958,35 +993,52 @@ O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma6_o}. Em 
 \label{fig:axioma6_dl}
 \end{figure}
 
-\subsection{Axioma 7}
-O axioma pode ser visto em sua forma original na Figura \ref{fig:axioma7_o}. Em representação DL, o axioma tem a forma da Figura \ref{fig:axioma7_dl}, e convertido para a sintaxe da OrCA, possui a forma exibida na Figura \ref{fig:axioma7_orca}. 
+\begin{figure}[H]
+\centering
+\includegraphics[width=.7\textwidth]{Figuras/axioma6_orca.png}
+\caption{Axioma 6 na sintaxe OrCA} 
+\label{fig:axioma6_orca}
+\end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.9\textwidth]{Figuras/axioma7_o.png}
-\caption{Axioma 7 retirado da NTDO} 
-\label{fig:axioma7_o}
+\includegraphics[width=1\textwidth]{Figuras/axioma6_o.png}
+\caption{Axioma 6 retirado da NTDO} 
+\label{fig:axioma6_o}
+\end{figure}
+
+A OrCA teve a mesma saída do código OWL mostrado na Figura \ref{fig:axioma6_o}, assim sendo, não é necessário exibir o mesmo código, visto que eles são idênticos, porém ele pode ser visto no Apêndice \ref{chap:apOntologia}.2.
+
+
+\subsection{Axioma 7}
+O axioma pode ser visto na representação DL na figura \ref{fig:axioma7_dl}. O código OrCA deste axioma, que será usado como entrada, pode ser visto na figura \ref{fig:axioma7_orca}. E a Figura \ref{fig:axioma7_o} mostra a forma original deste axioma (em OWL) que será usado para comparação. 
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.6\textwidth]{Figuras/axioma7_dl.png}
+\caption{Axioma 7 na representação DL} 
+\label{fig:axioma7_dl}
 \end{figure}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=.7\textwidth]{Figuras/axioma7_orca.png}
-\caption{Axioma 7 na sintaxe Orca} 
+\caption{Axioma 7 na sintaxe OrCA} 
 \label{fig:axioma7_orca}
 \end{figure}
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.7\textwidth]{Figuras/axioma7_dl.png}
-\caption{Axioma 7 na representação DL} 
-\label{fig:axioma7_dl}
+\includegraphics[width=1\textwidth]{Figuras/axioma7_o.png}
+\caption{Axioma 7 retirado da NTDO} 
+\label{fig:axioma7_o}
 \end{figure}
 
+A OrCA teve a mesma saída do código OWL mostrado na Figura \ref{fig:axioma7_o}, assim sendo, não é necessário exibir o mesmo código, visto que eles são idênticos, porém ele pode ser visto no Apêndice \ref{chap:apOntologia}.2.
 
-Para reduzir o número de imagens, visto que a saída da OrCA em comparação com sua forma original será similar em absolutamente todos os caracteres, não faz-se necessário anexar as imagens separadas para cada caso, porém todas as saídas geradas pela OrCA podem ser vistas no Apêndice \ref{chap:apOntologia}.
+\subsection{Axioma 8}
+Embora a ferramenta possua em sua sintaxe o ou lógico ($\sqcup$), não é possível gerar código OWL com a \textit{TAG} \textit{disjointWith}. O axioma, mostrado em código OWL na Figura \ref{fig:axiomae_o}, possui uma relação de subclasse e disjunção.
 
-\subsection{Resultados da Etapa um}
-A OrCA foi capaz de reproduzir 100\% da expressividade dos axiomas propostos nos Tópicos 4.3.X, levando em consideração que as restrições de cardinalidade foram desconsideradas. Apesar disso, um axioma específico, que não foi selecionado para a demonstração acima, mas pode ser visto na Figura \ref{fig:axiomae_o}, não pôde ter sua expressividade 100\% representada pela OrCA, visto que não é possível utilizar a \textit{TAG} de disjunção (\textit{disjointWith}). Sendo assim, qualquer axioma que utilize esta \textit{TAG} não poderá ser representado pela OrCA (ver Figura \ref{fig:axiomae_orca}).
 
 \begin{figure}[H]
 \centering
@@ -995,21 +1047,33 @@ A OrCA foi capaz de reproduzir 100\% da expressividade dos axiomas propostos nos
 \label{fig:axiomae_o}
 \end{figure}
 
+Como mostrado em subseções anteriores, a relação de subclasse é possível realizar, porém a relação de disjunção não. Desta forma, não é possível reproduzir este axioma corretamente. A saída gerada pelo o código OrCA equivalente mais próximo ao correto pode ser visto na Figura \ref{fig:axiomae_orca}, já o código OrCA em si pode ser visto na Figura \ref{fig:axiomae_orca_sintaxe}.
+ 
 \begin{figure}[H]
 \centering
 \includegraphics[width=.8\textwidth]{Figuras/axiomae_orca.png}
-\caption{Axioma sendo representado sem a \textit{TAG} de disjunção} 
+\caption{Saída da OrCA ao axioma sem a \textit{TAG} de disjunção} 
 \label{fig:axiomae_orca}
 \end{figure}
 
-Concluímos que de 54 axiomas no total (toda a ontologia NTDO extraída), 53 foram representados corretamente, sendo assim 98,15\% da ontologia representada corretamente.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=.5\textwidth]{Figuras/axiomae_orca_sintaxe.png}
+\caption{Axioma equivalente mais próximo em código OrCA} 
+\label{fig:axiomae_orca_sintaxe}
+\end{figure}
+
+\subsection{Resultados da Etapa um}
+
+A OrCA foi capaz de reproduzir 14 de 15 axiomas lógicos, um total de 93,30\%, levando em consideração que as restrições de cardinalidade originais foram desconsideradas. Um outro dado importante é que, se for levado em consideração a ontologia NTDO completa, sem a restrição imposta para esta etapa um, a OrCA conseguiria reproduzir 89,30\% da ontologia, esta possuindo um total de 755 definições, entre elas: 591 axiomas de subclasse, 83 axiomas de equivalência de classes e 81 axiomas de disjunção de classes. Esta porcentagem é número muito significativo e que expressa o quanto essa ferramenta é capaz construir ontologias de baixa ou alta complexidade, facilitando a criação por parte do usuário.
 
 \section{Etapa dois}
 \subsection{Explicação}
-Como foi utilizada uma ontologia real, por si só não existiam axiomas inconsistentes. Desta forma, foram desenvolvidos três axiomas específicos que deveriam gerar tais inconsistências, a fim de verificar a capacidade da OrCA em deduzir inconsistência entre os axiomas. 
+Como utilizamos uma ontologia real, não existiam axiomas inconsistentes. Desta forma, foram desenvolvidos três axiomas inconsistentes, para verificar a capacidade da OrCA em realizar raciocínio de inconsistência. 
 
 \subsection{Axioma inconsistente 1}
-Esse axioma pode ser visto na Figura \ref{fig:axiomai_1}, onde sua representação significa que \textit{Action não é uma subclasse de Process}. O fator inconsistente se dá porque no início da ontologia existe um axioma definido que \textit{Action é uma subclasse de Process}, como visto na Figura \ref{fig:axiomai_1_o}. A resposta da OrCA para esse axioma pode ser vista na Figura \ref{fig:axiomai_1_res}.
+Esse axioma pode ser visto na Figura \ref{fig:axiomai_1}, sua representação significa que \textit{Action não é uma subclasse de Process}. O fator inconsistente se dá porque no início da ontologia existe um axioma definido que \textit{Action é uma subclasse de Process}, como apresentado na Figura \ref{fig:axiomai_1_o}. A resposta da OrCA para esse axioma pode ser vista na Figura \ref{fig:axiomai_1_res}.
 
 \begin{figure}[H]
 \centering
@@ -1041,7 +1105,7 @@ O \textit{Reasoner} conseguiu deduzir que duas classes estão inconsistentes: \t
 \label{fig:axiomai_1_protege}
 \end{figure}
 
-Na Figura \ref{fig:axiomai_1_protege} é possível ver a resposta do \textit{Protégé} a mesma ontologia. O \textit{Protégé} marca de vermelho as classes quando estas são inconsistentes. Logo, podemos observar que a OrCA teve o mesmo resultado que o \textit{Protégé}, que utiliza um \textit{reasoner} diferente da OrCA. O \textit{Protégé} utiliza o HermiT (versão 1.4.3.456), enquanto a OrCA utiliza o Pellet (versão 2.4.0 ignazio1977).
+Na Figura \ref{fig:axiomai_1_protege} é possível ver a resposta do \textit{Protégé} a mesma ontologia. O \textit{Protégé} marca de vermelho as classes quando estão inconsistentes. Logo, podemos observar que a OrCA teve o mesmo resultado que o \textit{Protégé}, que nesta versão (5.5.0) utiliza um reasoner diferente da OrCA. O \textit{Protégé} utiliza o \textit{reasoner} HermiT (versão 1.4.3.456), enquanto a OrCA utiliza o \textit{reasoner} Pellet (versão 2.4.0 ignazio1977).
 
 
 \subsection{Axioma inconsistente 2}
@@ -1068,8 +1132,6 @@ Esse axioma pode ser visto na Figura \ref{fig:axiomai_2}. O fator inconsistente 
 \label{fig:axiomai_2_res}
 \end{figure}
 
-O \textit{Reasoner} conseguiu deduzir que duas classes estão inconsistentes: \textit{Action} e \textit{HealthSurveillanceNotificationAction}. \textit{Action} é a classe que está diretamente ligada ao axioma inconsistente e \textit{HealthSurveillanceNotificationAction} é uma classe que embora não possua relação direta com o axioma, possui relação direta com \textit{Action}, causando assim uma inconsistência implícita. A definição dessas duas classes pode ser vista no Apêndice \ref{chap:apOntologia}.
-
 \begin{figure}[H]
 \centering
 \includegraphics[width=.6\textwidth]{Figuras/axiomai_2_protege.png}
@@ -1077,7 +1139,7 @@ O \textit{Reasoner} conseguiu deduzir que duas classes estão inconsistentes: \t
 \label{fig:axiomai_2_protege}
 \end{figure}
 
-O \textit{Reasoner} deduziu que a classe \textit{LivingOrganism} é inconsistente. Observando toda a ontologia, é possível notar também que esta classe não está diretamente ligada a nenhuma outra classe, deste modo o \textit{Reasoner} não informou outras classes como inconsistentes. Na Figura \ref{fig:axiomai_2_protege} é possível ver a resposta do \textit{Protégé} a mesma ontologia. Obteve o mesmo resultado corretamente.
+O \textit{Reasoner} deduziu que a classe \textit{LivingOrganism} é inconsistente. Observando toda a ontologia, é possível verificar também que esta classe não está diretamente ligada a nenhuma outra classe, deste modo o \textit{Reasoner} não informou outras classes como inconsistentes. Na Figura \ref{fig:axiomai_2_protege} é possível ver a resposta do \textit{Protégé} a mesma ontologia inconsistente. Obteve o mesmo resultado corretamente.
 
 \subsection{Axioma inconsistente 3}
 Esse axioma pode ser visto na Figura \ref{fig:axiomai_3}. O fator inconsistente se dá porque existe uma definição desta mesma classe sem a negação da expressão, como visto na Figura \ref{fig:axiomai_3_o}. A resposta da OrCA para esse axioma pode ser vista na Figura \ref{fig:axiomai_3_res}.
@@ -1113,13 +1175,14 @@ O \textit{Reasoner} deduziu que a classe \textit{BiologicalDeathProcess} é inco
 \end{figure}
 
 \subsection{Resultados}
-É possível concluir que a OrCA não é só capaz de verificar inconsistência entre classes diretamente envolvidas em axiomas inconsistentes, mas também é capaz de deduzir inconsistência em classes indiretas, que por sua vez utilizam diretamente classes inconsistentes.
+É possível concluir que a OrCA não é só capaz de verificar inconsistência entre classes diretamente envolvidas em axiomas inconsistentes, mas também é capaz de verificar inconsistência em classes indiretas, que por sua vez utilizam diretamente classes inconsistentes.
 
 \section{Etapa três}
-Nesta etapa foi utilizado o recurso de inferência de axiomas da OrCA para a ontologia utilizada na etapa um. Quando axiomas são inseridos na OrCA, automaticamente inferências são realizadas. Esta etapa irá validar estas informações. Para ter um comparativo, foi executado a mesma ontologia no \textit{Protégé}, a fim de comparar os resultados.
+Nesta etapa validamos o módulo de inferência de axiomas da OrCA, uma vez que as ferramentas mais importantes da atualidade neste segmento também realizam este tipo de processamento. Desta forma, é importante termos uma ontologia conhecida e que novos axiomas possam ser inferidos a partir desta, para que tenhamos resultados controlados. Para termos um comparativo, a mesma ontologia foi executada no \textit{Protégé} e na OrCA, a fim de comparar os resultados.
+
 
 \subsection{Resultados}
-Ao executar a ontologia da etapa um no \textit{Protégé}, 4 axiomas foram inferidos da ontologia. A mesma ontologia quando executada na OrCA foi inferido os mesmos 4 axiomas (ver Figuras \ref{fig:e3_axioma1}, \ref{fig:e3_axioma2}, \ref{fig:e3_axioma3} e \ref{fig:e3_axioma4}).
+Quando o usuário clicar no botão para compilar o código OrCA, as inferências para a ontologia criada serão realizadas automaticamente, sem nenhuma intervenção do usuário. Desta forma, quando o usuário acessar a tela do \textit{Reasoner} será possível visualizar a ontologia completa juto com os novos axiomas, se houverem. Utilizamos a mesma ontologia da etapa um nesta etapa. 
 
 \begin{figure}[H]
 \centering
@@ -1146,15 +1209,26 @@ Ao executar a ontologia da etapa um no \textit{Protégé}, 4 axiomas foram infer
 \label{fig:e3_axioma4}
 \end{figure}
 
+Como visto nas Figuras \ref{fig:e3_axioma1}, \ref{fig:e3_axioma2}, \ref{fig:e3_axioma3} e \ref{fig:e3_axioma4}, 4 novos axiomas foram inferidos na ontologia (marcados por um quadrado vermelho). A mesma ontologia foi executada no \textit{Protégé}, e o resultado foi igual ao proposto pela OrCA. Os mesmos 4 axiomas foram sugeridos pelo \textit{Protégé}. Desta forma a OrCA também foi capaz de cumprir o que foi proposto no que diz respeito a inferência de conhecimento. Podendo inferir conhecimento tão bem quanto uma das ferramentas mais utilizadas no segmento.
+
 \chapter{Conclusão}
 \label{chap:conclusao}
 
-O presente trabalho apresentou a ferramenta OrCA, que é uma ferramenta geradora de ontologias que se propõe a facilitar o processo de desenvolvimento de ontologias e permitir que um número maior de usuários possa se envolver nesse processo, sem precisar possuir conhecimento prévio de programação. 
+Neste trabalho apresentamos a ferramenta OrCA, que é uma ferramenta geradora de ontologias que se propõe a facilitar o processo de desenvolvimento de ontologias para pessoas sem conhecimento em Web Semântica ou Linguagens de Programação, de modo a facilitar a criação de novas ontologias por pessoas com conhecimentos diversos. Isso é um fator importantíssimo, uma vez que a modelagem de conhecimento nas mais diversas áreas e setores tem crescido, devido ao vasto uso da Inteligência Artificial e da sistematização de processos.
 
-Através dos experimentos e testes realizados, podemos concluir que a OrCA é capaz de realizar tudo o que se propôs a fazer. É capaz construir ontologias com baixo ou alto grau de complexidade, embora falhe em apenas um aspecto (expressividade da disjunção), possibilitando que usuários sem conhecimento em programação sejam capazes de desenvolver suas próprias ontologias. A OrCA também é capaz de representar conhecimento de forma efetiva, no que diz respeito ao código \textit{OWL}, ou seja, código criado corretamente. Foi provado também que a OrCA é capaz de deduzir inconsistências e inferir novos axiomas, assim como as maiores e mais utilizadas ferramentas do seguimento na atualidade.
+Através dos experimentos e testes realizados, podemos concluir que a OrCA é capaz de realizar tudo o que se propôs a fazer. É capaz construir ontologias com baixo ou alto grau de complexidade, possibilitando que usuários sem conhecimento em programação sejam capazes de desenvolver suas próprias ontologias. A OrCA também é capaz de representar conhecimento de forma efetiva, no que diz respeito ao código \textit{OWL}, ou seja, o código \textit{OWL} é criado corretamente. Foi provado também que a OrCA é capaz de deduzir inconsistências e inferir novos axiomas a partir da ontologia criada.
+
+Afirmamos que esta ferramenta pode ser utilizada tanto por desenvolvedores independentes, como profissionais da saúde, como em ambiente acadêmico ou até mesmo em empresas, uma vez que ela é capaz de criar, raciocinar e inferir conhecimento de igual forma as maiores e mais utilizadas ferramentas do segmento na atualidade.
+
+Desta forma, podemos dizer que acrescentamos valor ao estado da arte deste tema, e comprovamos que os objetivos da ferramenta OrCA foram alcançados. 
 
 \section{Trabalhos Futuros}
-Deseja-se implementar a utilização da \textit{tag} \textit{disjointWith} para aumentar a capacidade de expressividade da ontologia. Outra melhoria importante seria a implementação de cardinalidade.
+A melhoria mais importante a ser feita é a implementação de cardinalidade na criação da ontologia. Outra melhoria é implementar a utilização da \textit{tag} \textit{disjointWith} para aumentar a capacidade de expressividade da ferramenta. 
+
+No que diz respeito a interface gráfica, a principal melhoria é como deve ser visualizada a saída dos axiomas inferidos, neste caso, mostrar apenas os novos axiomas inferidos, uma vez que os axiomas já conhecidos podem ser vistos na tela \textit{Ontology}.
+
+Também é desejável a implementação de arquivo que faz a conversão do código \textit{OWL} para \textit{OWL2}, raquivo de entrada do \textit{Graph Viewer}, para ser compatível com sistemas \textit{unix}. Atualmente só é compatível com sistemas windows.
+
 
 \bibliographystyle{sbc.bst}
 \bibliography{refs}
@@ -1216,4 +1290,5 @@ Após isso, é necessário clicar com o botão direito do mouse sobre a pasta ra
 \lstinputlisting[language=txt, caption=Ontologia NTDO na linguagem OrCA.] {Saidas/ntdo.orca}
 \lstinputlisting[language=xml, caption=Ontologia resultante após a execução do arquivo do Apêndice \ref{chap:apOntologia}.1 na ferramenta OrCA.] {Saidas/saida_orca_ntdo.xml}
 \lstinputlisting[language=xml, caption=Ontologia NTDO original utilizada nos experimentos.] {Saidas/ntdo.owl}
+\lstinputlisting[language=xml, caption=Ontologia NTDO após receber restrição.] {Saidas/saida_ntdo_filtrada.xml}
 \end{document}
