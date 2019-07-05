@@ -676,7 +676,7 @@ Bacharel em Ciência da Computação da Unidade Acadêmica de Garanhuns da Unive
     %\citationmode{abbr}
     %% Define o estilo bibligráfico agsm(Harvard)
     %%bibliographystyle{agsm}
-\addto\captionsportuguese{\def\bibname{\centerline{Bibliografia}}}
+\addto\captionsportuguese{\def\bibname{\centerline{Referências}}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \hypersetup{
