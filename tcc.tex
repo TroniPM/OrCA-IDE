@@ -77,8 +77,8 @@
 
 
 \titulo{OrCA: uma Ferramenta Baseada em Linguagem Natural Controlada para Construção Automática de Ontologias}
-\palavrasChave{Ontologias}{Processamento de Linguagem Natural}{Raciocínio Automático}
-\keywords{Ontologies, Natural Language Processing, Automated Reasoning}
+\palavrasChave{Ontologias}{Processamento de Linguagem Natural}{Raciocínio Automático.  Representação de Conhecimento}
+\keywords{Ontologies. Natural Language Processing. Automatic Reasoning. Knowledge Representation.}
 
 \autor{Paulo Mateus da Silva}{paulomatew@gmail.com}
 
@@ -87,11 +87,11 @@
 % \orientadorTres*{Ada Lovelace}{UAG}{UFRPE} % Se feminino use *, tanto para orientador ou examinador
 
 \examinador{Assuero Ximenes Fonseca}{UAG - UFRPE}{}
-\examinadorDois{Levi de Souza Silva}{Faculdade Uninassau - Caruaru/PE}{}
+\examinadorDois{Levy Souza Silva}{UNINASSAU - Caruaru/PE}{}
 %\examinadorTres{Stephen Cook}{UAG}{UFRPE}
 %\examinadorQuatro{John Backus}{UAG}{UFRPE}
 
-\dataMesAno{01}{julho}{2019}
+\dataMesAno{04}{julho}{2019}
 
 \begin{document}
 
@@ -104,14 +104,15 @@
 
 \begin{resumo}
 
-Com a crescente necessidade de capturar, representar e compartilhar conhecimento entre humanos e máquinas, desenvolvemos a ferramenta OrCA. Uma ferramenta para construção automática de ontologias baseada em Processamento de Linguagem Natural, cujo objetivo é o de criar de forma semiautomática, com pouca ou nenhuma intervenção humana, ontologias expressivas em OWL DL. A ferramenta também é capaz  de realizar raciocínio automático de inconsistências e subsunção em tempo de desenvolvimento. Ontologias são especificações formais e compartilhadas de um domínio de conhecimento. Para uma maior adoção do uso e do desenvolvimento de ontologias, tanto por parte de profissionais experientes como leigos interessados em seu desenvolvimento faz-se-a necessário a criação de ferramentas que facilitem esse processo, permitindo que usuários com pouco conhecimento em Web Semântica ou em desenvolvimento de ontologias possam se engajar no desenvolvimento de ontologias modeladas em OWL DL. Nossos resultados demostram o sucesso do OrCA em criar ontologias com baixo ou alto nível de complexidade baseada numa Linguagem Natural Controlada e com capacidade de realizar raciocínio automático.
+Com a crescente necessidade de capturar, representar e compartilhar conhecimento entre humanos e máquinas, desenvolvemos a ferramenta OrCA. Uma ferramenta para construção automática de ontologias baseada em Processamento de Linguagem Natural, cujo objetivo é o de criar de forma semiautomática, com pouca ou nenhuma intervenção humana, ontologias expressivas em OWL DL. A ferramenta também é capaz  de realizar raciocínio automático de inconsistências e subsunção em tempo de desenvolvimento. Ontologias são especificações formais e compartilhadas de um domínio de conhecimento. Para uma maior adoção do uso e do desenvolvimento de ontologias, tanto por parte de profissionais experientes como leigos interessados em seu desenvolvimento faz-se-a necessário a criação de ferramentas que facilitem esse processo. Com isto, permitindo que usuários com pouco conhecimento em Web Semântica ou em desenvolvimento de ontologias possam se engajar no desenvolvimento de ontologias modeladas em OWL DL. Nossos resultados demostram o sucesso do OrCA em criar ontologias com baixo ou alto nível de complexidade baseada numa Linguagem Natural Controlada e com capacidade de realizar raciocínio automático.
 
 \end{resumo}
 
 \selectlanguage{english}
 
 \begin{abstract}
-TRADUZIR    
+Due to the growing need to capture, represent and share knowledge between humans and machines, we developed the OrCA tool. A tool for automatic ontology construction based on Natural Language Processing, whose goal is to create semi-automatic expressive ontologies in OWL DL, with little or no human intervention. Also, the tool is capable of performing automatic reasoning of inconsistencies and subsumption at execution time. Ontologies are formal and shared specifications of a knowledge domain. In order to disseminate and develop the ontologies usage, not only for experienced professionals, but also for laypeople interested in, it will be necessary to create tools that facilitate this process. Through such tools, people with little knowledge either in Semantic Web or Ontologies can be engaged in the development of Ontologies modeled in OWL DL. Our results demonstrate the success of OrCA by creating Ontologies with low or high level of complexity based on a Controlled Natural Language and with the ability to perform automatic reasoning.
+
 \end{abstract}
 
 
@@ -343,7 +344,7 @@ Lógicas de descrição (DLs) são formalismos de representação de conheciment
 
 As DLs tem sido empregadas em vários domínios de aplicações como processamento de linguagem natural, bancos de dados, ontologias. Porém, seu sucesso mais notável é provavelmente a adoção da linguagem OWL baseada em DL como linguagem de ontologia padrão para a web semântica \cite{baader2002}.
 
-Uma DL pode ser caracterizada pelos construtores que ele fornece, alguns de seus principais construtores são: união ($\sqcup$), intersecção ($\sqcap$), negação ($\neg$), restrição de valor ($\forall$), quantificação existencial ($\exists$) \cite{kepler2006}.
+Uma DL pode ser caracterizada pelos construtores que ele fornece, por exemplo, a lógica ALC (\textit{Attributive Concept Language with Componentes} - Linguagem de Conceitos Atributivos com Componentes) é a DL que pode ter os construtores: união ($\sqcup$), intersecção ($\sqcap$), negação ($\neg$), restrição de valor ($\forall$), quantificação existencial ($\exists$) \cite{kepler2006}.
 
 \section{Pellet}
 
@@ -799,7 +800,7 @@ O código OWL completo da ontologia extraída pode ser visto no Apêndice \ref{c
 \label{fig:protege}
 \end{figure}
 
-O \textit{Protégé} utilizado nos experimentos está na versão 5.5.0, como pode ser visto na Figura \ref{fig:protege}. Nenhum componente ou plugin foi adicionado, além dos que são instalados juntamente com a ferramenta.
+O \textit{Protégé} utilizado nos experimentos está na versão 5.5.0, como pode ser visto na Figura \ref{fig:protege}. Nenhum componente ou plugin foi adicionado, além dos que são instalados juntamente com a ferramenta (plugins \textit{default}).
 
 \section{Planejamento da Amostra}
 
@@ -872,12 +873,6 @@ O axioma pode ser visto na representação DL na figura \ref{fig:axioma1_dl}. O 
 \end{figure}
 
 A OrCA teve a mesma saída do código OWL mostrado na Figura \ref{fig:axioma1_o}, assim sendo, não é necessário mostrar o mesmo código, visto que eles são idênticos, porém ele pode ser visto no Apêndice \ref{chap:apOntologia}.2.
-
-
-%--------------------------------------------------------------
-
-
-%Para reduzir o número de imagens, visto que a saída da OrCA em comparação com sua forma original será similar em absolutamente todos os caracteres, não faz-se necessário anexar as imagens separadas para cada caso, porém todas as saídas geradas pela OrCA podem ser vistas no Apêndice \ref{chap:apOntologia}.
 
 \subsection{Axioma 2}
 O axioma pode ser visto na representação DL na figura \ref{fig:axioma2_dl}. O código OrCA deste axioma, que será usado como entrada, pode ser visto na figura \ref{fig:axioma2_orca}. E a Figura \ref{fig:axioma2_o} mostra a forma original deste axioma (em OWL) que será usado para comparação. 
@@ -1009,7 +1004,6 @@ O axioma pode ser visto na representação DL na figura \ref{fig:axioma6_dl}. O 
 
 A OrCA teve a mesma saída do código OWL mostrado na Figura \ref{fig:axioma6_o}, assim sendo, não é necessário exibir o mesmo código, visto que eles são idênticos, porém ele pode ser visto no Apêndice \ref{chap:apOntologia}.2.
 
-
 \subsection{Axioma 7}
 O axioma pode ser visto na representação DL na figura \ref{fig:axioma7_dl}. O código OrCA deste axioma, que será usado como entrada, pode ser visto na figura \ref{fig:axioma7_orca}. E a Figura \ref{fig:axioma7_o} mostra a forma original deste axioma (em OWL) que será usado para comparação. 
 
@@ -1037,36 +1031,62 @@ O axioma pode ser visto na representação DL na figura \ref{fig:axioma7_dl}. O 
 A OrCA teve a mesma saída do código OWL mostrado na Figura \ref{fig:axioma7_o}, assim sendo, não é necessário exibir o mesmo código, visto que eles são idênticos, porém ele pode ser visto no Apêndice \ref{chap:apOntologia}.2.
 
 \subsection{Axioma 8}
-Embora a ferramenta possua em sua sintaxe o ou lógico ($\sqcup$), não é possível gerar código OWL com a \textit{TAG} \textit{disjointWith}. O axioma, mostrado em código OWL na Figura \ref{fig:axiomae_o}, possui uma relação de subclasse e disjunção.
-
+O axioma pode ser visto na representação DL na figura \ref{fig:axioma8_dl}. O código OrCA deste axioma, que será usado como entrada, pode ser visto na figura \ref{fig:axioma8_orca}. E a Figura \ref{fig:axioma8_o} mostra a forma original deste axioma (em OWL) que será usado para comparação. 
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=.8\textwidth]{Figuras/axiomae_o.png}
-\caption{Axioma com disjunção retirado da NTDO} 
-\label{fig:axiomae_o}
+\includegraphics[width=.6\textwidth]{Figuras/axioma8_dl.png}
+\caption{Axioma 8 na representação DL} 
+\label{fig:axioma8_dl}
 \end{figure}
 
-Como mostrado em subseções anteriores, a relação de subclasse é possível realizar, porém a relação de disjunção não. Desta forma, não é possível reproduzir este axioma corretamente. A saída gerada pelo o código OrCA equivalente mais próximo ao correto pode ser visto na Figura \ref{fig:axiomae_orca}, já o código OrCA em si pode ser visto na Figura \ref{fig:axiomae_orca_sintaxe}.
+\begin{figure}[H]
+\centering
+\includegraphics[width=.7\textwidth]{Figuras/axioma8_orca.png}
+\caption{Axioma 8 na sintaxe OrCA} 
+\label{fig:axioma8_orca}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=1\textwidth]{Figuras/axioma8_o.png}
+\caption{Axioma 8 retirado da NTDO} 
+\label{fig:axioma8_o}
+\end{figure}
+
+A OrCA teve a mesma saída do código OWL mostrado na Figura \ref{fig:axioma8_o}, assim sendo, não é necessário exibir o mesmo código, visto que eles são idênticos, porém ele pode ser visto no Apêndice \ref{chap:apOntologia}.2.
+
+%\subsection{Axioma 8}
+%Embora a ferramenta possua em sua sintaxe o ou lógico ($\sqcup$), não é possível gerar código OWL com a \textit{TAG} \textit{disjointWith}. O axioma, mostrado em código OWL na Figura \ref{fig:axiomae_o}, possui uma relação de subclasse e disjunção.
+
+
+%\begin{figure}[H]
+%\centering
+%includegraphics[width=.8\textwidth]{Figuras/axiomae_o.png}
+%\caption{Axioma com disjunção retirado da NTDO} 
+%\label{fig:axiomae_o}
+%\end{figure}
+
+%Como mostrado em subseções anteriores, a relação de subclasse é possível realizar, porém a relação de disjunção não. Desta forma, não é possível reproduzir este axioma corretamente. A saída gerada pelo o código OrCA equivalente mais próximo ao correto pode ser visto na Figura \ref{fig:axiomae_orca}, já o código OrCA em si pode ser visto na Figura \ref{fig:axiomae_orca_sintaxe}.
  
-\begin{figure}[H]
-\centering
-\includegraphics[width=.8\textwidth]{Figuras/axiomae_orca.png}
-\caption{Saída da OrCA ao axioma sem a \textit{TAG} de disjunção} 
-\label{fig:axiomae_orca}
-\end{figure}
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=.8\textwidth]{Figuras/axiomae_orca.png}
+%\caption{Saída da OrCA ao axioma sem a \textit{TAG} de disjunção} 
+%\label{fig:axiomae_orca}
+%\end{figure}
 
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=.5\textwidth]{Figuras/axiomae_orca_sintaxe.png}
-\caption{Axioma equivalente mais próximo em código OrCA} 
-\label{fig:axiomae_orca_sintaxe}
-\end{figure}
+%\begin{figure}[H]
+%\centering
+%\includegraphics[width=.5\textwidth]{Figuras/axiomae_orca_sintaxe.png}
+%\caption{Axioma equivalente mais próximo em código OrCA} 
+%\label{fig:axiomae_orca_sintaxe}
+%\end{figure}
 
 \subsection{Resultados da Etapa um}
 
-A OrCA foi capaz de reproduzir 14 de 15 axiomas lógicos, um total de 93,30\%, levando em consideração que as restrições de cardinalidade originais foram desconsideradas. Um outro dado importante é que, se for levado em consideração a ontologia NTDO completa, sem a restrição imposta para esta etapa um, a OrCA conseguiria reproduzir 89,30\% da ontologia, esta possuindo um total de 755 definições, entre elas: 591 axiomas de subclasse, 83 axiomas de equivalência de classes e 81 axiomas de disjunção de classes. Esta porcentagem é número muito significativo e que expressa o quanto essa ferramenta é capaz construir ontologias de baixa ou alta complexidade, facilitando a criação por parte do usuário.
+A OrCA foi capaz de reproduzir todos os 15 axiomas lógicos, 100\% do que foi proposto, levando em consideração que as restrições de cardinalidade originais foram desconsideradas. Um outro dado importante é que, se for levado em consideração a ontologia NTDO completa, sem a restrição imposta para esta etapa um, a OrCA conseguiria reproduzir toda a ontologia, esta possuindo um total de 755 definições, entre elas: 591 axiomas de subclasse, 83 axiomas de equivalência de classes e 81 axiomas de disjunção de classes. Isto é muito significativo, e expressa o quanto essa ferramenta é capaz construir ontologias de baixa ou alta complexidade, facilitando a criação por parte do usuário.
 
 \section{Etapa dois}
 \subsection{Explicação}
@@ -1178,11 +1198,10 @@ O \textit{Reasoner} deduziu que a classe \textit{BiologicalDeathProcess} é inco
 É possível concluir que a OrCA não é só capaz de verificar inconsistência entre classes diretamente envolvidas em axiomas inconsistentes, mas também é capaz de verificar inconsistência em classes indiretas, que por sua vez utilizam diretamente classes inconsistentes.
 
 \section{Etapa três}
-Nesta etapa validamos o módulo de inferência de axiomas da OrCA, uma vez que as ferramentas mais importantes da atualidade neste segmento também realizam este tipo de processamento. Desta forma, é importante termos uma ontologia conhecida e que novos axiomas possam ser inferidos a partir desta, para que tenhamos resultados controlados. Para termos um comparativo, a mesma ontologia foi executada no \textit{Protégé} e na OrCA, a fim de comparar os resultados.
-
+Nesta etapa validamos o módulo de inferência de axiomas da OrCA, uma vez que as ferramentas mais importantes da atualidade neste segmento também realizam este tipo de processamento. Inferir conhecimento (inferir novos axiomas) nada mais é do que observar ligações entre as classes que não estão expostas e explicitá-las, de modo que o usuário passe a conhecer esta ligação. Desta forma, é importante termos uma ontologia conhecida e que novos axiomas possam ser inferidos a partir desta, para que tenhamos resultados controlados e objetivos. Para termos um comparativo, a mesma ontologia foi executada no \textit{Protégé} e na OrCA.
 
 \subsection{Resultados}
-Quando o usuário clicar no botão para compilar o código OrCA, as inferências para a ontologia criada serão realizadas automaticamente, sem nenhuma intervenção do usuário. Desta forma, quando o usuário acessar a tela do \textit{Reasoner} será possível visualizar a ontologia completa juto com os novos axiomas, se houverem. Utilizamos a mesma ontologia da etapa um nesta etapa. 
+Quando o usuário clicar no botão para compilar o código OrCA, na tela \textit{Compiler}, a inferência será realizada automaticamente, sem nenhuma intervenção do usuário. Desta forma, ao usuário acessar a tela \textit{Reasoner}, será possível visualizar a ontologia completa junto com os novos axiomas inferidos, se houverem. Utilizamos a mesma ontologia da etapa um nesta etapa.
 
 \begin{figure}[H]
 \centering
@@ -1214,7 +1233,7 @@ Como visto nas Figuras \ref{fig:e3_axioma1}, \ref{fig:e3_axioma2}, \ref{fig:e3_a
 \chapter{Conclusão}
 \label{chap:conclusao}
 
-Neste trabalho apresentamos a ferramenta OrCA, que é uma ferramenta geradora de ontologias que se propõe a facilitar o processo de desenvolvimento de ontologias para pessoas sem conhecimento em Web Semântica ou Linguagens de Programação, de modo a facilitar a criação de novas ontologias por pessoas com conhecimentos diversos. Isso é um fator importantíssimo, uma vez que a modelagem de conhecimento nas mais diversas áreas e setores tem crescido, devido ao vasto uso da Inteligência Artificial e da sistematização de processos.
+Neste trabalho apresentamos a ferramenta OrCA, que é uma ferramenta geradora de ontologias que se propõe a facilitar o processo de desenvolvimento de ontologias para pessoas sem conhecimento em Web Semântica ou Linguagens de Programação, de modo a facilitar a criação de novas ontologias por pessoas com conhecimentos diversos. Este é um fator de grande importância, uma vez que a modelagem de conhecimento nas mais diversas áreas e setores tem crescido, devido ao vasto uso da Inteligência Artificial e da sistematização de processos.
 
 Através dos experimentos e testes realizados, podemos concluir que a OrCA é capaz de realizar tudo o que se propôs a fazer. É capaz construir ontologias com baixo ou alto grau de complexidade, possibilitando que usuários sem conhecimento em programação sejam capazes de desenvolver suas próprias ontologias. A OrCA também é capaz de representar conhecimento de forma efetiva, no que diz respeito ao código \textit{OWL}, ou seja, o código \textit{OWL} é criado corretamente. Foi provado também que a OrCA é capaz de deduzir inconsistências e inferir novos axiomas a partir da ontologia criada.
 
@@ -1223,11 +1242,13 @@ Afirmamos que esta ferramenta pode ser utilizada tanto por desenvolvedores indep
 Desta forma, podemos dizer que acrescentamos valor ao estado da arte deste tema, e comprovamos que os objetivos da ferramenta OrCA foram alcançados. 
 
 \section{Trabalhos Futuros}
-A melhoria mais importante a ser feita é a implementação de cardinalidade na criação da ontologia. Outra melhoria é implementar a utilização da \textit{tag} \textit{disjointWith} para aumentar a capacidade de expressividade da ferramenta. 
+A melhoria mais importante a ser feita é a implementação de cardinalidade na criação da ontologia, uma vez que isso possibilitará a OrCA basicamente o mesmo escopo de criação de ontologias de ferramentas como o \textit{Protégé}.
 
-No que diz respeito a interface gráfica, a principal melhoria é como deve ser visualizada a saída dos axiomas inferidos, neste caso, mostrar apenas os novos axiomas inferidos, uma vez que os axiomas já conhecidos podem ser vistos na tela \textit{Ontology}.
+A segunda melhoria mais importante é a implementação de \textit{queries} (DL \textit{Query}) a ferramenta. Oferecendo assim mais um módulo importante para o usuário, que diversas ferramentas deste segmento implementam, possibilitando que o usuário possa fazer perguntas a ontologia criada.
 
-Também é desejável a implementação de arquivo que faz a conversão do código \textit{OWL} para \textit{OWL2}, raquivo de entrada do \textit{Graph Viewer}, para ser compatível com sistemas \textit{unix}. Atualmente só é compatível com sistemas windows.
+No que diz respeito a interface gráfica, a principal melhoria é a visualização da saída dos axiomas inferidos, neste caso, deverá mostrar apenas os novos axiomas inferidos, sem mostra os axiomas já conhecidos, uma vez que estes axiomas já conhecidos podem ser vistos na tela \textit{Ontology}.
+
+Também é desejável a migração do arquivo \textit{batch} que faz a conversão do código \textit{OWL} para \textit{OWL2}, que são os dados de entrada para o \textit{Graph Viewer}. Assim, fazendo com que o \textit{Graph Viewer} seja compatível com sistemas \textit{unix}. Atualmente só é compatível com sistemas windows.
 
 
 \bibliographystyle{sbc.bst}
