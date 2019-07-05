@@ -582,7 +582,7 @@ Idiomas como o português, inglês e espanhol possuem um conjunto de regras e no
 \centering
 \begin{tabular}{l|l}
 Regra  & Definição  \\ 
-\hline <OP>  & \begin{tabular}[l]{@{}l@{}} some || all || only || and || or || isa || equivalent || that \end{tabular} \\
+\hline <OP>  & \begin{tabular}[l]{@{}l@{}} some || all || only || and || or || isa || equivalent || that || disjoint \end{tabular} \\
 \hline <ID>  & \begin{tabular}[l]{@{}l@{}} a-Z* \end{tabular} \\
 \hline <NUM> & \begin{tabular}[l]{@{}l@{}} 0-9* \end{tabular} \\
 \hline <FIM> & \begin{tabular}[l]{@{}l@{}} ; || <DEF> || $\varepsilon$ \end{tabular} \\ 
@@ -609,7 +609,7 @@ Para que o usuário consiga utilizar o sistema, se faz necessário que ele possu
 \begin{tabular}{l|l|l}
  Reservado  & Descrição & Exemplo  \\ 
 \hline isa & \begin{tabular}[l]{@{}l@{}} Uma classe X é um \\tipo de classe Y.\end{tabular} & Gato isa Felino \\ \hline
-equivalent & \begin{tabular}[l]{@{}l@{}} Uma classe X é um tipo \\ de classe irmã de Y.\end{tabular} & JanelaBanheiro equivalent JanelaCasa \\ \hline and / that & \begin{tabular}[l]{@{}l@{}} Uma classe X interseção\\ com uma classe Y.\end{tabular} & (Correr and Pular) isa ExercicioFisico  \\ \hline or & \begin{tabular}[l]{@{}l@{}}Uma classe X disjunção\\ de uma classe Y. \end{tabular} & Trabalhar isa nor(Dormir or Comer) \\ \hline only & \begin{tabular}[l]{@{}l@{}}Uma propriedade X\\ only classe Y. \end{tabular} & podeLatir only Cachorro \\ \hline some & \begin{tabular}[l]{@{}l@{}}Uma propriedade X\\ some classe Y. \end{tabular} & andarNoMuro some Gato \\ \hline all & \begin{tabular}[l]{@{}l@{}}Uma propriedade X \\ all classe Y. \end{tabular} & comerGrama all Vaca \\ \hline not & Negação de uma Classe & not Gato \\ \hline nor & Negação de uma expressão & nor(Gato isa Felino) \\ 
+equivalent & \begin{tabular}[l]{@{}l@{}} Uma classe X é um tipo \\ de classe irmã de Y.\end{tabular} & JanelaBanheiro equivalent JanelaCasa \\ \hline and / that & \begin{tabular}[l]{@{}l@{}} Uma classe X interseção\\ com uma classe Y.\end{tabular} & (Correr and Pular) isa ExercicioFisico  \\ \hline or & \begin{tabular}[l]{@{}l@{}}Uma classe X disjunção\\ de uma classe Y. \end{tabular} & Trabalhar isa nor(Dormir or Comer) \\ \hline only & \begin{tabular}[l]{@{}l@{}}Uma propriedade X\\ only classe Y. \end{tabular} & podeLatir only Cachorro \\ \hline some & \begin{tabular}[l]{@{}l@{}}Uma propriedade X\\ some classe Y. \end{tabular} & andarNoMuro some Gato \\ \hline all & \begin{tabular}[l]{@{}l@{}}Uma propriedade X \\ all classe Y. \end{tabular} & comerGrama all Vaca \\ \hline not & Negação de uma Classe & not Gato \\ \hline nor & Negação de uma expressão & nor(Gato isa Felino) \\ \hline disjoint & Uma classe X é disjunção da classe Y & Ferrari disjoint BMW \\
 \end{tabular}
 \caption{Palavras Reservadas}
 \label{tab:tabelaPalavrasReservadas}
